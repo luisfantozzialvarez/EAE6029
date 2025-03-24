@@ -1,0 +1,415 @@
+% !TeX document-id = {0be8c18c-9430-4e9a-bdd9-12beadebfebc}
+% !TeX TXS-program:bibliography = txs:///biber
+\documentclass[11pt]{beamer}
+
+\usepackage[brazilian]{babel}
+
+\uselanguage{portuguese}
+\languagepath{portuguese}
+\deftranslation[to=portuguese]{Theorem}{Teorema}
+\deftranslation[to=portuguese]{theorem}{teorema}
+\deftranslation[to=portuguese]{Example}{Exemplo}
+\deftranslation[to=portuguese]{example}{exemplo}
+\deftranslation[to=portuguese]{Lemma}{Lema}
+\deftranslation[to=portuguese]{lemma}{Lema}
+\deftranslation[to=portuguese]{Corollary}{Corolário}
+\deftranslation[to=portuguese]{corollary}{corolário}
+%\deftranslation[to=portuguese]{and}{e}
+\newtheorem{proposition}{Proposição}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{color}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usepackage{subcaption}
+%\usepackage{appendixnumberbeamer}
+
+\newenvironment{transitionframe}{
+	\setbeamercolor{background canvas}{bg=yellow}
+	\begin{frame}}{
+	\end{frame}
+}
+\usetheme{default}
+\usefonttheme{structuresmallcapsserif}
+
+%% I use a beige off white for my background
+\definecolor{MyBackground}{RGB}{255,253,218}
+\useinnertheme[shadow]{rounded}
+\setbeamercolor{block title}{bg=MyBackground}
+\setbeamercolor{block body}{bg=MyBackground}
+\setbeamercolor{example title}{bg=MyBackground}
+\setbeamercolor{example body}{bg=MyBackground}
+
+
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\purple}[1]{\textcolor{purple}{#1}}
+\newcommand{\gray}[1]{\textcolor{gray}{#1}}
+\setbeamertemplate{navigation symbols}{}
+%\setbeamertemplate{page number in head/foot}[appendixframenumber]
+
+%\usepackage{graphics}
+\usepackage{graphicx}
+
+\definecolor{blue_emph}{RGB}{0,114,178}
+\definecolor{red}{RGB}{213,94,0}
+\definecolor{yellow}{RGB}{240,228,66}
+\definecolor{green}{RGB}{0,158,115}
+\definecolor{purple}{RGB}{204,121,167}
+\definecolor{orange}{RGB}{230,159,0}
+\definecolor{lightblue}{RGB}{86,180,233}
+
+%\setbeamercolor{frametitle}{fg=blue}
+%\setbeamercolor{title}{fg=blue}
+\setbeamertemplate{footline}[frame number]
+\setbeamertemplate{navigation symbols}{} 
+\setbeamertemplate{itemize items}{-}
+%\setbeamercolor{itemize item}{fg=blue}
+%\setbeamercolor{itemize subitem}{fg=blue}
+\setbeamertemplate{enumerate items}[default]
+%\setbeamercolor{enumerate subitem}{fg=blue}
+\setbeamercolor{button}{bg=MyBackground,fg=blue}
+\usefonttheme{structuresmallcapsserif}
+
+%\setbeamercolor{section in toc}{fg=blue}
+%\setbeamercolor{subsection in toc}{fg=red}
+\setbeamersize{text margin left=1em,text margin right=1em} 
+
+
+\usepackage{appendixnumberbeamer}
+\usepackage{pdfpages}
+\usepackage[
+backend=biber,
+uniquename=false,
+uniquelist=false,
+style=authoryear,
+natbib=true
+]{biblatex}
+\addbibresource{../bibliography.bib}
+
+\newenvironment{wideitemize}{\itemize\addtolength{\itemsep}{10pt}}{\enditemize}
+\newenvironment{wideenumerate}{\enumerate\addtolength{\itemsep}{10pt}}{\endenumerate}
+\newenvironment{halfwideitemize}{\itemize\addtolength{\itemsep}{0.5em}}{\enditemize}
+\newenvironment{halfwideenumerate}{\enumerate\addtolength{\itemsep}{0.5em}}{\endenumerate}
+
+
+\author{Luis A. F. Alvarez}
+\title{Econometria I}
+\subtitle{O modelo econométrico linear}
+%\logo{}
+%\institute{}
+\date{\today}
+%\subject{}
+%\setbeamercovered{transparent}
+
+\def\signed #1{{\leavevmode\unskip\nobreak\hfil\penalty50\hskip2em
+		\hbox{}\nobreak\hfil(#1)%
+		\parfillskip=0pt \finalhyphendemerits=0 \endgraf}}
+
+\newsavebox\mybox
+\newenvironment{aquote}[1]
+{\savebox\mybox{#1}\begin{quote}}
+	{\signed{\usebox\mybox}\end{quote}}
+
+\begin{document}
+
+\begin{frame}[plain]
+	\maketitle
+\end{frame}
+
+\begin{frame}{Anatomia de um problema}
+	\begin{itemize}
+		\item Nosso ponto de partida é um espaço de probabilidade $(\Omega, \Sigma,\mathbb{P})$, e um par $(Y,X)$, onde $Y$ é uma variável aleatória real, e $X$ é um vetor aleatório de dimensão $k$.
+		\item A lei de probabilidade $\mathbb{P}_{Y,X}$ induzida pelo par $(Y,X)$ sobre $(\mathbb{R}^{k+1}, \mathcal{B}(\mathbb{R}^{k+1}))$ será interpretada como representativa da distribuição de características $(Y,X)$ numa população de interesse.
+			\item Por exemplo, se estamos interessados na relação entre salário ($Y$) e anos de estudo ($X$) na população paulista, o experimento $(\Omega, \Sigma,\mathbb{P})$ representa a amostragem de uma unidade $\omega$ desta população, de modo que  $\mathbb{P}_{Y,X}$ reflete a distribuição conjunta de salário e anos de estudo nessa população (e $(X(\omega),Y(\omega))$ é o valor dessa característica para o indivíduo $\omega$).
+
+		
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{O conceito de população}
+	\begin{itemize}
+\item Em alguns casos, a noção de ``população'' é diferente àquela convencional. 
+\item Por exemplo, o que é a população se $X$ representa a taxa de inflação em um mês $t$, e $Y$ representa a taxa de inflação no mês $t+1$?
+\begin{itemize}
+	\item Nesse caso, podemos pensar no experimento $(\Omega, \Sigma,\mathbb{P})$ como refletindo \textbf{incerteza econômica}, de modo que cada elemento $\omega \in \Omega$ representa uma possível realização dos fenômenos econômicos relevantes à determinação da taxa  inflação (um possível cenário econômico), e $(X(\omega),Y(\omega))$ as taxas de inflação sob $\omega$.
+	\item Ideia aqui é que a população consiste em todos os possíveis cenários para taxa de inflação, sobre realizações possíveis da incerteza econômica.
+	\begin{itemize}
+		\item É costumeiro denotar a ``população'' destes casos como ``superpopulação''. 
+		\item Podemos ver $(X,Y)$ como resultantes de um sorteio de $\omega$ realizado pela ``natureza''.
+	\end{itemize}
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Amostragem e incerteza econômica}
+		\begin{aquote}{\cite{Haavelmo1944}}
+From this point of view we may consider the total number of possible observations (the total number of decisions to consume A by all individuals) as result of a sampling procedure, which Nature is carrying out, and which we merely watch as passive observers.
+	\end{aquote}
+\end{frame}
+\begin{frame}{O problema preditivo}
+	\begin{itemize}
+		\item Considere o seguinte problema.
+		\begin{itemize}
+			\item A natureza ou processo de amostragem sorteia $\omega \in \Omega$, de acordo com a lei $\mathbb{P}$.
+			\item Você, pesquisador, observa $X(\omega)$, e deve usar essa quantidade para realizar uma previsão de $X(\omega)$.
+		\end{itemize}
+				\item No curso de verão vimos que, se $\mathbb{E}[|Y|^2]<\infty$, a regra de comunicação $h: \mathbb{R}^k \mapsto \mathbb{R}$ que minimiza o erro quadrático esperado:
+				$$\operatorname{EQM}(h) \coloneqq\mathbb{E}[(Y-h(X))^2]\, ,$$
+				dentre todas as possíveis funções $h$ t.q. $\mathbb{E}[h(X)^2]<\infty$, é dada pela esperança condicional, i.e. ${h}^*(X) = \mathbb{E}[Y|X]$.
+	\item Embora utilizar $h^*$ seja o melhor que possamos em termos de erro quadrático médio, na prática, como a lei $\mathbb{P}$ dificilmente é \textbf{conhecida}, teremos de realizar inferência estatística sobre $h^*$ com base em uma amostra $\{(X_i,Y_i)\}_{i=1}^n$ em que $(X_i,Y_i)\overset{d}{=} (X,Y)$.
+	\begin{itemize}
+		\item Inferência sobre $h^*$ pode ser bastante ruim se adotamos um modelo não paramétrico, permitindo que $h^*$ varie de forma complexa.
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Funções preditoras lineares}
+	\begin{itemize}
+		\item Como alternativa ao problema anterior, podemos considerar classes de funções $h$ \textbf{mais simples}.
+		\item Por exemplo, se $\mathbb{E}[X_j^2] < \infty$ para $j=1,\ldots, k$, faz sentido considerar o melhor preditor na classe de funções lineares da forma $\mathcal{H}_{\text{Lin}} = \{h(x) = \alpha + x'\delta: \alpha \in \mathbb{R}, \delta \in \mathbb{R}^k \}$.
+		\item Nesse caso, problema de previsão se torna encontrar um $h_*$ da forma $h_*(x) = \alpha_*' + x'\delta_*$, conhecido como \textbf{melhor preditor linear}, tal que:
+		
+		$$\operatorname{EQM}(h_*) = \min_{h \in \mathcal{H}_{\text{Lin}}} \operatorname{EQM}(h)= \min_{a \in \mathbb{R}, b \in \mathbb{R}^k}\mathbb{E}[(Y-a-b'X)^2] $$
+	\end{itemize}
+\end{frame}
+\begin{frame}{Esperança e variância de vetores aleatórios}
+\begin{itemize}
+	\item O valor esperado de um vetor (matriz) aleatória $U$ é denotado por $\mathbb{E}[U]$, e dado pelo vetor (matriz) em que a posição $i$ ($i,j$) é preenchida com $\mathbb{E}[U_i]$ ($\mathbb{E}[U_{i,j}]$).
+	\item Para um vetor aleatório $\boldsymbol{Z}$ de dimensão $d$ tal que $\operatorname{tr}(\mathbb{E}[\boldsymbol{Z}\boldsymbol{Z}'])<\infty$, a matriz de variância-covariância, $\mathbb{V}[\boldsymbol{Z}] $, é definida como:
+	
+	$$\mathbb{V}[\boldsymbol{Z}]  = \mathbb{E}[\boldsymbol{Z}\boldsymbol{Z}'] - \mathbb{E}[\boldsymbol{Z}]\mathbb{E}[\boldsymbol{Z}']$$
+	
+	\item Matriz de variância-covariância é $d \times d$, simétrica, positiva semidefinida (por quê?), com entrada $(i,j)$ iguais a:
+	
+	$$\mathbb{V}[\boldsymbol{Z}]_{i,j}= \operatorname{cov}(\boldsymbol{Z}_i,\boldsymbol{Z}_j)\, .$$
+	
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Covariância entre vetores aleatórios}
+\begin{itemize}
+	 		\item Seja $\boldsymbol{Z}$ um vetor aleatório em $\mathbb{R}^d$ com $\operatorname{tr}(\mathbb{E}[\boldsymbol{Z}\boldsymbol{Z}'])<\infty$, e $\boldsymbol{U}$ um vetor aleatório em $\mathbb{R}^p$ com $\operatorname{tr}(\mathbb{E}[\boldsymbol{U}\boldsymbol{U}'])<\infty$, definimos a matriz de covariância entre $\mathbf{Z}$ e $\boldsymbol{U}$  como:
+	
+	$$\operatorname{cov}(\boldsymbol{Z},\boldsymbol{U}) = \mathbb{E}[\boldsymbol{Z}\boldsymbol{U}'] - \mathbb{E}[\boldsymbol{Z}]\mathbb{E}[\boldsymbol{U}'] \, .$$
+	\item Matriz $d \times p$ em que a entrada $(i,j)$ é igual a:
+	
+	$$\operatorname{cov}(\boldsymbol{Z},\boldsymbol{U})_{i,j} = \operatorname{cov}(\boldsymbol{Z}_i,\boldsymbol{U}_j)$$
+	\item Note que $\operatorname{cov}(\boldsymbol{Z},\boldsymbol{U}) = \operatorname{cov}(\boldsymbol{U},\boldsymbol{Z})'$.
+\end{itemize}
+\end{frame}
+\begin{frame}{Caracterização do melhor preditor linear}
+	Tome o problema de predição linear com $\mathbb{E}[|Y|^2]<\infty$ e $\operatorname{tr}(\mathbb{E}[XX'])<\infty$. 
+	\begin{proposition}
+		Sejam $\alpha_* \in \mathbb{R}$ e $\delta_* \in \mathbb{R}^k$ constantes tais que $h_*(x) = \alpha_* + \delta_*'x$ é solução ao problema de predição linear. Então, definindo $\epsilon := Y - \alpha_* - \delta_*'X$ como o erro de predição, podemos escrever:
+		$$Y = \alpha_* + \delta_*' X + \epsilon\,, ,$$
+		com $\mathbb{E}[\epsilon] = 0$ e $\operatorname{cov}(X,\epsilon)=0$.
+	\end{proposition}
+\begin{proposition}
+Se $\mathbb{V}[X]$ tem posto cheio, então o melhor preditor linear de $Y$ como função de $X$ é da forma $h_*(x) = \alpha_* + \delta_*' x$, com
+
+$$\delta_* = \mathbb{V}[X]^{-1} \operatorname{cov}(X,Y)$$
+$$\alpha_* = \mathbb{E}[Y] - \delta_*'\mathbb{E}[X]$$
+
+\end{proposition}
+\end{frame}
+
+
+\begin{frame}{Discussão}
+	\begin{itemize}
+		\item Primeira proposição mostra que o problema de predição linear define um \textbf{modelo preditivo linear} da forma:
+		
+		$$Y = \alpha_* + \delta_*'X + \epsilon \, ,$$
+		onde $\alpha_*$ e $\delta_*$ são os coeficientes de melhor predição linear, e $\epsilon$ é um erro de predição que, \textbf{por construção}, possui média zero e não covaria com $\epsilon$.
+		\item No entanto, o primeiro resultado não garante que haja somente um único par $(\alpha_*,\delta_*)$ que produza tal modelo. 
+		\item Segundo resultado mostra que, se $\mathbb{V}[X]$ tem posto cheio, o coeficiente do melhor preditor linear \textbf{é único}, com uma expressão fechada.
+		\begin{itemize}
+		\item Essa condição limita o grau de colinearidade entre os preditores $X_j$, sobre realizações repetidas da incerteza.
+		\item De fato, condição de posto cheio equivale a $\mathbb{V}[(\psi'X)]=\psi'\mathbb{V}[X]\psi > 0$, $\forall \psi \in \mathbb{R}^k\setminus\{0\}$, de modo que nenhum preditor pode ser recuperado perfeitamente como função afim dos demais.
+		\item Pergunta: faria sentido incluir um preditor \textbf{perfeitamente} colinear para realizar uma predição?
+		\end{itemize}
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}{Melhor aproximação linear a $\mathbb{E}[Y|X]$}
+	\begin{itemize}
+		\item Até agora, motivamos nosso interesse sobre o melhor preditor linear como solução a um problema \emph{restrito} de predição, cuja solução irrestrita $\mathbb{E}[Y|X]$ seria difícil de se inferir empiricamente.
+		\item No entanto, em diversas situações, nosso interesse pode residir sobre $h^*(X)= \mathbb{E}[Y|X]$.
+		\begin{itemize}
+			\item No exemplo em que $\mathbb{P}_{Y,X}$ reflete a distribuição conjunta de salário e anos de estudo na população de interesse, podemos querer entender como grupos de diferente nível educacional diferem em sua remuneração média. 
+			\begin{itemize}
+				\item Por exemplo, poderíamos querer calcular $h^*(x') - h^*(x)$ a diferença salarial média entre indivíduos com $x'$ e $x$ anos de estudo, uma \emph{\color{blue}quantidade descritiva}
+			\end{itemize}
+		\end{itemize}
+		\item O resultado abaixo nos mostra que qualquer melhor preditor linear nos oferece a melhor aproximação linear a $h^*$, na distância $L_2(\mathbb{P}_X)$.		
+	\end{itemize}
+
+\begin{proposition}
+	Seja  $h_*(x) = \alpha_* + \delta_*'x$ solução ao problema de predição linear. Então:
+	
+	$$\mathbb{E}[(h^*(X)-h_*(X))^2] = \min_{h \in \mathcal{H}_{\text{Lin}}} \mathbb{E}[(h^*(X)-h(X))^2]$$
+	
+\end{proposition}
+	\end{frame}
+
+\begin{frame}{Perguntas de natureza causal}
+	\begin{itemize}
+		\item Até agora, nós nos restringimos a perguntas de natureza preditiva ou descritiva.
+		\item No entanto, as perguntas mais relevantes em Economia (e nas Ciências de modo geral) são de natureza causal.
+		\begin{itemize}
+			\item Qual é o efeito de um aperto monetário sobre a taxa de inflação?
+			\item Qual é o efeito de políticas de transferência de renda sobre a decisão de emprego dos beneficiários?
+		\end{itemize} 
+		\item Os efeitos causais, em Economia, estão associados ao qualificador \textit{ceteris paribus}.
+		\begin{itemize}
+			\item Efeito causal de uma variável $A$ sobre uma variável $B$ é definido como o efeito de se manipular o valor de $A$ sobre $B$, mantidas \emph{todas as demais causas} de $B$ \emph{constantes}.
+			\item Nesse sentido, uma curva de demanda é um objeto de natureza causal.
+		\end{itemize}
+	 \item Primeira etapa de uma análise causal é definir o sistema econômico ou modelo causal, explicitando quais variáveis causam o quê e os efeitos causais de interesse.
+		\begin{halfwideitemize}
+			\item Trata-se de {\color{blue}atividade puramente mental}, não dependente de amostra e envolvendo conhecimento prévio ou teoria econômica \citep{Heckman2022}.
+		\end{halfwideitemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Causalidade enquanto modo de pensar}
+	
+	\begin{aquote}{\cite{Heckman2022}}
+			The modern understanding of causal inference dates back to the 1930 lectures of Ragnar Frisch, who described causality as a thought experiment in which the researcher hypothetically manipu- lates one or more inputs affecting an output (Frisch 1930). According to Frisch, causality is not a physical property of the natural world, but rather an exercise of abstract manipulation of inputs causing an output.
+	\end{aquote}
+\vspace{1em}
+\begin{aquote}{Frisch (1930) \textit{apud} \cite{Heckman2024}}
+	
+	``...we think of a cause as something imperative which exists in the \textbf{exterior world}. In my opinion this is fundamentally \textbf{wrong}. If we strip the word cause of its animistic mystery, and leave only the part that science can accept, nothing is left except a certain \textbf{way of thinking}. [T]he scientific ...problem of causality is essentially a problem regarding our way of thinking, not a problem regarding the nature of the exterior world.''
+\end{aquote}
+\end{frame}
+
+\begin{frame}{Função estrutural causal e efeitos causais}
+	\begin{itemize}
+		\item Consideramos, agora, num  espaço de probabilidade $(\Omega,\Sigma,\mathbb{P})$, uma tripla de variáveis aleatórias $(Y,X,U)$.
+		\begin{itemize}
+			\item $Y$ representa um resultado cujas causas desejamos estudar.
+			\item $X$ é um vetor que representa as causas observáveis de $Y$.
+			\item $U$ representa as causas não observáveis 
+		\end{itemize}
+		\item $\mathbb{P}_{Y,X,Z}$ representa a distribuição do desfecho $Y$ e das causas na população (superpopulação) de interesse.
+		\item Uma {\color{blue}função estrutural causal} de $Y$ é um mapa $h: \mathcal{X}\times \mathcal{U} \mapsto \mathbb{R}$ tal que $h(x,u)$ é o valor que observaríamos para $Y$ caso as causas de um fenômeno fossem fixadas em $x \in\mathcal{X}$ e $u \in \mathcal{U}$.
+		\begin{itemize}
+			\item Com base nessa definição temos que a variável aleatória $Y$ efetivamente observável é $Y = h(X,U)$.
+			\item Ao amostrar uma unidade $\omega$ da população, o valor efetivamente observado é $Y(\omega) =h(X(\omega), U(\omega))$.
+		\end{itemize}
+		\item O efeito causal de se manipular $(X,U)$ de $(x,u)$ para $(x',u')$ é $h(x',u')-h(x,u)$.
+		\begin{itemize}
+			\item Para qualquer unidade (indivíduo/cenário) $\omega$ amostrado da população, efeito de uma manipulação hipotética das causas de $(x,u)$ para $(x',u')$ é $h(x',u')-h(x,u)$.
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+\begin{frame}{Resultados potenciais e efeitos causais}
+\begin{itemize}
+\item Como $U$ é não observado, é costumeiro definir  {\color{blue}resultados potenciais}, $Y(x)=h(x,U)$, fixando-se o valor das causas observáveis em $x \in \mathcal{X}$ e permitindo que $U$ varie de acordo com sua distribuição na população.
+	\begin{itemize}
+		\item Note que, $Y = Y(X)$, e, nesse caso, o efeito causal de se manipular $X$ de $x$ a $x'$ é dado pela \textbf{variável aleatória} $Y(x')-Y(x)$.
+		\begin{itemize}
+			\item Essa variável aleatória representa \textbf{o experimento hipotético} de se sortear uma unidade $\omega$ da população e perturbar suas causas observadas de $x$ a $x'$, mantidas as causas não observadas em $U(\omega)$.
+		\end{itemize}
+	\end{itemize} 
+	\item Representações causais em termos de funções estruturais causais e resultados potenciais são {\color{blue}equivalentes}.
+	\begin{itemize}
+		\item Fácil ver que, partindo-se de uma representação causal definida a partir de uma delas, pode-se chegar à outra.
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Modelo econométrico causal linear}
+\begin{itemize}
+	\item A função $h$ pode ser bastante complexa, de modo que os efeitos causais $Y(x')  - Y(x)$ podem ser bastante complicados.
+	\item Um modelo econométrico causal linear consiste em uma especificação das causas de um fenômeno em que $\mathcal{X} = \mathbb{R}^k$, $\mathcal{U} = \mathbb{R}$, e:
+	
+	$$h(x,u) = \mu+ \beta'x + u\, ,$$
+	em que $\mu \in \mathbb{R}$ e $\beta \in \mathbb{R}^k$.
+	\item No modelo causal linear, os efeitos causais de se manipular $X$ são homogêneos e não dependem de $U$, i.e:
+	$$Y(x')-Y(x) = \beta'(x'-x) = h(x',u) -h(x,u)\,,\quad \forall u \in \mathbb{R}$$
+	\item Resultado observável $Y$ toma a forma:
+	$$Y = Y(X) = h(X,U) = \mu + \beta'X + U$$
+	
+\end{itemize}
+
+\end{frame}
+\begin{frame}{Exemplos de modelos causais lineares}
+		\begin{example}
+	Se a produção das firmas em um setor  segue uma função de produção $f(u,l) = ul^\alpha$, onde $\alpha< 1$ é uma constante, $u$ é a produtivdade da firma e $l$ a quantidade de trabalho, então, denotando por $(Y,L,U)$ a tripla de variáveis aleatórias que representam a produção, demanda por trabalho e produtividade de uma firma amostrada dessa população, temos que:
+	
+	$$\log(Y) = \alpha \log(L) + \log(U)\, .$$
+	\end{example}
+	
+	\begin{example}
+	Considere uma regra de decisão de um banco central, por exemplo:
+		
+		$$i_t = i^* + \gamma (\pi_{t-1} - \pi^m)  + u_t\, ,$$
+		onde $i_t$ representa a taxa de juros nominal em $t$, $i^*$ é a taxa de juros nominal neutra, $\pi_{t-1}$ é a taxa de inflação em $t-1$, $\pi_m$ é a meta de inflação, $u_t$ são os demais fatores que influenciam a política monetária, e $\gamma$ é o parâmetro de resposta do banco central a desvios da inflação da meta.
+	\end{example}
+\end{frame}
+\begin{frame}{Identificação do modelo causal linear}
+	\begin{proposition}
+		Considere um modelo causal linear da forma:
+		
+		$$Y =Y(X) = \mu + \beta' X + U\, ,$$
+		onde $U$ são causas não observáveis, e $\beta \in \mathbb{R}^k$ é um vetor que representa os efeitos causais das causas observáveis. Se $\mathbb{V}[X]$ tem posto cheio e $\operatorname{cov}(X,U) =0$, então é possível recuperar $\beta$ como:
+		
+		$$\beta = \mathbb{V}[X]^{-1}\operatorname{cov}(X,Y)$$
+	\end{proposition}
+	\begin{itemize}
+		\item 	Proposição acima nos mostra que se (1) não há colinearidade perfeita entre as causas observadas e (2) não há associação sistemática entre causas observáveis e não observáveis na populalação de interesse, os efeitos causais são {\color{blue}identificáveis} a partir da distribuição dos observáveis $(X,Y)$.
+	\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Modelo linear preditivo vs. modelo linear causal}
+	\begin{itemize}
+		\item Na aula de hoje, vimos dois tipos de modelos lineares.
+		\item No modelo linear preditivo, temos uma relação:
+		
+		$$Y = \alpha + \delta X + \epsilon\, ,$$
+		onde $(\alpha,\delta)$ são \textbf{\color{blue}definidos} como o melhor preditor linear de $Y$ como função de $X$ e, por esse motivo, vale \textbf{\color{blue}por construção}  que $\operatorname{cov}(X,\epsilon) = 0$.
+		\item  Outro tipo de modelo é o linear causal. Nele, tem-se relação da forma:
+				$$Y = \mu + \beta' X + U\, ,$$
+				onde $U$ representam as causas não observadas de um fenômeno, e $\beta$ é {\color{green}\textbf{definido}} como o vetor de efeitos causais das causas observáveis $X$.
+				\begin{itemize}
+					\item Nesse modelo, hipótese de que $\operatorname{cov}(X,U)=0$ \textbf{\color{red}não} vale por construção, e sua plausibilidade deve ser argumentada pelo pesquisador, visto que, sem informações adicionais, não é possível avaliá-la empiricamente.
+				\end{itemize}
+		\item Primeira etapa de qualquer análise econométrica consiste em postular a pergunta de interesse, e a partir dela o modelo relevante.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Efeitos causais heterogêneos}
+\begin{itemize}
+	\item 	Em diversas situações, a restrição de homogeneidade dos efeitos causais embutida no modelo linear econométrico pode ser bastante restritiva. Nesses casos, é interessante trabalhar com efeitos heterogêneos.
+	\item Como exemplo, considere uma causa $X$ binária, e os resultados potenciais $(Y(1), Y(0))$ correspondentes ao experimento hipotético de fixar externamente a causa $X$ em $0$ ou $1$, para um indivíduo $\omega$ amostrado da população de interesse.
+	\item O resultado observado é da forma $$Y = Y(X) = X Y(1) + (1-X)Y(0) = Y(0) + (Y(1)-Y(0))X$$
+	\item Se o modelo causal é linear, então sabemos que $Y(1) - Y(0)$ é constante na população de interesse. Do contrário, $Y(1)-Y(0)$ é uma variável aleatória não constante.
+\end{itemize}
+\end{frame}
+\begin{frame}{Modelo linear derivado do modelo causal heterogêneo}
+\begin{itemize}
+	 \item Partindo do modelo causal heterogêneo, e definindo $\kappa = \mathbb{E}[Y(0)]$ e $\phi = \mathbb{E}[Y(1)-Y(0)]$, podemos escrever:
+	
+	$$Y = \kappa + \phi X + V$$
+	onde $V = Y(0)-\mathbb{E}[Y(0)] + X(Y(1)-Y(0)-\mathbb{E}[Y(1)-Y(0)])$.
+	\item Sob as hipóteses de que $\mathbb{V}[X] > 0$ e $\operatorname{cov}(X,Y(1))= \operatorname{cov}(X,Y(0)) = 0$, o melhor preditor linear identificaráca $\phi$, visto que, nesse caso:
+	$$\phi = \frac{\operatorname{cov}(X,Y)}{\mathbb{V}[X]}$$
+	\begin{itemize}
+		\item Melhor preditor linear identifica o efeito causal esperado ou médio de uma manipulação hipotética de $X$ de $0$ a $1$.
+	\end{itemize}
+\end{itemize}
+\end{frame}
+\appendix
+\begin{frame}{Referências}
+	\printbibliography
+\end{frame}
+\end{document}
+
