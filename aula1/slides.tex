@@ -157,7 +157,7 @@ From this point of view we may consider the total number of possible observation
 		\item Considere o seguinte problema.
 		\begin{itemize}
 			\item A natureza ou processo de amostragem sorteia $\omega \in \Omega$, de acordo com a lei $\mathbb{P}$.
-			\item Você, pesquisador, observa $X(\omega)$, e deve usar essa quantidade para realizar uma previsão de $X(\omega)$.
+			\item Você, pesquisador, observa $X(\omega)$, e deve usar essa quantidade para realizar uma previsão de $Y(\omega)$.
 		\end{itemize}
 				\item No curso de verão vimos que, se $\mathbb{E}[|Y|^2]<\infty$, a regra de comunicação $h: \mathbb{R}^k \mapsto \mathbb{R}$ que minimiza o erro quadrático esperado:
 				$$\operatorname{EQM}(h) \coloneqq\mathbb{E}[(Y-h(X))^2]\, ,$$
@@ -173,7 +173,7 @@ From this point of view we may consider the total number of possible observation
 	\begin{itemize}
 		\item Como alternativa ao problema anterior, podemos considerar classes de funções $h$ \textbf{mais simples}.
 		\item Por exemplo, se $\mathbb{E}[X_j^2] < \infty$ para $j=1,\ldots, k$, faz sentido considerar o melhor preditor na classe de funções lineares da forma $\mathcal{H}_{\text{Lin}} = \{h(x) = \alpha + x'\delta: \alpha \in \mathbb{R}, \delta \in \mathbb{R}^k \}$.
-		\item Nesse caso, problema de previsão se torna encontrar um $h_*$ da forma $h_*(x) = \alpha_*' + x'\delta_*$, conhecido como \textbf{melhor preditor linear}, tal que:
+		\item Nesse caso, problema de previsão se torna encontrar um $h_*$ da forma $h_*(x) = \alpha_* + x'\delta_*$, conhecido como \textbf{melhor preditor linear}, tal que:
 		
 		$$\operatorname{EQM}(h_*) = \min_{h \in \mathcal{H}_{\text{Lin}}} \operatorname{EQM}(h)= \min_{a \in \mathbb{R}, b \in \mathbb{R}^k}\mathbb{E}[(Y-a-b'X)^2] $$
 	\end{itemize}
