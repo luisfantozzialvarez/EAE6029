@@ -190,7 +190,7 @@ natbib=true
 \end{frame}
 \begin{frame}{Condição de posto e unicidade do mínimo}
 Sob a condição
-\begin{assumption}
+\begin{assumption}[H1-POSTO]
 	A matriz $\boldsymbol{X}$ apresenta posto $k$.
 	\end{assumption}
 	Temos que $\boldsymbol{X}'\boldsymbol{X}$ é invertível (por quê), de modo que  existe uma única solução ao problema de otimização, dada por:
@@ -320,14 +320,175 @@ Sob a condição
 	\Huge{MQO: Propriedades Estatísticas em Amostras Finitas}
 	
 
-\end{transitionframe}
 
-	\begin{transitionframe}
-	\centering
-		\Huge{MQO: Propriedades Assintóticas}
-	
-	
 \end{transitionframe}
+	\begin{frame}{Regressores fixos}
+	\begin{itemize}
+		\item Nesta seção, analisaremos as propriedades de risco do estimador de MQO.
+		\item Essas propriedades serão analisadas com respeito à distribuição de $\boldsymbol{y}$ condicionalmente a $\boldsymbol{X}$.
+		\begin{itemize}
+			\item Em outras palavras, estamos pensando nas propriedades do estimador sob amostras repetidas (realizações alternativas da incerteza) em que o valor dos regressores é o mesmo da amostra observada.
+			\item Ou seja, estamos efetivamente tratando os regressores como fixos sob amostras repetidas.
+			\item \textbf{Exemplo:} se $Y_i$ é a taxa de inflação no período $i$, e $X_i$ a taxa de desemprego no período $i-1$, analisaremos as propriedades dos estimadores sob realizações alternativas do cenário econômico em que a taxa de desemprego é igual à observada nos períodos $i=1,\ldots,n$.  
+		\end{itemize}
+		
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Não viés}
+\begin{itemize}
+	\item Sob a restrição de que:
+\begin{assumption}[H2-EXOGENEIDADE]
+	$$\mathbb{E}[\boldsymbol{e}|\boldsymbol{X}]=0$$
+	\end{assumption}
+	\item O estimador de MQO é não viciado para $\beta$, isto é, qualquer que seja o valor de $\beta \in \mathbb{R}^k$, temos que:
+	
+	\begin{equation*}
+	\mathbb{E}[\hat{b}|\boldsymbol{X} ]= (\boldsymbol{X}'\boldsymbol{X})^{-1}\mathbb{E}[\boldsymbol{y}|\boldsymbol{X}] =\beta + (\boldsymbol{X}'\boldsymbol{X})^{-1}\mathbb{E}[\boldsymbol{e}|\boldsymbol{X}]  = \beta 
+	\end{equation*}
+		\item Observe que a condição de exogeneidade implica que:
+	
+	$$\mathbb{E}[\boldsymbol{y}|\boldsymbol{X}] = \boldsymbol{X}\beta $$
+\end{itemize}
+\end{frame}
+\begin{frame}{Interpretação da condição de exogeneidade}
+\begin{itemize}
+
+
+		\item Sob amostragem aleatória de uma população, i.e. $(Y_i,X_i)\overset{iid}{\sim}(X,Y)$, condição implica $\mathbb{E}[Y_i|\boldsymbol{X}] = \mathbb{E}[Y_i|X_i] = X_i'\beta \implies \mathbb{E}[Y|X]=X'\beta$.
+		\begin{itemize}
+			\item A esperança condicional das variáveis $(Y,X)$ que representam a distribuição das características na população de interesse é linear em $X$, {\color{green}e coincide com o modelo linear de interesse}.
+				\item Se o modelo postulado é {\color{blue}preditivo}, isso signifca que o parâmetro-alvo do melhor preditor linear consiste também no melhor preditor dentro das funções não lineares de $X$ (ou, de modo equivalente, a melhor aproximação linear a $\mathbb{E}[Y|X]$ é exata).
+				\item Se modelo postulado é {\color{blue}causal}, isso significa que as causas não observadas $\epsilon$ apresentam o mesmo valor médio nas diferentes subpopulações definidas pelos valores de $X$. Trata-se de condição mais forte que (i.e. que implica) a condição de identificação $\operatorname{cov}(X,\epsilon) = 0$.
+		\end{itemize}
+					\item Quando as observações $(X_i,Y_i)$  apresentam dependência entre si, esta condição impõe restrições adicionais.
+					\begin{itemize}
+						\item Por exemplo, se as observações estão ordenadas no tempo e o modelo postulado é causal, $\mathbb{E}[\epsilon_i|\boldsymbol{X}]=0$ implica que causas não observadas  do fenômeno no período $i$ não exibem associação sistemática com as causas em $i$ {\color{red}e em nenhum outro período}.
+						\begin{itemize}
+							\item Nesse caso, condição limita retroalimentação entre causas observadas e não observadas no tempo.
+						\end{itemize}
+					\end{itemize} 
+	\end{itemize}
+
+\end{frame}
+\begin{frame}{Viés de variável omitida}
+\begin{itemize}
+	\item Considere um modelo da forma:
+	$$\hat{b} = \boldsymbol{X}_1 \beta_1 + \boldsymbol{X}_2 \beta_2 + \boldsymbol{\epsilon}\, ,$$
+	em que $\mathbb{E}[\boldsymbol{\epsilon}|\boldsymbol{X}_1,\boldsymbol{X}_2] = 0$. 
+	\begin{itemize}
+		\item Por exemplo, num modelo causal, é suficiente observar as causas $\boldsymbol{X}_1$ e $\boldsymbol{X}_2$ para que as causas não observadas restantes estejam balanceadas nas subpopulações definidas pelos valores de $(\boldsymbol{X}_1,\boldsymbol{X}_2)$.
+	\end{itemize}
+	\item Suponha que você {\color{red}não observe ou desconsidere} $\boldsymbol{X}_2$, e considere o estimador de MQO $\tilde{b}_1$ de $\boldsymbol{y}$ em $\boldsymbol{X}_1$.
+	\begin{itemize}
+		\item Sob quais condições esse estimador é não viciado para $\beta_1$?
+	\end{itemize}
+	\item Um cálculo simples nos mostra que:
+	\begin{equation*}
+		\begin{aligned}
+		\tilde{b}_1 = (\boldsymbol{X}_1'\boldsymbol{X}_1)^{-1}\boldsymbol{X}_1'\boldsymbol{y} = \beta_1 + (\boldsymbol{X}_1'\boldsymbol{X}_1)^{-1}\boldsymbol{X}_1' \boldsymbol{X}_2 \beta_2 +(\boldsymbol{X}_1'\boldsymbol{X}_1)^{-1}\boldsymbol{X}_1'\boldsymbol{\epsilon}  \\
+		\tilde{b}_1 = \beta_1 + \hat{\gamma}\beta_2 + (\boldsymbol{X}_1'\boldsymbol{X}_1)^{-1}\boldsymbol{X}_1'\boldsymbol{\epsilon} \, ,
+		\end{aligned}
+	\end{equation*}
+	onde $\hat{\gamma}$ é uma matrix $k_1\times k_2$ em que cada coluna representa os coeficientes do estimador de MQO da $j$-ésima coluna de $\boldsymbol{X}_2$ em $\boldsymbol{X}_1$.
+	
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Viés de variável omitida (cont.)}
+	\begin{itemize}
+		\item Da propriedade da torre, temos que $\mathbb{E}[\boldsymbol{\epsilon}|\boldsymbol{X}_1] = \mathbb{E}[\mathbb{E}[\boldsymbol{\epsilon}|\boldsymbol{X}_1,\boldsymbol{X}_2] |\boldsymbol{X}_1] =0$. Portanto, temos que:
+		$\mathbb{E}[\tilde{b}_1|\boldsymbol{X}_1]= \beta_1 + \mathbb{E}[\hat{\gamma}|\boldsymbol{X}_1]\beta_2$
+
+	\item Se uma das duas condições abaixo for satisfeita, estimador será não viciado para $\beta_1$:
+			\end{itemize}
+	\begin{enumerate}
+		\item $\beta_2=0$.
+		\begin{itemize}
+			\item Se o modelo postulado é causal, essa hipótese significa que as variáveis $\boldsymbol{X}_2$ não possuem efeito causal sobre $\boldsymbol{y}$.
+			\item Se o modelo postulado é preditivo,  essa hipótese significa que as variáveis $\boldsymbol{X}_2$ não possuem informação preditiva sobre $\boldsymbol{y}$, uma vez que usamos $\boldsymbol{X}_1$ na predição.
+			\begin{itemize}
+				\item Nesse caso, estimador de MQO do melhor preditor linear que inclui $\boldsymbol{X}_2$  produzirá, em média, o mesmo resultado que o estimador que inclui $\boldsymbol{X}_1$ e $\boldsymbol{X}_2$.
+			\end{itemize}
+		\end{itemize}
+		\item $\mathbb{E}[\hat{\gamma}|\boldsymbol{X}_1]=0$.
+		\begin{itemize}
+			\item Essa hipótese é satisfeita se as variáveis em $\boldsymbol{X}_1$ não possuem capacidade preditiva sobre nenhuma das variáveis em $\boldsymbol{X}_2$.
+		\end{itemize}
+	\end{enumerate}
+
+\end{frame}
+
+\begin{frame}{Estimador linear}
+\begin{itemize}
+	\item Para obter propriedades de otimalidade para o estimador de MQO, necessitamos introduzir definições adicionais.
+	\item Um estimador do parâmetro $\beta$ é dito {\color{red}linear} (em $\boldsymbol{y}$) se:
+	
+	$$\phi(\boldsymbol{X},\boldsymbol{y}) = A(\boldsymbol{X})\boldsymbol{y}\,,$$
+	onde $A: \mathbb{R}^{n\times k} \mapsto \mathbb{R}^{k\times n}$.
+	\begin{itemize}
+		\item Note que o estimador de MQO é um estimador linear.
+	\end{itemize}
+	
+	
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Homocedasticidade}
+	\begin{itemize}
+		\item O estimador de MQO terá propriedades de otimalidade se, além de $H1$-$H2$ restringirmos que:
+	\end{itemize}
+	\begin{assumption}[H3-Homocedasticidade]
+		Existe $\sigma^2 > 0$ tal que $\mathbb{V}[\boldsymbol{\epsilon}|\boldsymbol{X}] = \sigma^2 \mathbb{I}_{n\times n}$.
+	\end{assumption}
+	\begin{itemize}
+		\item A hipótese de homocedasticidade requer que condicionalmente a $\boldsymbol{X}$ os termos de erro $\epsilon_i$, $\epsilon_j$, $j \neq i$, sejam não correlacionados e exibam variância idêntica {\color{red}e não dependente do valor de $\boldsymbol{X}$}.
+		\begin{itemize}
+			\item Sob  amostragem aleatória de uma população $(X,Y)$ em que vale para o modelo postulado que $\mathbb{E}[\epsilon|X]=0$ (H2), temos que, para $i\neq j$, $\operatorname{cov}(\epsilon_i,\epsilon_j|\boldsymbol{X}) = \mathbb{E}[\epsilon_i\epsilon_j|\boldsymbol{X}]  =\mathbb{E}[\epsilon_i\epsilon_j|X_i, X_j] = \mathbb{E}[\mathbb{E}[\epsilon_i|\epsilon_j, X_i, X_j]\epsilon_j|X_i, X_j] =    \mathbb{E}[\mathbb{E}[\epsilon_i|X_i]\epsilon_j|X_i, X_j] = 0$. Portanto, o requerimento de não covariância condicional não impõe restrições adicionais a H2.
+			\item Por outro lado, nesse caso, a hipótese impõe que $\mathbb{V}[Y|X] =\mathbb{V}[\epsilon|X] = \sigma^2$, i.e. que a dispersão de $Y$ nas subpopulações definidas pelos diferentes valores de $X$ sejam as mesmas.
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Teorema de Gauss-Markov}
+	\begin{itemize}
+		\item Defina o seguinte conjunto de distribuições condicionais de $\boldsymbol{y}$ dado $\boldsymbol{X}$:
+		$$\small \mathcal{F}(\boldsymbol{X}) = \{P_{\boldsymbol{y}|\boldsymbol{X}}: \exists \delta \in \mathbb{R}^k,  \mathbb{E}_{P_{\boldsymbol{y}|\boldsymbol{X}}} [\boldsymbol{y}|\boldsymbol{X}] = \boldsymbol{X}\delta, \exists \sigma^2 > 0, \mathbb{V}_{P_{\boldsymbol{y}|\boldsymbol{X}}}[ y|\boldsymbol{X}] = \sigma^2 \mathbb{I}_{n\times n}\}$$
+		\item Essa é a classe de distribuições condicionais de $\boldsymbol{y}$ dado $\boldsymbol{X}$ em que a esperança condicional é linear em $\boldsymbol{X}$ e a hipótese de homocedasticidade é satisfeita.
+		\begin{itemize}
+			\item Denote, para uma distribuição condicional $F \in \mathcal{F}(\boldsymbol{X}) $, $\delta(F)$ o parâmetro que entra na esperança condicional.
+		\end{itemize}
+		\item Com base nas definições acima, temos o seguinte resultado.
+		\begin{theorem}[Gauss-Markov]
+		 Sob $H1$, o estimador de MQO é o estimador {\color{red}linear} não viciado para $\delta(F)$ de variância uniformemente mínima na classe $\mathcal{F}(\sigma^2,\boldsymbol{X})$, i.e. para qualquer outro estimador  {\color{red}linear} $\psi$ tal que $\mathbb{E}_{F}[\psi|\boldsymbol{X}] = \delta(F)$ para todo $F \in \mathcal{F}(\boldsymbol{X})$, temos que, para todo $F \in \mathcal{F}(\boldsymbol{X})$:
+			
+			$$\mathbb{V}_{F}(\psi|\boldsymbol{X}) - \mathbb{V}_{F}(\hat{b}|\boldsymbol{X})\, \quad \text{é positiva semidefinida} $$
+		\end{theorem}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Etapas da demonstração}
+	\begin{enumerate}
+		\item Mostrar que $\{\delta(F): F \in \mathcal{F}(\boldsymbol{X})\} = \mathbb{R}^k$.
+		\begin{itemize}
+		\item Basta considerar, para $\delta  \in \mathbb{R}^k$, $ \boldsymbol{y} = \boldsymbol{X}\delta + \boldsymbol{e}$, com   $\boldsymbol{e}\sim \mathcal{N}(0, \mathbb{I}_{n\times n})$ e $\boldsymbol{e}$ independente de $\boldsymbol{X}$.
+		\end{itemize}
+		\item Com base no resultado acima, mostrar que qualquer estimador linear $A(\boldsymbol{X})\boldsymbol{y}$ não viciado em $\mathcal{F}(\boldsymbol{X})$ deve satisfazer 
+		$$A(\boldsymbol{X})\boldsymbol{X} = \mathbb{I}_{k\times k}$$
+		
+		\item Mostrar que, para todo $F \in \mathcal{F}(\boldsymbol{X})$, $\operatorname{cov}(A(\boldsymbol{X})\boldsymbol{y}-\hat{b},\hat{b}|\boldsymbol{X}) = 0_{k\times k}$
+		\item Concluir que, para todo $F \in \mathcal{F}(\boldsymbol{X})$: $$\mathbb{V}_F(A(\boldsymbol{X})\boldsymbol{y} -\hat{b}|\boldsymbol{X} ) = \mathbb{V}_F(A(\boldsymbol{X})\boldsymbol{y}|\boldsymbol{X} )-\mathbb{V}_F(\hat{b}|\boldsymbol{X} )$$
+	\end{enumerate}
+\end{frame}
 
 \end{document}
 
+\begin{frame}{Linearidade no Teorema de Gauss-Markov}
+	conteúdo...
+\end{frame}
+\begin{transitionframe}
+	\centering
+	\Huge{MQO: Propriedades Assintóticas}
+	
+	
+\end{transitionframe}
