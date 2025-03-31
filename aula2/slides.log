@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.6)  31 MAR 2025 13:58
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.6)  31 MAR 2025 16:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1774,10 +1774,10 @@ Package logreq Info: Writing requests to 'slides.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 46128 strings out of 474116
- 1056579 string characters out of 5743683
- 1943187 words of memory out of 5000000
- 67643 multiletter control sequences out of 15000+600000
+ 46126 strings out of 474116
+ 1056563 string characters out of 5743683
+ 1944187 words of memory out of 5000000
+ 67641 multiletter control sequences out of 15000+600000
  712978 words of font info for 133 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,18n,123p,1130b,1647s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1802,7 +1802,7 @@ cal/texlive/2024/texmf-dist/fonts/type1/public/lm/lmsy5.pfb></usr/local/texlive
 /type1/public/lm/lmsy8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/publ
 ic/lm/lmsy9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts
 /symbols/msbm10.pfb>
-Output written on slides.pdf (26 pages, 380132 bytes).
+Output written on slides.pdf (26 pages, 380150 bytes).
 PDF statistics:
  374 PDF objects out of 1000 (max. 8388607)
  249 compressed objects within 3 object streams
