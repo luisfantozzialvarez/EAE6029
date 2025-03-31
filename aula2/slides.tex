@@ -339,12 +339,12 @@ Sob a condição
 \begin{itemize}
 	\item Sob a restrição de que:
 \begin{assumption}[H2-EXOGENEIDADE]
-	$$\mathbb{E}[\boldsymbol{e}|\boldsymbol{X}]=0$$
+	$$\mathbb{E}[\boldsymbol{\epsilon}|\boldsymbol{X}]=0$$
 	\end{assumption}
 	\item O estimador de MQO é não viciado para $\beta$, isto é, qualquer que seja o valor de $\beta \in \mathbb{R}^k$, temos que:
 	
 	\begin{equation*}
-	\mathbb{E}[\hat{b}|\boldsymbol{X} ]= (\boldsymbol{X}'\boldsymbol{X})^{-1}\mathbb{E}[\boldsymbol{y}|\boldsymbol{X}] =\beta + (\boldsymbol{X}'\boldsymbol{X})^{-1}\mathbb{E}[\boldsymbol{e}|\boldsymbol{X}]  = \beta 
+	\mathbb{E}[\hat{b}|\boldsymbol{X} ]= (\boldsymbol{X}'\boldsymbol{X})^{-1}\mathbb{E}[\boldsymbol{y}|\boldsymbol{X}] =\beta + (\boldsymbol{X}'\boldsymbol{X})^{-1}\mathbb{E}[\boldsymbol{\epsilon}|\boldsymbol{X}]  = \beta 
 	\end{equation*}
 		\item Observe que a condição de exogeneidade implica que:
 	
@@ -471,21 +471,101 @@ Sob a condição
 	\begin{enumerate}
 		\item Mostrar que $\{\delta(F): F \in \mathcal{F}(\boldsymbol{X})\} = \mathbb{R}^k$.
 		\begin{itemize}
-		\item Basta considerar, para $\delta  \in \mathbb{R}^k$, $ \boldsymbol{y} = \boldsymbol{X}\delta + \boldsymbol{e}$, com   $\boldsymbol{e}\sim \mathcal{N}(0, \mathbb{I}_{n\times n})$ e $\boldsymbol{e}$ independente de $\boldsymbol{X}$.
+		\item Basta considerar, para $\delta  \in \mathbb{R}^k$, $ \boldsymbol{y} = \boldsymbol{X}\delta + \boldsymbol{\epsilon}$, com   $\boldsymbol{\epsilon}\sim \mathcal{N}(0, \mathbb{I}_{n\times n})$ e $\boldsymbol{\epsilon}$ independente de $\boldsymbol{X}$.
 		\end{itemize}
 		\item Com base no resultado acima, mostrar que qualquer estimador linear $A(\boldsymbol{X})\boldsymbol{y}$ não viciado em $\mathcal{F}(\boldsymbol{X})$ deve satisfazer 
 		$$A(\boldsymbol{X})\boldsymbol{X} = \mathbb{I}_{k\times k}$$
 		
-		\item Mostrar que, para todo $F \in \mathcal{F}(\boldsymbol{X})$, $\operatorname{cov}(A(\boldsymbol{X})\boldsymbol{y}-\hat{b},\hat{b}|\boldsymbol{X}) = 0_{k\times k}$
+		\item Mostrar que, para todo $F \in \mathcal{F}(\boldsymbol{X})$, $\operatorname{cov}_F(A(\boldsymbol{X})\boldsymbol{y}-\hat{b},\hat{b}|\boldsymbol{X}) = 0_{k\times k}$
 		\item Concluir que, para todo $F \in \mathcal{F}(\boldsymbol{X})$: $$\mathbb{V}_F(A(\boldsymbol{X})\boldsymbol{y} -\hat{b}|\boldsymbol{X} ) = \mathbb{V}_F(A(\boldsymbol{X})\boldsymbol{y}|\boldsymbol{X} )-\mathbb{V}_F(\hat{b}|\boldsymbol{X} )$$
 	\end{enumerate}
 \end{frame}
 
+\begin{transitionframe}
+	\centering
+	\Huge{MQO: Inferência em Amostra Finita}
+	
+	
+\end{transitionframe}
+
+\begin{frame}{O problema de teste de hipóteses}
+	\begin{itemize}
+		\item Seja $(\Omega, \Sigma, P)$ um experimento estatístico, e $\mathcal{P}$ um \emph{modelo}.
+		\item Sejam $\mathcal{P}_0$ e $\mathcal{P}_1$ uma partição de $\mathcal{P}$.
+		\item O problema de decisão estatística conhecido como teste de hipóteses consiste em afirmar se:
+				\vspace{-1em}
+		$$ P \in \mathcal{P}_0$$
+		ou
+		$$P \in \mathcal{P}_1$$
+		\vspace{-1em}
+		\begin{itemize}
+			\item Classe $\mathcal{P}_0$ é conhecida como hipótese nula ($H_0$), e $\mathcal{P}_1$ é a classe de alternativas ou hipótese alternativa ($H_1$).
+		\end{itemize}
+		\item Um {\color{blue}teste } não aleatorizado é uma regra de decisão $\phi:\Omega \mapsto  \{0,1\}$  mensurável (i.e. $\phi^{-1}(\{1\}) \in \Sigma$).
+		
+		\begin{itemize}
+			\item Se $\omega \in \Omega$ observado é tal que $\phi(\omega) = 1$, afirmamos $H_1$ (rejeitamos $H_0$), concluindo por $P\in \mathcal{P}_1$.
+			\item Por outro lado, se  $\phi(\omega) = 0$, afirmamos $H_0$ (não rejeitamos $H_0$), concluindo por $P\in \mathcal{P}_0$.
+			\begin{itemize}
+				\item Em contraste, em testes aleatorizados, permitimos que a hipótese nula seja rejeitada com uma probabilidade dada por $\phi(\omega) \in [0,1]$.
+			\end{itemize}
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Nível de significância, tamanho e poder }
+\begin{itemize}
+	\item A princípio, a definição de teste não restringe o comportamento do procedimento estatístico adotado.
+	\item Entretanto, gostaríamos de procedimentos estatísticos que limitassem o {\color{blue}erro tipo 1} de se rejeitar a hipótese nula, caso ela seja verdadeira.
+	\item Especificamente, para um dado {\color{blue}nível de significância} $\alpha \in [0,1]$, gostaríamos de que o teste satisfizesse:
+	$$\mathbb{E}_F[\phi] \leq \alpha,\quad \forall F \in \mathcal{P}_0$$
+	\vspace{-1em}
+	\begin{itemize}
+		\item Probabilidade \textit{ex-ante} de rejeição está limitada a uma probabilidade $\alpha$.
+		\item À quantidade $\sup_{F \in \mathcal{P}_0} \mathbb{E}_F[\phi]$ damos o nome de {\color{blue}tamanho} de um teste.
+	\end{itemize}
+	\item Por outro lado, dado um procedimento que controla o nível de significância, gostaríamos de maximizar {\color{blue}o poder do teste}, i.e., para todo $G \in \mathcal{P}_1$, gostaríamos de tornar:
+	$$\beta(G)\coloneqq \mathbb{E}_G[\phi]$$
+	o mais alto possível.
+	\begin{itemize}
+		\item Maximizar o poder é equivalente a minimizar {\color{blue}erro tipo 2} de se afirmar a hipótese alternativa quando ela é falsa.
+		\item Usualmente, isso requer que $\sup_{F \in \mathcal{P}_0} \mathbb{E}_F[\phi] = \alpha$.
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Inferência no modelo linear}
+\begin{itemize}
+	\item Retomemos o modelo linear visto anteriormente:
+$$\boldsymbol{y} =\boldsymbol{X}\beta + \boldsymbol{\epsilon}\, ,$$
+onde $\beta$ é desconhecido.
+\item Para testes de hipótese em amostras finitas, requeremos:
+\begin{assumption}[H5-Normalidade]
+$$\boldsymbol{\epsilon}|\boldsymbol{X}\sim \mathcal{N}(0,\sigma^2 \mathbb{I}_{n\times n})$$.
+\end{assumption}
+\item Hipótese não só requer que erro tenha média condicional zero e matriz de variância homocedástica, mas impõe normalidade da distribuição condicional.
+\begin{itemize}
+	\item Como parâmetros da normal não dependem de $\boldsymbol{X}$, hipótese implica que $\boldsymbol{\epsilon}$ é independente de $\boldsymbol{X}$.
+\end{itemize}
+\item Classe de distribuições condicionais compatíveis com a hipótese são:
+$$\mathcal{F}^n(\boldsymbol{X}) = \{\boldsymbol{P}_{\boldsymbol{y}|\boldsymbol{X}}: \boldsymbol{y}|\boldsymbol{X}\sim N(\boldsymbol{X}\delta, \sigma^2 \mathbb{I}_{n\times n}),\quad \delta \in \mathbb{R}^k, \sigma^2>0\}$$ 
+\end{itemize}
+\end{frame}
+
+
+
 \end{document}
 
-\begin{frame}{Linearidade no Teorema de Gauss-Markov}
-	conteúdo...
+
+\begin{frame}{Estatística $F$ ou Wald}
+	\begin{itemize}
+		\item Suponha que desejássemos testar:
+		$$H_0: R\beta = c$$
+		contra a  alternativa
+		$$H_0: R\beta = c$$
+	\end{itemize}
 \end{frame}
+
 \begin{transitionframe}
 	\centering
 	\Huge{MQO: Propriedades Assintóticas}
