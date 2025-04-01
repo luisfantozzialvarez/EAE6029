@@ -552,7 +552,7 @@ $$\mathcal{F}^N(\boldsymbol{X}) = \{\boldsymbol{P}_{\boldsymbol{y}|\boldsymbol{X
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Estatística $F$ ou Wald}
+\begin{frame}{Estatística $F$}
 	\begin{itemize}
 		\item Suponha que desejássemos testar:
 		\vspace{-0.5em}
@@ -568,7 +568,7 @@ $$\mathcal{F}^N(\boldsymbol{X}) = \{\boldsymbol{P}_{\boldsymbol{y}|\boldsymbol{X
 		\item Considere a seguinte estatística de teste:
 \end{itemize}
 \vspace{0.8em}
-		$$\footnotesize W_{R,q} = \frac{(R\hat{b}-c)'\left(R\hat{\sigma}^2(\boldsymbol{X}'\boldsymbol{X})^{-1}R'\right)^{-1}(R\hat{b}-c)}{k}  = \frac{(R\hat{b}-c)'\left(R(\boldsymbol{X}'\boldsymbol{X})^{-1}R'\right)^{-1}(R\hat{b}-c)}{k \hat{\sigma}^2}\, ,$$
+		$$\footnotesize W_{R,c} = \frac{(R\hat{b}-c)'\left(R\hat{\sigma}^2(\boldsymbol{X}'\boldsymbol{X})^{-1}R'\right)^{-1}(R\hat{b}-c)}{k}  = \frac{(R\hat{b}-c)'\left(R(\boldsymbol{X}'\boldsymbol{X})^{-1}R'\right)^{-1}(R\hat{b}-c)}{k \hat{\sigma}^2}\, ,$$
 	
 		\begin{itemize}
 			\item $\hat{\sigma}^2 = \frac{1}{n-k}\sum_{i=1}^n (Y_i -X_i'\hat{b})^2$, com $\hat{\sigma}^2 (\boldsymbol{X}'\boldsymbol{X})^{-1}$ é estimador de $\mathbb{V}[\hat{b}|\boldsymbol{X}]$.
@@ -582,7 +582,7 @@ $$\mathcal{F}^N(\boldsymbol{X}) = \{\boldsymbol{P}_{\boldsymbol{y}|\boldsymbol{X
 \begin{proposition}
 	Suponha válidas as Hipóteses 1 e  4. Se a distribuição $\mathbb{P}$ satisfaz a hipótese nula, então:
 	
-	$$W_{R,q}|\boldsymbol{X}\sim F(k,n-k)$$
+	$$W_{R,c}|\boldsymbol{X}\sim F(k,n-k)$$
 \end{proposition}
 \begin{itemize}
 	\item Etapas para demonstração do resultado:
@@ -591,6 +591,27 @@ $$\mathcal{F}^N(\boldsymbol{X}) = \{\boldsymbol{P}_{\boldsymbol{y}|\boldsymbol{X
 		\item Mostrar que $(n-k)\hat{\sigma}^2/\sigma^2 \sim \chi^2(n-k)$.
 		\item Mostrar que $N$ e $\hat{\sigma}^2$ são independentes.
 	\end{enumerate}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Teste de hipótese}
+\begin{itemize}
+	\item O resultado anterior sugere considerar a seguinte regra de decisão, para um nível de significância $\alpha \in [0,1]$:
+	$$\phi \coloneqq \mathbf{1}\{W_{R,c}> q_F(1-\alpha|k,n-k)\}$$
+	onde $q_F(1-\alpha|k,n-k)$ é o quantil $1-\alpha$ da distribuição $F(k,n-k)$.
+	\begin{itemize}
+		\item Rejeitamos a nula se $W_{R,q}$ for suficientemente alta.
+		\item Com base no \textit{slide} anterior, se nula for verdadeira, tem-se $\mathbb{E}[\phi|\boldsymbol{X}] = \alpha$.
+	\end{itemize}
+	\item Estatística $W_{r,c}$ pode ser reescrita a partir da diferença relativa entre o $R^2$ do estimador de MQO irrestrito, relativamente ao estimador de MQO que impõe a hipótese nula.
+	\begin{itemize}
+		\item Veja o livro do Greene para detalhes.
+	\end{itemize}
+	\item No caso em que $q=1$, teste é equivalente a rejeitar a nula se:
+	$$|\hat{t}_{R,q}| > q_t(1-\alpha/2|n-k)$$
+	onde $q_t(1-\alpha/2|n-k)$ é o quantil $1-\alpha/2$ de uma t de Student com $n-k$ graus de liberdade, e:
+	\vspace{-0.5em}
+	$$\hat{t}_{R,c} = \frac{(R\hat{\beta}-c)}{R\hat{\sigma}^2(\boldsymbol{X}'\boldsymbol{X})^{-1}R'}$$
 \end{itemize}
 \end{frame}
 
