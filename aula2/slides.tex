@@ -548,7 +548,49 @@ $$\boldsymbol{\epsilon}|\boldsymbol{X}\sim \mathcal{N}(0,\sigma^2 \mathbb{I}_{n\
 	\item Como parâmetros da normal não dependem de $\boldsymbol{X}$, hipótese implica que $\boldsymbol{\epsilon}$ é independente de $\boldsymbol{X}$.
 \end{itemize}
 \item Classe de distribuições condicionais compatíveis com a hipótese são:
-$$\mathcal{F}^n(\boldsymbol{X}) = \{\boldsymbol{P}_{\boldsymbol{y}|\boldsymbol{X}}: \boldsymbol{y}|\boldsymbol{X}\sim N(\boldsymbol{X}\delta, \sigma^2 \mathbb{I}_{n\times n}),\quad \delta \in \mathbb{R}^k, \sigma^2>0\}$$ 
+$$\mathcal{F}^N(\boldsymbol{X}) = \{\boldsymbol{P}_{\boldsymbol{y}|\boldsymbol{X}}: \boldsymbol{y}|\boldsymbol{X}\sim N(\boldsymbol{X}\delta, \sigma^2 \mathbb{I}_{n\times n}),\quad \delta \in \mathbb{R}^k, \sigma^2>0\}$$ 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Estatística $F$ ou Wald}
+	\begin{itemize}
+		\item Suponha que desejássemos testar:
+		\vspace{-0.5em}
+		$$H_0: R\beta = c$$
+		\vspace{-0.5em}
+		contra a  alternativa
+\vspace{-0.5em}
+		$$H_1: R\beta \neq c$$
+		onde $R$ é uma matriz $q \times k$ de posto $q$, e $c$ é uma vetor $q \times 1$.
+		\begin{itemize}
+			\item $H_0$ e $H_1$ formam partição de $\mathcal{F}^{N}(\boldsymbol{X})$
+		\end{itemize}
+		\item Considere a seguinte estatística de teste:
+\end{itemize}
+\vspace{0.8em}
+		$$\footnotesize W_{R,q} = \frac{(R\hat{b}-c)'\left(R\hat{\sigma}^2(\boldsymbol{X}'\boldsymbol{X})^{-1}R'\right)^{-1}(R\hat{b}-c)}{k}  = \frac{(R\hat{b}-c)'\left(R(\boldsymbol{X}'\boldsymbol{X})^{-1}R'\right)^{-1}(R\hat{b}-c)}{k \hat{\sigma}^2}\, ,$$
+	
+		\begin{itemize}
+			\item $\hat{\sigma}^2 = \frac{1}{n-k}\sum_{i=1}^n (Y_i -X_i'\hat{b})^2$, com $\hat{\sigma}^2 (\boldsymbol{X}'\boldsymbol{X})^{-1}$ é estimador de $\mathbb{V}[\hat{b}|\boldsymbol{X}]$.
+			\item Estatística mede o desvio de $R\hat{b}$ a $c$, onde a distância é ``ponderada'' pelo inverso da variância de  $R\hat{b}$.
+			\item Valores grandes da estatística formam evidência contra hipótese nula.
+		\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Distribuição da estatística de teste, sob a hipótese nula}
+\begin{proposition}
+	Suponha válidas as Hipóteses 1 e  4. Se a distribuição $\mathbb{P}$ satisfaz a hipótese nula, então:
+	
+	$$W_{R,q}|\boldsymbol{X}\sim F(k,n-k)$$
+\end{proposition}
+\begin{itemize}
+	\item Etapas para demonstração do resultado:
+	\begin{enumerate}
+		\item Mostrar que, sob a nula, $N := (R\hat{b}-c)'\left(R\sigma^2(\boldsymbol{X}'\boldsymbol{X})^{-1}R'\right)(R\hat{b}-c) \sim \chi^2(k)$.
+		\item Mostrar que $(n-k)\hat{\sigma}^2/\sigma^2 \sim \chi^2(n-k)$.
+		\item Mostrar que $N$ e $\hat{\sigma}^2$ são independentes.
+	\end{enumerate}
 \end{itemize}
 \end{frame}
 
@@ -557,14 +599,6 @@ $$\mathcal{F}^n(\boldsymbol{X}) = \{\boldsymbol{P}_{\boldsymbol{y}|\boldsymbol{X
 \end{document}
 
 
-\begin{frame}{Estatística $F$ ou Wald}
-	\begin{itemize}
-		\item Suponha que desejássemos testar:
-		$$H_0: R\beta = c$$
-		contra a  alternativa
-		$$H_0: R\beta = c$$
-	\end{itemize}
-\end{frame}
 
 \begin{transitionframe}
 	\centering
