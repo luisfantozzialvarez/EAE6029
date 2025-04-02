@@ -261,7 +261,7 @@ Sob a condição
 	\end{itemize}
 	\item Matriz residualizadora devolve o erro de projeção $\boldsymbol{z} - {P}\boldsymbol{z}$.
 	\begin{itemize}
-		\item Como ${P}\boldsymbol{z}$ é o minimizador da distância Euclidiana no espaço gerado pelas colunas de $\boldsymbol{X}$,temos que: $$(\boldsymbol{M}\boldsymbol{z})\cdot(\boldsymbol{X}\boldsymbol{l}) = \boldsymbol{z}'M\boldsymbol{X}\boldsymbol{l} = 0\,\quad \forall \boldsymbol{z}\in \mathbb{R}^n, \boldsymbol{l} \in \mathbb{R}^k \, .$$
+		\item Como ${P}\boldsymbol{z}$ é o minimizador da distância Euclidiana no espaço gerado pelas colunas de $\boldsymbol{X}$,temos que: $$(\boldsymbol{M}\boldsymbol{z})\cdot(\boldsymbol{X}\boldsymbol{\ell}) = \boldsymbol{z}'M\boldsymbol{X}\boldsymbol{\ell} = 0\,\quad \forall \boldsymbol{z}\in \mathbb{R}^n, \boldsymbol{\ell} \in \mathbb{R}^k \, .$$
 	\end{itemize}
 \end{itemize}
 \end{frame}
@@ -300,9 +300,13 @@ Sob a condição
 
 \begin{frame}{Teorema de Frisch-Waugh-Lovell}
 \begin{itemize}
-	\item 	\item Da propriedade acima, segue o importante resultado abaixo:
+ 	\item Da propriedade anterior, segue o importante resultado abaixo:
 \end{itemize}
 	\begin{theorem}[Frisch-Waugh-Lovell]
+		Seja $\hat{b} = \begin{bmatrix}
+			\hat{b}_1 \\
+			\hat{b}_2
+		\end{bmatrix}$. Então:
 	$$\hat{b}_2 = \left(\boldsymbol{X}_2'M_1\boldsymbol{X}_2\right)^{-1}\left(\boldsymbol{X}_2'M_1\boldsymbol{y}\right) = \left((M_1\boldsymbol{X}_2)'(M_1\boldsymbol{X}_2)\right)^{-1}\left((M_1\boldsymbol{X}_2)'(M_1\boldsymbol{y})\right) $$ 
 	\end{theorem}
 \begin{itemize}
@@ -344,7 +348,7 @@ Sob a condição
 	\item O estimador de MQO é não viciado para $\beta$, isto é, qualquer que seja o valor de $\beta \in \mathbb{R}^k$, temos que:
 	
 	\begin{equation*}
-	\mathbb{E}[\hat{b}|\boldsymbol{X} ]= (\boldsymbol{X}'\boldsymbol{X})^{-1}\mathbb{E}[\boldsymbol{y}|\boldsymbol{X}] =\beta + (\boldsymbol{X}'\boldsymbol{X})^{-1}\mathbb{E}[\boldsymbol{\epsilon}|\boldsymbol{X}]  = \beta 
+	\mathbb{E}[\hat{b}|\boldsymbol{X} ]= (\boldsymbol{X}'\boldsymbol{X})^{-1}\boldsymbol{X}'\mathbb{E}[\boldsymbol{y}|\boldsymbol{X}] =\beta + (\boldsymbol{X}'\boldsymbol{X})^{-1}\boldsymbol{X}'\mathbb{E}[\boldsymbol{\epsilon}|\boldsymbol{X}]  = \beta 
 	\end{equation*}
 		\item Observe que a condição de exogeneidade implica que:
 	
@@ -355,7 +359,7 @@ Sob a condição
 \begin{itemize}
 
 
-		\item Sob amostragem aleatória de uma população, i.e. $(Y_i,X_i)\overset{iid}{\sim}(X,Y)$, condição implica $\mathbb{E}[Y_i|\boldsymbol{X}] = \mathbb{E}[Y_i|X_i] = X_i'\beta \implies \mathbb{E}[Y|X]=X'\beta$.
+		\item Sob amostragem aleatória de uma população, i.e. $(X_i,Y_i)\overset{iid}{\sim}(X,Y)$, condição implica $\mathbb{E}[Y_i|\boldsymbol{X}] = \mathbb{E}[Y_i|X_i] = X_i'\beta \implies \mathbb{E}[Y|X]=X'\beta$.
 		\begin{itemize}
 			\item A esperança condicional das variáveis $(Y,X)$ que representam a distribuição das características na população de interesse é linear em $X$, {\color{green}e coincide com o modelo linear de interesse}.
 				\item Se o modelo postulado é {\color{blue}preditivo}, isso signifca que o parâmetro-alvo do melhor preditor linear consiste também no melhor preditor dentro das funções não lineares de $X$ (ou, de modo equivalente, a melhor aproximação linear a $\mathbb{E}[Y|X]$ é exata).
@@ -374,7 +378,7 @@ Sob a condição
 \begin{frame}{Viés de variável omitida}
 \begin{itemize}
 	\item Considere um modelo da forma:
-	$$\hat{b} = \boldsymbol{X}_1 \beta_1 + \boldsymbol{X}_2 \beta_2 + \boldsymbol{\epsilon}\, ,$$
+	$$\boldsymbol{y}= \boldsymbol{X}_1 \beta_1 + \boldsymbol{X}_2 \beta_2 + \boldsymbol{\epsilon}\, ,$$
 	em que $\mathbb{E}[\boldsymbol{\epsilon}|\boldsymbol{X}_1,\boldsymbol{X}_2] = 0$. 
 	\begin{itemize}
 		\item Por exemplo, num modelo causal, é suficiente observar as causas $\boldsymbol{X}_1$ e $\boldsymbol{X}_2$ para que as causas não observadas restantes estejam balanceadas nas subpopulações definidas pelos valores de $(\boldsymbol{X}_1,\boldsymbol{X}_2)$.

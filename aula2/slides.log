@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.6)  1 APR 2025 08:31
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.6)  2 APR 2025 16:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1719,7 +1719,7 @@ LaTeX Font Info:    Font shape `T1/lmss/bx/it' in size <9> not available
 ] [15
 
 ]
-Overfull \vbox (12.84976pt too high) detected at line 373
+Overfull \vbox (12.84976pt too high) detected at line 377
  []
 
 [16
@@ -1734,7 +1734,7 @@ Overfull \vbox (12.84976pt too high) detected at line 373
 
 ]
 
-LaTeX Font Warning: Command \small invalid in math mode on input line 468.
+LaTeX Font Warning: Command \small invalid in math mode on input line 472.
 
 [21
 
@@ -1745,7 +1745,7 @@ LaTeX Font Warning: Command \small invalid in math mode on input line 468.
 ] [24
 
 ]
-Overfull \vbox (9.62149pt too high) detected at line 535
+Overfull \vbox (9.62149pt too high) detected at line 539
  []
 
 [25
@@ -1754,18 +1754,18 @@ Overfull \vbox (9.62149pt too high) detected at line 535
 
 ]
 
-LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 57
-9.
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 58
+3.
 
 
-Overfull \hbox (10.25418pt too wide) detected at line 579
+Overfull \hbox (10.25418pt too wide) detected at line 583
 \T1/lmss/m/sl/9 W[] \OT1/lmss/m/n/9 = [] = [] \OML/lmm/m/it/9 ;
  []
 
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <14.4> on input line 579.
+(Font)              <14.4> on input line 583.
 LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <14.4> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 579.
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 583.
 [27
 
 ] [28
@@ -1824,7 +1824,7 @@ blic/lm/lmsy7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lms
 y8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmsy9.pfb></us
 r/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
 
-Output written on slides.pdf (29 pages, 399239 bytes).
+Output written on slides.pdf (29 pages, 394127 bytes).
 PDF statistics:
  412 PDF objects out of 1000 (max. 8388607)
  274 compressed objects within 3 object streams
