@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.6)  2 APR 2025 17:59
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.6)  6 APR 2025 20:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1772,6 +1772,60 @@ LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <14.4> not available
 
 ] [29
 
+] [30
+
+] [31
+
+]
+Overfull \vbox (14.34933pt too high) detected at line 664
+ []
+
+[32
+
+]
+Overfull \vbox (17.4338pt too high) detected at line 685
+ []
+
+[33
+
+] [34
+
+]
+LaTeX Font Info:    Font shape `T1/lmss/b/n' in size <14.4> not available
+(Font)              Font shape `T1/lmss/bx/n' tried instead on input line 718.
+ [35
+
+] [36
+
+]
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 7
+45.
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/lm/t1lmtt.fd
+File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+) [37
+
+] [38
+
+] [39
+
+]
+
+LaTeX Font Warning: Font shape `T1/lmr/m/scit' undefined
+(Font)              using `T1/lmr/m/scsl' instead on input line 791.
+
+[40
+
+]
+
+LaTeX Font Warning: Font shape `T1/lmr/m/scit' undefined
+(Font)              using `T1/lmr/m/scsl' instead on input line 808.
+
+
+Overfull \vbox (7.74277pt too high) detected at line 808
+ []
+
+[41
+
 ]
 \tf@nav=\write7
 \openout7 = `slides.nav'.
@@ -1794,40 +1848,43 @@ Package logreq Info: Writing requests to 'slides.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 46168 strings out of 474116
- 1057461 string characters out of 5743683
+ 46292 strings out of 474116
+ 1059834 string characters out of 5743683
  1944187 words of memory out of 5000000
- 67673 multiletter control sequences out of 15000+600000
- 722377 words of font info for 140 fonts, out of 8000000 for 9000
+ 67767 multiletter control sequences out of 15000+600000
+ 728627 words of font info for 144 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,18n,123p,1130b,1647s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmcsc10.pfb></usr/l
-ocal/texlive/2024/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texli
-ve/2024/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2024/te
-xmf-dist/fonts/type1/public/lm/lmmi6.pfb></usr/local/texlive/2024/texmf-dist/fo
-nts/type1/public/lm/lmmi7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/p
-ublic/lm/lmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lm
-mi9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmmib10.pfb><
-/usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmss10.pfb></usr/local
-/texlive/2024/texmf-dist/fonts/type1/public/lm/lmss17.pfb></usr/local/texlive/2
-024/texmf-dist/fonts/type1/public/lm/lmss8.pfb></usr/local/texlive/2024/texmf-d
-ist/fonts/type1/public/lm/lmss9.pfb></usr/local/texlive/2024/texmf-dist/fonts/t
-ype1/public/lm/lmssbo10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/pub
-lic/lm/lmssbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/l
-msso10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmsso12.pf
-b></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmsso8.pfb></usr/lo
-cal/texlive/2024/texmf-dist/fonts/type1/public/lm/lmsso9.pfb></usr/local/texliv
-e/2024/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2024/tex
-mf-dist/fonts/type1/public/lm/lmsy5.pfb></usr/local/texlive/2024/texmf-dist/fon
-ts/type1/public/lm/lmsy6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/pu
-blic/lm/lmsy7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lms
-y8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmsy9.pfb></us
-r/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-
-Output written on slides.pdf (29 pages, 394082 bytes).
+ocal/texlive/2024/texmf-dist/fonts/type1/public/lm/lmcsco10.pfb></usr/local/tex
+live/2024/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texlive/2024/
+texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2024/texmf-dist
+/fonts/type1/public/lm/lmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type
+1/public/lm/lmmi7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm
+/lmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmmi9.pfb>
+</usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmmib10.pfb></usr/loc
+al/texlive/2024/texmf-dist/fonts/type1/public/lm/lmss10.pfb></usr/local/texlive
+/2024/texmf-dist/fonts/type1/public/lm/lmss12.pfb></usr/local/texlive/2024/texm
+f-dist/fonts/type1/public/lm/lmss17.pfb></usr/local/texlive/2024/texmf-dist/fon
+ts/type1/public/lm/lmss8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/pu
+blic/lm/lmss9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lms
+sbo10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmssbx10.pf
+b></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmsso10.pfb></usr/l
+ocal/texlive/2024/texmf-dist/fonts/type1/public/lm/lmsso12.pfb></usr/local/texl
+ive/2024/texmf-dist/fonts/type1/public/lm/lmsso8.pfb></usr/local/texlive/2024/t
+exmf-dist/fonts/type1/public/lm/lmsso9.pfb></usr/local/texlive/2024/texmf-dist/
+fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type
+1/public/lm/lmsy5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm
+/lmsy6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmsy7.pfb>
+</usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/local
+/texlive/2024/texmf-dist/fonts/type1/public/lm/lmsy9.pfb></usr/local/texlive/20
+24/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/local/texlive/2024/texmf-d
+ist/fonts/type1/public/lm/lmtt9.pfb></usr/local/texlive/2024/texmf-dist/fonts/t
+ype1/public/amsfonts/symbols/msbm10.pfb>
+Output written on slides.pdf (41 pages, 530669 bytes).
 PDF statistics:
- 412 PDF objects out of 1000 (max. 8388607)
- 274 compressed objects within 3 object streams
- 60 named destinations out of 1000 (max. 500000)
- 306 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 568 PDF objects out of 1000 (max. 8388607)
+ 375 compressed objects within 4 object streams
+ 84 named destinations out of 1000 (max. 500000)
+ 510 words of extra memory for PDF output out of 10000 (max. 10000000)
 

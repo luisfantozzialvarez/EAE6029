@@ -565,14 +565,14 @@ $$\mathcal{F}^N(\boldsymbol{X}) = \{\boldsymbol{P}_{\boldsymbol{y}|\boldsymbol{X
 		contra a  alternativa
 \vspace{-0.5em}
 		$$H_1: R\beta \neq c$$
-		onde $R$ é uma matriz $q \times k$ de posto $q$, e $c$ é uma vetor $q \times 1$.
+		onde $R$ é uma matriz $r \times k$ de posto $q$, e $c$ é uma vetor $r \times 1$.
 		\begin{itemize}
 			\item $H_0$ e $H_1$ formam partição de $\mathcal{F}^{N}(\boldsymbol{X})$
 		\end{itemize}
 		\item Considere a seguinte estatística de teste:
 \end{itemize}
 \vspace{0.8em}
-		$$\footnotesize W_{R,c} = \frac{(R\hat{b}-c)'\left(R\hat{\sigma}^2(\boldsymbol{X}'\boldsymbol{X})^{-1}R'\right)^{-1}(R\hat{b}-c)}{k}  = \frac{(R\hat{b}-c)'\left(R(\boldsymbol{X}'\boldsymbol{X})^{-1}R'\right)^{-1}(R\hat{b}-c)}{k \hat{\sigma}^2}\, ,$$
+		$$\footnotesize W_{R,c} = \frac{(R\hat{b}-c)'\left(R\hat{\sigma}^2(\boldsymbol{X}'\boldsymbol{X})^{-1}R'\right)^{-1}(R\hat{b}-c)}{r}  = \frac{(R\hat{b}-c)'\left(R(\boldsymbol{X}'\boldsymbol{X})^{-1}R'\right)^{-1}(R\hat{b}-c)}{r \hat{\sigma}^2}\, ,$$
 	
 		\begin{itemize}
 			\item $\hat{\sigma}^2 = \frac{1}{n-k}\sum_{i=1}^n (Y_i -X_i'\hat{b})^2$, com $\hat{\sigma}^2 (\boldsymbol{X}'\boldsymbol{X})^{-1}$ é estimador de $\mathbb{V}[\hat{b}|\boldsymbol{X}]$.
@@ -586,14 +586,14 @@ $$\mathcal{F}^N(\boldsymbol{X}) = \{\boldsymbol{P}_{\boldsymbol{y}|\boldsymbol{X
 \begin{proposition}
 	Suponha válidas as Hipóteses 1 e  4. Se a distribuição $\mathbb{P}$ satisfaz a hipótese nula, então:
 	
-	$$W_{R,c}|\boldsymbol{X}\sim F(k,n-k)$$
+	$$W_{R,c}|\boldsymbol{X}\sim F(r,n-k)$$
 \end{proposition}
 \begin{itemize}
 	\item Etapas para demonstração do resultado:
 	\begin{enumerate}
-		\item Mostrar que, sob a nula, $N := (R\hat{b}-c)'\left(R\sigma^2(\boldsymbol{X}'\boldsymbol{X})^{-1}R'\right)(R\hat{b}-c) \sim \chi^2(k)$.
-		\item Mostrar que $(n-k)\hat{\sigma}^2/\sigma^2 \sim \chi^2(n-k)$.
-		\item Mostrar que $N$ e $\hat{\sigma}^2$ são independentes.
+		\item Mostrar que, sob a nula, $N := (R\hat{b}-c)'\left(R\sigma^2(\boldsymbol{X}'\boldsymbol{X})^{-1}R'\right)^{-1}(R\hat{b}-c) |\boldsymbol{X}\sim \chi^2(r)$.
+		\item Mostrar que $(n-k)\hat{\sigma}^2/\sigma^2|\boldsymbol{X} \sim \chi^2_{n-k}$.
+		\item Mostrar que $N$ e $\hat{\sigma}^2$ são independentes (condicionalmente a $\boldsymbol{X}$).
 	\end{enumerate}
 \end{itemize}
 \end{frame}
@@ -601,8 +601,8 @@ $$\mathcal{F}^N(\boldsymbol{X}) = \{\boldsymbol{P}_{\boldsymbol{y}|\boldsymbol{X
 \begin{frame}{Teste de hipótese}
 \begin{itemize}
 	\item O resultado anterior sugere considerar a seguinte regra de decisão, para um nível de significância $\alpha \in [0,1]$:
-	$$\phi \coloneqq \mathbf{1}\{W_{R,c}> q_F(1-\alpha|k,n-k)\}$$
-	onde $q_F(1-\alpha|k,n-k)$ é o quantil $1-\alpha$ da distribuição $F(k,n-k)$.
+	$$\phi \coloneqq \mathbf{1}\{W_{R,c}> q_F(1-\alpha|r,n-k)\}$$
+	onde $q_F(1-\alpha|r,n-k)$ é o quantil $1-\alpha$ da distribuição $F(r,n-k)$.
 	\begin{itemize}
 		\item Rejeitamos a nula se $W_{R,q}$ for suficientemente alta.
 		\item Com base no \textit{slide} anterior, se nula for verdadeira, tem-se $\mathbb{E}[\phi|\boldsymbol{X}] = \alpha$.
@@ -618,16 +618,196 @@ $$\mathcal{F}^N(\boldsymbol{X}) = \{\boldsymbol{P}_{\boldsymbol{y}|\boldsymbol{X
 	$$\hat{t}_{R,c} = \frac{(R\hat{\beta}-c)}{R\hat{\sigma}^2(\boldsymbol{X}'\boldsymbol{X})^{-1}R'}$$
 \end{itemize}
 \end{frame}
-
-
-
-\end{document}
-
-
-
 \begin{transitionframe}
 	\centering
 	\Huge{MQO: Propriedades Assintóticas}
 	
 	
 \end{transitionframe}
+
+\begin{frame}{Regime Assintótico}
+	\begin{itemize}
+		\item Nesta seção, analisaremos o comportamento do estimador de MQO em um regime em que o número de observações diverge.
+		\begin{itemize}
+			\item Ideia de se trabalhar com um regime assintótico é de que isso nos seja informativo das propriedades do estimador quando o tamanho amostral é ``grande''.
+		\end{itemize}
+		\item Para isso, focaremos no caso em que observamps uma amostra aleatória de uma população cuja distribuição é representada pelo para de variáveis aleatórias $(X,Y)$.
+		\begin{itemize}
+			\item Resultados para o caso não independente e/ou não identicamente distribuído podem ser encontrados, por exemplo, no livro de Halbert White, ``Asymptotic Theory for Econometricians''.
+		\end{itemize}
+		\item Especificamente, trabalharemos com a seguinte hipótese.
+		\begin{assumption}[Assintótico-1]
+		$(X_i,Y_i) \overset{iid}{\sim} (X,Y)$, com $\mathbb{E}[|Y|^2]<\infty$, $\operatorname{trace}(\mathbb{E}[XX']) < \infty$ e $\mathbb{E}[XX']$ tem posto $k$.
+		\end{assumption}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Consistência}
+	\begin{itemize}
+		\item Dizemos que um estimador é {\color{blue}consistente para um parâmetro} quando há convergência em probabilidade dele para o parâmetro.
+		\begin{itemize}
+			\item Para qualquer tolerância e qualquer nível de probabilidade, existe um limiar $n^*$ tal que, para tamanhos amostrais $n\geq n^*$, o estimador dista do parâmetro de interesse a menos da tolerância com probabilidade não menor que o nível de probabilidade pre-especificado.
+		\end{itemize} 
+		\item Propriedades do estimador de MQO em amostras grandes podem ser obtidas usando a expressão conveniente abaixo.
+		$$\hat{b} = (\boldsymbol{X}'\boldsymbol{X})^{-1}\boldsymbol{X}'\boldsymbol{y} = \left(\frac{1}{n}\sum_{i=1}^n X_i X_i'\right)^{-1}\left(\frac{1}{n}\sum_{i=1}^n X_iY_i\right)$$
+		\item No que segue, indexamos $\hat{b}$ explicitamente por $n$, denotando-o por $\hat{b}_n$, para explicitar a natureza do limite em consideração
+	\end{itemize}
+	
+	\begin{proposition}
+Suponha que Assintótico-1 seja satisfeita. Então:
+\begin{itemize}
+	\item $\lim_{n \to \infty}\mathbb{P}[\{\hat{b}_n \text{ existe}\}] = 1$.
+	\item $\hat{b}_n \overset{p}{\to}\left(\mathbb{E}[XX']\right)^{-1}\mathbb{E}[XY]$ quando $n \to \infty$.
+\end{itemize}
+
+	\end{proposition}
+	\end{frame}
+	
+	\begin{frame}{Consistência para parâmetro de modelo}
+	\begin{itemize}
+		\item Considere um modelo linear na população da forma:
+		$$Y = X'\beta + \epsilon\, .$$
+		\item Resultado anterior implica que, se $\mathbb{E}[ X\epsilon] = 0$, então $\hat{b}_n \overset{p}{\to} \beta$. 
+		\item Se $X = \begin{pmatrix}
+			1 & \tilde{X}'
+		\end{pmatrix}'$, condição é equivalente a $\mathbb{E}[\epsilon]= 0$ e $\operatorname{cov}(\tilde{X},\epsilon)=0$.
+		\begin{itemize}
+			\item Ambas as hipóteses são satisfeitas {\color{blue}por construção} num modelo preditivo linear (com intercepto).
+		\end{itemize}
+		\item Do resultado acima segue, portanto, que, quando $X$ contém um intercepto, o estimador de MQO é consistente para os parâmetros do melhor preditor linear de $Y$ em $\tilde{X}$ (e um intercepto).
+		\begin{corollary}
+		Suponha que $X = \begin{pmatrix}
+			1 & \tilde{X}'
+		\end{pmatrix}'$, e que Assintótico-1 seja satisfeita. Então o estimador de MQO é consistente para os parâmetros do melhor preditor linear de $Y$ em $\tilde{X}$ (e um intercepto). Consequentemente, num modelo causal, estimador de MQO será consistente para efeitos causais se as causas observadas e não observadas não covariarem, pois, nesse caso, parâmetros causais são identificáveis com base no melhor preditor linear.
+		\end{corollary}
+	\end{itemize}
+	
+	\end{frame}
+	
+	\begin{frame}{Distribuição assintótica}
+	\begin{itemize}
+		\item Se $Y$ segue um modelo linear da forma:
+		$$Y = X'\beta + \epsilon$$
+		\vspace{-0.5em}
+		temos que
+		\vspace{-0.5em}
+		$$\hat{b}_n - \beta = \left(\frac{1}{n}\sum_{i=1}^n X_i X_i'\right)^{-1}\left(\frac{1}{n}\sum_{i=1}^nX_i \epsilon_i\right)$$
+		\item Sob a hipótese de consistência $\mathbb{E}[X\epsilon] = 0$, $\frac{1}{n}\sum_{i=1}^nX_i \epsilon_i \overset{p}{\to} 0 $
+			\item Ademais, sob a hipótese de consistência, esperaríamos que  $\sqrt{n}\left(\frac{1}{n}\sum_{i=1}^nX_i \epsilon_i \right)$ convergisse {\color{blue}em distribuição} para uma normal multivariada, com base na aplicação do teorema central do limite.
+			\begin{itemize}
+				\item Para isso $X\epsilon$ deve possuir segundo momento finito.
+			\end{itemize}
+	\end{itemize}
+	\end{frame}
+	\begin{frame}{Normalidade assintótica de $\hat{b}_n$}
+	\begin{itemize}
+\item Elencamos hipóteses suficientes para aplicação de um TCL abaixo.
+	\begin{assumption}[Assintótico-2]
+		$$\mathbb{E}[X\epsilon]= 0$$
+	\end{assumption}
+	\begin{assumption}[Assintótico-3]
+		$X$ e $\epsilon$ possuem quartos momentos finitos.
+\end{assumption}
+\item Com base nas hipóteses 1-3, temos o seguinte resultado.
+\begin{proposition}
+	Sob as hipóteses Assintótico 1-3, temos que:
+	
+	$$\sqrt{n}(\hat{b}_n - \beta) \overset{d}{\to}\mathcal{N}(0, \mathbb{E}[XX']^{-1}\mathbb{E}[XX'\epsilon^2]\mathbb{E}[XX']^{-1})$$
+\end{proposition}
+\end{itemize}
+	\end{frame}
+	
+	\begin{frame}{Variância assintótica}
+		\begin{itemize}
+			\item Resultado anterior sugere que, em amostras grandes, dispersão da distribuição $\sqrt{n}(\hat{b}_n - \beta) $ é ``aproximável'' por: 
+			$$\operatorname{Avar}(\sqrt{n}(\hat{b}_n - \beta))\coloneqq\mathbb{E}[XX']^{-1}\mathbb{E}[XX'\epsilon^2]\mathbb{E}[XX']^{-1}$$
+			\vspace{-0.5em}
+			\begin{itemize}
+				\item Note que, formalmente, \textbf{não} estamos dizendo que $\mathbb{V}\left[\sqrt{n}(\hat{b}_n - \beta) \right]$ converge para isso, visto que convergência em distribuição \textbf{não} implica convergência de momentos.
+				\item Não obstante, a variância da distribuição assintótica de $\sqrt{n}(\hat{b}_n - \beta)$, conhecida usualmente como {\color{blue}variância assintótica de $\hat{b}_n$}, nos será útil para inferência.
+			\end{itemize}
+		\end{itemize}
+	\end{frame}
+	\begin{frame}{Estimador da variância assintótica de White}
+\begin{itemize}
+	 			\item Estimador consistente de $\operatorname{Avar}(\sqrt{n}(\hat{b}_n - \beta))$ é dado por:
+	
+	$$\hat{V}_{\text{HC}} = \left(\frac{1}{n}\sum_{i=1}^n X_i X_i'\right)^{-1}\left(\sum_{i=1}^n\frac{1}{n} X_i X_i' \hat{e}_i^2\right) \left(\frac{1}{n}\sum_{i=1}^n X_i X_i'\right)^{-1}\, ,$$
+	onde $\hat{e}_i = Y_i - X_i'\hat{b}$ é o resíduo da regressão.
+	\begin{itemize}
+		\item Estimador da variância ``{\color{blue}robusto à heterocedasticidade}'' de White (\textit{heteroskedasticity-consistent variance estimator}),  onde ``robustez'' advém do fato de que variância assintótica foi derivada sem recorrer à homocedasticidade (i.e. não precisamos supor em nenhum momento que $\mathbb{V}[Y|X] =\sigma^2$).
+		\item No comando \texttt{feols} do pacote \texttt{fixest} do \texttt{R}, opção \texttt{se = ``hetero''} recupera este estimador (com uma correção de graus de liberdade que não faz diferença assintoticamente).
+		\begin{itemize}
+			\item Se usarmos o comando \texttt{lm}, disponível no pacote básico do R, para implementar o estimador de MQO, precisamos usar o comando \texttt{vcovHC} do pacote \texttt{sandwich} para recuperar esse estimador da variância.
+		\end{itemize}
+	\end{itemize}
+\end{itemize}
+	\end{frame}
+	
+	\begin{frame}{Estatística de Wald e Inferência assintótica}
+	\begin{itemize}
+		\item Suponha que queiramos testar a hipótese nula:
+		$$H_0: R \beta = c$$
+		contra a alternativa 
+		$$H_1: R\beta \neq c$$
+		onde $R$  é uma matriz $r \times k$ com posto $r$.
+		\item Nosso resultado de inferência assintótica sugere considerar {\color{blue}a estatística de teste de Wald}, dada por:
+		
+		$$\tilde{W}_{R,c} = n(R\hat{b}_n-c)'\left(R\hat{V}_{\text{HC}} R'\right)^{-1}(R\hat{b}_n-c)\, , $$
+	\end{itemize}
+	\end{frame}
+	\begin{frame}{Tamanho e poder assintóticos do teste}
+\begin{itemize}
+	  \item Sob hipótese nula, não é difícil ver que:
+	$$\tilde{W}_{R,c}  \overset{d}{\to} \chi^2_r$$
+	\vspace{-1em}
+	\begin{itemize}
+		\item Desse modo, tomando $q_\chi(1-\alpha|r)$ o quantil $1-\alpha$ de uma chi-quadrado com $r$ graus de liberdade, temos que, sob a nula:
+		$$\lim_{n \to\infty}\mathbb{P}\left[\tilde{W}_{R,c}  > q_\chi(1-\alpha|r)\right]=1-\alpha\, .$$
+	\end{itemize}
+	\item Por outro lado, não é difícil ver que, se nula {\color{blue}não é verdadeira}, a estatística $\tilde{W}_{R,c} \overset{p}{\to}\infty$.
+	\begin{itemize}
+		\item Nesse caso, podemos mostrar que:
+		$$\lim_{n \to\infty}\mathbb{P}\left[\tilde{W}_{R,c}  > q_\chi(1-\alpha|r)\right] = 1\, .$$
+	\end{itemize}
+	\item No caso em que $q=1$ teste de Wald é equivalente a rejeitar a nula quando:
+	$$|\hat{t}_W| > q_Z(1-\alpha/2)\, ,$$
+	onde $q_Z$ é quantil da normal padrão e  $\hat{t}_W = (R\hat{b}_n-c)/\sqrt{R\hat{V}_W R'/n}$.
+\end{itemize}
+	\end{frame}
+	\begin{frame}{Padrão de dependência \textit{clustered}}
+		\begin{itemize}
+			\item A derivação da variância assintótica do estimador presumiu que as observações eram independentes.
+			\item No entanto, em diversos contextos, {\color{blue}o padrão de amostragem ou de atribuição das causas} induz dependência entre observações.
+			\begin{itemize}
+				\item Por exemplo, se amostramos um conjunto de bairros, e para estes observamos $(Y_i,X_i)$ de todos os moradores. Nesse caso, esperamos, sob realizações repetidas da amostragem, que haja correlação entre os $X_i$ e $Y_i$ de um mesmo bairro (por exemplo, se $X_i$ denota a renda de $i$).
+				\item Por outro lado, se a incerteza amostral é de natureza econômica, podemos esperar que $\epsilon_i$ contenha fatores econômicos não observados comuns a um grupo, ou que $X_i$ seja atribuído pela natureza de forma não independente, de modo que haja correlação sob realizações repetidas da incerteza.
+			\end{itemize}
+			\item Nesses casos, pode ser razoável particionar a amostra em $G$ {\color{blue}clusters}, $\mathcal{N}_1\cup \mathcal{N}_2 \ldots \cup  \mathcal{N}_g = \{1,\ldots, n\}$, com a propriedade de que observações no mesmo \textit{cluster}  apresentam dependência (arbitrária) entre si, mas observações entre clusters são aproximademente independentes.
+			\begin{itemize}
+				\item No exemplo de amostragem de bairros, hipótese pode ser razoável se amostramos de forma uniforme de uma população grande de bairros.
+			\end{itemize}
+		\end{itemize}
+	\end{frame}
+	\begin{frame}{Estimador da variância robusto a \textit{clusters}}
+		\begin{itemize}
+			\item Sob o padrão de dependência de \textit{clusters}, a variância do termo crucial para a distribuição assintótica do estimador de MQO fica na forma:
+			
+			$$\mathbb{V}\left[\sqrt{n}\left(\frac{1}{n}\sum_{i=1}^nX_i \epsilon_i \right)\right] =   \sum_{g=1}^G \frac{|\mathcal{N}_g|^2}{n} \mathbb{V}\left[\frac{1}{|\mathcal{N}_g|}\sum_{i \in \mathcal{N}_g} X_i \epsilon_i \right]$$
+			\item O estimador da variância robusta a \textit{clusters} (\textit{cluster-robust variance estimator}) propõe estimar a variância assintótica do estimador de MQO como:
+			\vspace{-0.5em}
+			$$\hat{V}_{\text{CR}} =  \left(\frac{1}{n}\sum_{i=1}^n X_i X_i'\right)^{-1}\left({\color{red}
+			\sum_{g=1}^G \frac{1}{n} \left(\sum_{i,j \in \mathcal{N}_g} X_i X_j'\hat{\epsilon}_i \hat{\epsilon}_j\right) }\right) \left(\frac{1}{n}\sum_{i=1}^n X_i X_i'\right)^{-1}$$
+			
+			\item Sob restrições dos momentos de $(X_i,Y_i)$, estimador produzirá inferência assintótica válida, num regime em que $G \to \infty $ e nenhum \textit{cluster} ``domina'' os demais ($\max_g |\mathcal{N}_g|^2/n \to 0$).
+			\begin{itemize}
+				\item Portanto, para utilizar esse método, necessitamos de bastantes \textit{clusters} de tamanho comparável.
+				\item No pacote \texttt{feols}, opção \texttt{cluster} permite utilizar esse estimador. Para regressão obitda via \texttt{lm}, usar \texttt{vcovCL} do pacote \texttt{sandiwch}.
+			\end{itemize}
+		\end{itemize}
+	\end{frame}
+\end{document}
+
+
+
+
