@@ -532,7 +532,7 @@ Sob a condição
 	$$\nu(G)\coloneqq \mathbb{E}_G[\phi]$$
 	o mais alto possível.
 	\begin{itemize}
-		\item Maximizar o poder é equivalente a minimizar {\color{blue}erro tipo 2} de se afirmar a hipótese alternativa quando ela é falsa.
+		\item Maximizar o poder é equivalente a minimizar {\color{blue}erro tipo 2} de se afirmar a hipótese nula quando ela é falsa.
 		\item Usualmente, isso requer que $\sup_{F \in \mathcal{P}_0} \mathbb{E}_F[\phi] = \alpha$.
 	\end{itemize}
 \end{itemize}
@@ -544,7 +544,7 @@ Sob a condição
 $$\boldsymbol{y} =\boldsymbol{X}\beta + \boldsymbol{\epsilon}\, ,$$
 onde $\beta$ é desconhecido.
 \item Para testes de hipótese em amostras finitas, requeremos:
-\begin{assumption}[H5-Normalidade]
+\begin{assumption}[H4-Normalidade]
 $$\boldsymbol{\epsilon}|\boldsymbol{X}\sim \mathcal{N}(0,\sigma^2 \mathbb{I}_{n\times n})$$.
 \end{assumption}
 \item Hipótese não só requer que erro tenha média condicional zero e matriz de variância homocedástica, mas impõe normalidade da distribuição condicional.
@@ -565,7 +565,7 @@ $$\mathcal{F}^N(\boldsymbol{X}) = \{\boldsymbol{P}_{\boldsymbol{y}|\boldsymbol{X
 		contra a  alternativa
 \vspace{-0.5em}
 		$$H_1: R\beta \neq c$$
-		onde $R$ é uma matriz $r \times k$ de posto $q$, e $c$ é uma vetor $r \times 1$.
+		onde $R$ é uma matriz $r \times k$ de posto $r$, e $c$ é uma vetor $r \times 1$.
 		\begin{itemize}
 			\item $H_0$ e $H_1$ formam partição de $\mathcal{F}^{N}(\boldsymbol{X})$
 		\end{itemize}
