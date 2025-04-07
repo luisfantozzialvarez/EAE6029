@@ -611,11 +611,11 @@ $$\mathcal{F}^N(\boldsymbol{X}) = \{\boldsymbol{P}_{\boldsymbol{y}|\boldsymbol{X
 	\begin{itemize}
 		\item Veja o livro do Greene para detalhes.
 	\end{itemize}
-	\item No caso em que $q=1$, teste é equivalente a rejeitar a nula se:
+	\item No caso em que $r=1$, teste é equivalente a rejeitar a nula se:
 	$$|\hat{t}_{R,q}| > q_t(1-\alpha/2|n-k)$$
 	onde $q_t(1-\alpha/2|n-k)$ é o quantil $1-\alpha/2$ de uma t de Student com $n-k$ graus de liberdade, e:
 	\vspace{-0.5em}
-	$$\hat{t}_{R,c} = \frac{(R\hat{\beta}-c)}{R\hat{\sigma}^2(\boldsymbol{X}'\boldsymbol{X})^{-1}R'}$$
+	$$\hat{t}_{R,c} = \frac{(R\hat{\beta}-c)}{\sqrt{R\hat{\sigma}^2(\boldsymbol{X}'\boldsymbol{X})^{-1}R'}}$$
 \end{itemize}
 \end{frame}
 \begin{transitionframe}
@@ -770,7 +770,7 @@ Suponha que Assintótico-1 seja satisfeita. Então:
 		\item Nesse caso, podemos mostrar que:
 		$$\lim_{n \to\infty}\mathbb{P}\left[\tilde{W}_{R,c}  > q_\chi(1-\alpha|r)\right] = 1\, .$$
 	\end{itemize}
-	\item No caso em que $q=1$ teste de Wald é equivalente a rejeitar a nula quando:
+	\item No caso em que $r=1$ teste de Wald é equivalente a rejeitar a nula quando:
 	$$|\hat{t}_W| > q_Z(1-\alpha/2)\, ,$$
 	onde $q_Z$ é quantil da normal padrão e  $\hat{t}_W = (R\hat{b}_n-c)/\sqrt{R\hat{V}_W R'/n}$.
 \end{itemize}
