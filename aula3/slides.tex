@@ -1,0 +1,238 @@
+% !TeX document-id = {0be8c18c-9430-4e9a-bdd9-12beadebfebc}
+% !TeX TXS-program:bibliography = txs:///biber
+\documentclass[11pt]{beamer}
+
+\usepackage[brazilian]{babel}
+
+\uselanguage{portuguese}
+\languagepath{portuguese}
+\deftranslation[to=portuguese]{Theorem}{Teorema}
+\deftranslation[to=portuguese]{theorem}{teorema}
+\deftranslation[to=portuguese]{Example}{Exemplo}
+\deftranslation[to=portuguese]{example}{exemplo}
+\deftranslation[to=portuguese]{Lemma}{Lema}
+\deftranslation[to=portuguese]{lemma}{Lema}
+\deftranslation[to=portuguese]{Corollary}{Corolário}
+\deftranslation[to=portuguese]{corollary}{corolário}
+%\deftranslation[to=portuguese]{and}{e}
+\newtheorem{proposition}{Proposição}
+\newtheorem{assumption}{Hipótese}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{color}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usepackage{subcaption}
+%\usepackage{appendixnumberbeamer}
+
+\newenvironment{transitionframe}{
+	\setbeamercolor{background canvas}{bg=yellow}
+	\begin{frame}}{
+	\end{frame}
+}
+\usetheme{default}
+\usefonttheme{structuresmallcapsserif}
+
+%% I use a beige off white for my background
+\definecolor{MyBackground}{RGB}{255,253,218}
+\useinnertheme[shadow]{rounded}
+\setbeamercolor{block title}{bg=MyBackground}
+\setbeamercolor{block body}{bg=MyBackground}
+\setbeamercolor{example title}{bg=MyBackground}
+\setbeamercolor{example body}{bg=MyBackground}
+
+
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\purple}[1]{\textcolor{purple}{#1}}
+\newcommand{\gray}[1]{\textcolor{gray}{#1}}
+\setbeamertemplate{navigation symbols}{}
+%\setbeamertemplate{page number in head/foot}[appendixframenumber]
+
+%\usepackage{graphics}
+\usepackage{graphicx}
+
+\definecolor{blue_emph}{RGB}{0,114,178}
+\definecolor{red}{RGB}{213,94,0}
+\definecolor{yellow}{RGB}{240,228,66}
+\definecolor{green}{RGB}{0,158,115}
+\definecolor{purple}{RGB}{204,121,167}
+\definecolor{orange}{RGB}{230,159,0}
+\definecolor{lightblue}{RGB}{86,180,233}
+
+%\setbeamercolor{frametitle}{fg=blue}
+%\setbeamercolor{title}{fg=blue}
+\setbeamertemplate{footline}[frame number]
+\setbeamertemplate{navigation symbols}{} 
+\setbeamertemplate{itemize items}{-}
+%\setbeamercolor{itemize item}{fg=blue}
+%\setbeamercolor{itemize subitem}{fg=blue}
+\setbeamertemplate{enumerate items}[default]
+%\setbeamercolor{enumerate subitem}{fg=blue}
+\setbeamercolor{button}{bg=MyBackground,fg=blue}
+\usefonttheme{structuresmallcapsserif}
+
+%\setbeamercolor{section in toc}{fg=blue}
+%\setbeamercolor{subsection in toc}{fg=red}
+\setbeamersize{text margin left=1em,text margin right=1em} 
+
+
+\usepackage{appendixnumberbeamer}
+\usepackage{pdfpages}
+\usepackage[
+backend=biber,
+uniquename=false,
+uniquelist=false,
+style=authoryear,
+natbib=true
+]{biblatex}
+\addbibresource{../bibliography.bib}
+
+\newenvironment{wideitemize}{\itemize\addtolength{\itemsep}{10pt}}{\enditemize}
+\newenvironment{wideenumerate}{\enumerate\addtolength{\itemsep}{10pt}}{\endenumerate}
+\newenvironment{halfwideitemize}{\itemize\addtolength{\itemsep}{0.5em}}{\enditemize}
+\newenvironment{halfwideenumerate}{\enumerate\addtolength{\itemsep}{0.5em}}{\endenumerate}
+
+
+\author{Luis A. F. Alvarez}
+\title{Econometria I}
+\subtitle{Variáveis instrumentais}
+%\logo{}
+%\institute{}
+\date{\today}
+%\subject{}
+%\setbeamercovered{transparent}
+
+\def\signed #1{{\leavevmode\unskip\nobreak\hfil\penalty50\hskip2em
+		\hbox{}\nobreak\hfil(#1)%
+		\parfillskip=0pt \finalhyphendemerits=0 \endgraf}}
+
+\newsavebox\mybox
+\newenvironment{aquote}[1]
+{\savebox\mybox{#1}\begin{quote}}
+	{\signed{\usebox\mybox}\end{quote}}
+
+\begin{document}
+
+\begin{frame}[plain]
+	\maketitle
+\end{frame}
+\begin{frame}{Instrumento}
+	\begin{itemize}
+		\item Considere um modelo linear {\color{blue}causal} da forma:
+		
+		$$Y = X\beta + U\, ,$$
+		onde $X$ é uma causa observada escalar, $U$ são causas não observadas, e $\beta$ é o efeito causal de $X$.
+		\item Considere uma situação em que não é razoável supor que $\operatorname{cov}(X,U) = 0$.
+		\begin{itemize}
+			\item Nesse caso, a inclinação de $X$ no melhor preditor linear de $Y$ em $X$ e um intercepto não identificará $\beta$, de modo que o estimador de MQO de $Y$ em $X$ e um intercepto não estimará consistentemente o efeito causal de interesse.  
+		\end{itemize}
+		\item Suponha que observemos uma variável $Z$ que satisfaz:
+		\begin{itemize}
+			\item (Relevância) $\operatorname{cov}(Z,X)\neq0$.
+			\item (Exogeneidade ou exclusão)  $\operatorname{cov}(X,U)=0$
+		\end{itemize}
+		\item À variável $Z$ damos o nome de {\color{green}instrumento}:
+		\begin{itemize}
+			\item Trata-se de variável que exibe associação, na população, com $X$ (relevância), e cuja \textbf{única associação com $Y$ se dá através de $X$} (exogeneidade ou exclusão).
+		\end{itemize}
+\end{itemize}
+	\end{frame}
+\begin{frame}{Estimando de Wald e Identificação sob variável instrumental}
+\begin{itemize}
+	\item Defina  \textbf{o estimando de Wald} como o \textbf{parâmetro}:
+	
+	$$\gamma_{\text{Wald}}  \coloneqq \frac{\operatorname{cov}(Z,Y)}{\operatorname{cov}(Z,X)}\,,$$
+	\item Sob as hipóteses de relevância e exogeneidade do instrumento, estimando identifica $\beta$, i.e.:
+	
+	$$\gamma_{\text{Wald}} = \beta\, .$$
+\end{itemize}
+\end{frame}
+\begin{frame}{Estimação e Inferência}
+	\begin{itemize}
+		\item Dada uma amostra aleatória $(Y_i,X_i,Z_i)\sim (Y,X,Z)$, resultado anterior sugere que estimemos o efeito causal como:
+		
+		$$\hat{\gamma}_{\text{Wald}} = \frac{\widehat{\operatorname{cov}(Z,Y)}}{\widehat{\operatorname{cov}(Z,X)}} = \frac{\hat{b}_{Y,Z}}{\hat{b}_{Z,X}}\, ,$$
+		onde $\hat{b}_{S,Z}$ é o estimador de MQO para o coeficiente de $S$ numa regressão de $S$ num intercepto e $Z$.
+		\item Sob condições de regularidade da aula anterior, vimos que, com $n \to \infty$ $$\hat{b}_{Y,Z} \overset{p}{\to} \frac{\operatorname{cov}(Y,Z)}{\mathbb{V}(Z)}$$
+		
+		$$\hat{b}_{X,Z} \overset{p}{\to} \frac{\operatorname{cov}(X,Z)}{\mathbb{V}(Z)}$$
+		de onde segue, por aplicação do teorema do mapa contínuo que, sob as condições de relevância e exogeneidade:
+		\vspace{-0.2em}
+		$$\hat{\gamma}_{\text{Wald}}  \overset{p}{\to} \gamma_{\text{Wald}} = \beta\, .$$
+		
+	\end{itemize}
+\end{frame}
+\begin{frame}{Testando relevância}
+	\begin{itemize}
+		\item Note que, como estimador de $\hat{b}_{X,Z}$ é consistente para $\frac{\operatorname{cov}(X,Z)}{\mathbb{V}(Z)}$, podemos utilizar esse estimador para realizar um teste da nula de que que o {instrumento} \textbf{não} é relevante.
+		\item Por outro lado, em nosso ambiente com uma variável instrumental e um modelo causal linear, a hipótese de {exclusão} é \textbf{intestável}.
+		\begin{itemize}
+			\item Devemos suplementar a análise empírica com uma argumentação de porquê o único mecanismo através do qual variações em $Z$ produzem variações em $Y$ é através de $X$.
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Caso geral}
+\begin{itemize}
+	\item Vamos agora considerar um modelo causal geral da forma:
+$$Y = X'\beta + U$$
+onde $X$ é um vetor de $k$ causas observadas.
+\item Vamos supor a existência de um vetor $Z$  de $l$ instrumentos que satisfaz as hipóteses:
+\begin{assumption}[H1-Relevância]
+	$\mathbb{E}[ZX']$ tem posto $k$.
+\end{assumption}
+
+\begin{assumption}[H2-Exogeneidade]
+	$\mathbb{E}[ZU]=0$
+\end{assumption}
+\end{itemize}
+
+\begin{itemize}
+	\item Note que a hipótese de exogeneidade é equivalente a $\operatorname{cov}(Z,\epsilon)=0$ quando $X$ inclui um intercepto, pois nesse caso podemos supor que $U$ tem média zero ``absorvendo sua média'' ao intercepto.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Variáveis Endógenas e Exógenas}
+\begin{itemize}
+	\item A condição de relevância implica que necessitamos de $l\geq k$ variáveis que exibam suficiente variação com as causas $X$, e que não exibam associação com as causas $U$.
+	\begin{itemize}
+		\item Se uma entrada $X_j$ é {\color{blue}exógena} por hipótese, i.e. $\mathbb{E}[X_j U] = 0$, podemos incluí-la entre os instrumentos $Z$.
+		\item Por outro lado, para cada variável $X_s$  {\color{blue}endógena}, i.e. tal que potencialmente $\mathbb{E}[X_j U] \neq 0$, precisamos de pelo menos um instrumento que exiba associação com as causas observadas, mas não com as causas não observadas.
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Identificação dos efeitos no modelo linear geral}
+\begin{itemize}
+	\item Sob as hipóteses H1 e H2, {\color{red}para qualquer matriz $A$ $k\times l$} de posto cheio, temos que:
+	$$ \gamma_A := (\mathbb{E}[AZX'])^{-1}\mathbb{E}[AZY] = \beta$$
+	\item Note que, o resultado anterior sugere que, para uma amostra aleatória $(Y_i,X_i, Z_i)\sim (Y,X,Z)$ e uma dada matriz $A$, podemos estimar $\beta$ por:
+	
+	$$\hat{\gamma}_A = \left(\sum_{i=1}^n \hat{A} Z_i X_i'\right)^{-1}\sum_{i=1}^n \hat{A} Z_i Y_i\, = (\hat{A} \boldsymbol{Z}'\boldsymbol{X})^{-1}\hat{A} \boldsymbol{Z}' \boldsymbol{y}\, ,$$
+	onde $\hat{A}$ é um estimador da matriz $A$ e:
+	$$\boldsymbol{Z} = \begin{bmatrix}
+		Z_1' \\
+		Z_2' \\
+		\vdots \\
+		Z_n'
+	\end{bmatrix}\, , \quad \boldsymbol{X} = \begin{bmatrix}
+	X_1' \\
+	X_2' \\
+	\vdots \\
+	X_n'
+	\end{bmatrix} $$
+\end{itemize}
+
+\end{frame}
+\end{document}
+
+
+
+
