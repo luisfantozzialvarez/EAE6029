@@ -227,12 +227,77 @@ onde $X$ é um vetor de $k$ causas observadas.
 	X_2' \\
 	\vdots \\
 	X_n'
-	\end{bmatrix} $$
+	\end{bmatrix}, \quad \boldsymbol{y} =\begin{bmatrix}
+	Y_1\\
+	Y_2\\
+	\vdots \\
+	Y_n
+	\end{bmatrix}$$
 \end{itemize}
 
 \end{frame}
+
+\begin{frame}{Mínimos Quadrados em Dois Estágios}
+\begin{itemize}
+	\item Note que, em termos de \textbf{identificação}, temos alguma liberdade na escolha de $\hat{A}$.
+	\item Em termos \textbf{inferenciais}, uma escolha natural é tomar a combinação linear dos instrumentos $\hat{A}$ que "maximiza" o poder explicativo de $\boldsymbol{Z}$ sobre $\boldsymbol{X}$. Isto é, tomamos:
+	$$\hat{A}' = (\boldsymbol{Z}'\boldsymbol{Z})^{-1}(\boldsymbol{Z}'\boldsymbol{X}) $$
+	\item Essa escolha produz o estimador de {\color{blue}MQO em dois estágios}, que denotamos por $\hat{b}_{\text{2SLS}}$:
+	\begin{equation*}
+		\hat{b}_{\text{2SLS}} = (\boldsymbol{X}'\boldsymbol{Z}(\boldsymbol{Z}'\boldsymbol{Z})^{-1}\boldsymbol{Z}'\boldsymbol{X})^{-1} \boldsymbol{X}'\boldsymbol{Z}(\boldsymbol{Z}'\boldsymbol{Z})^{-1} \boldsymbol{Z}'\boldsymbol{y} = \left(\boldsymbol{X}'P_{\boldsymbol{Z}}\boldsymbol{X}\right)^{-1}\boldsymbol{X}'P_{\boldsymbol{Z}}\boldsymbol{y} 
+	\end{equation*}
+	onde $P_{\boldsymbol{Z}}$ é a matriz de projeção de $\boldsymbol{Z}$.
+	\item Estimador pode ser obtido em dois estágios
+	\begin{itemize}
+		\item Primeiro, regredimos cada uma das $v=1\,l\dots,k$ variáveis em$\boldsymbol{X}$, $X_{i,v}$, em $Z_i$, e guardamos os valores preditos $\hat{X}_{i,v} = \hat{c}_{v}'Z_i$.
+		\begin{itemize}
+			\item Note que $\hat{X}_{i,v} = X_{i,v} $ se $X_{v}$ é variável inclusa em $Z$. 
+		\end{itemize}
+		\item Usando os valores preditos, regredimos $Y_i$ nos $\hat{X}_{i,v}$,$v=1\,l\dots,k$.  O estimador de $\hat{b}_{\text{2SLS}}$ será o resultado dessa regressão.
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Propriedades Assintóticas do 2SLS}
+	Para a análise do estimador de MQO em dois estágios requeremos:
+	\begin{assumption}[H3-Posto]
+		$\mathbb{E}[ZZ']$ tem posto cheio.
+	\end{assumption}
+	\begin{proposition}
+		Sob as hipóteses H1-H3, amostragem aleatória $(Y_i,X_i,Z_i) \overset{iid}{\sim}(Y,X,Z)$ e segundos momentos finitos de $(Y,X,Z)$, $\hat{b}_{2SLS}\overset{p}{\to}\beta$.
+	\end{proposition}
+		\begin{proposition}
+		Sob as hipóteses H1-H3, amostragem aleatória $(Y_i,X_i,Z_i) \overset{iid}{\sim}(Y,X,Z)$ e \textbf{quartos} momentos finitos de $(X,Y,Z)$, 
+		\vspace{-0.4em}
+		$$\sqrt{n}(\hat{b}_{\text{2SLS}}-\beta) \overset{d}{\to}\mathcal{N}(0,BMB)\, ,$$
+		\vspace{-2.4em}
+	\begin{align*}
+		\footnotesize B=\left(\mathbb{E}[XZ']\mathbb{E}[ZZ']^{-1}\mathbb{E}[X'Z]\right)^{-1}\, , \\ M = \mathbb{E}[XZ']\mathbb{E}[ZZ']^{-1}\mathbb{E}[U^2 ZZ']\mathbb{E}[ZZ']^{-1}\mathbb{E}[ZX']
+	\end{align*}
+	\end{proposition}
+\end{frame}
+
+\begin{frame}{Eficiência do MQO em dois estágios}
+A escolha de pesos $A$ implícita ao estimador de MQO em dois estágios possui propriedades de eficiência assintótica, na classe de estimadores baseados em combinações lineares dos instrumentos, se uma versão da hipótese de homocedasticidade valer.
+
+\begin{proposition}
+	Sob as hipóteses H1-H3, amostragem aleatória $(Y_i,X_i,Z_i) \overset{iid}{\sim}(Y,X,Z)$, quartos momentos finitos de $(X,Y,Z)$, e a condição:
+	
+	$$\mathbb{E}[U^2|Z] = \sigma^2\, .$$ 
+
+	Então o estimador de 2SLS exibe a menor variância assintótica, relativamente a qualquer outro estimador $\hat{\gamma}_C$ baseado numa combinação linear $\hat{C}\boldsymbol{Z}$ dos instrumentos, onde $\hat{C} \overset{p}{\to} C$. Em outras palavras:
+	
+	$$\operatorname{Avar}(\sqrt{n}(\hat{\gamma}_{C}-\beta)) - \operatorname{Avar}(\sqrt{n}(\hat{b}_{\text{2SLS}}-\beta)) \text{ é positiva semidefinida}$$
+\end{proposition}
+\end{frame}
 \end{document}
 
+\begin{frame}{Teste de endogeneidade}
+	conteúdo...
+\end{frame}
 
+\begin{frame}{Teste de restrições sobreidentificadoras}
+	conteúdo...
+\end{frame}
 
 

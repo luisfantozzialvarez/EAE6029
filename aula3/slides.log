@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.6)  9 APR 2025 14:00
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.6)  10 APR 2025 17:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1610,45 +1610,111 @@ Overfull \vbox (3.46266pt too high) detected at line 170
 
 ]
 LaTeX Font Info:    Font shape `OT1/lmss/b/n' in size <10.95> not available
-(Font)              Font shape `OT1/lmss/bx/n' tried instead on input line 233.
+(Font)              Font shape `OT1/lmss/bx/n' tried instead on input line 238.
 
 LaTeX Font Info:    Font shape `OT1/lmss/b/n' in size <8> not available
-(Font)              Font shape `OT1/lmss/bx/n' tried instead on input line 233.
+(Font)              Font shape `OT1/lmss/bx/n' tried instead on input line 238.
 
 LaTeX Font Info:    Font shape `OT1/lmss/b/n' in size <6> not available
-(Font)              Font shape `OT1/lmss/bx/n' tried instead on input line 233.
+(Font)              Font shape `OT1/lmss/bx/n' tried instead on input line 238.
 
 LaTeX Font Info:    Font shape `T1/lmss/b/n' in size <10.95> not available
-(Font)              Font shape `T1/lmss/bx/n' tried instead on input line 233.
+(Font)              Font shape `T1/lmss/bx/n' tried instead on input line 238.
 LaTeX Font Info:    Font shape `T1/lmss/b/n' in size <8> not available
-(Font)              Font shape `T1/lmss/bx/n' tried instead on input line 233.
+(Font)              Font shape `T1/lmss/bx/n' tried instead on input line 238.
 LaTeX Font Info:    Font shape `T1/lmss/b/n' in size <6> not available
-(Font)              Font shape `T1/lmss/bx/n' tried instead on input line 233.
+(Font)              Font shape `T1/lmss/bx/n' tried instead on input line 238.
 LaTeX Font Info:    Font shape `T1/lmss/b/it' in size <10.95> not available
-(Font)              Font shape `T1/lmss/bx/it' tried instead on input line 233.
+(Font)              Font shape `T1/lmss/bx/it' tried instead on input line 238.
 
 LaTeX Font Info:    Font shape `T1/lmss/bx/it' in size <10.95> not available
-(Font)              Font shape `T1/lmss/bx/sl' tried instead on input line 233.
+(Font)              Font shape `T1/lmss/bx/sl' tried instead on input line 238.
 
 LaTeX Font Info:    Font shape `T1/lmss/b/it' in size <8> not available
-(Font)              Font shape `T1/lmss/bx/it' tried instead on input line 233.
+(Font)              Font shape `T1/lmss/bx/it' tried instead on input line 238.
 
 LaTeX Font Info:    Font shape `T1/lmss/bx/it' in size <8> not available
-(Font)              Font shape `T1/lmss/bx/sl' tried instead on input line 233.
+(Font)              Font shape `T1/lmss/bx/sl' tried instead on input line 238.
 
 LaTeX Font Info:    Font shape `T1/lmss/b/it' in size <6> not available
-(Font)              Font shape `T1/lmss/bx/it' tried instead on input line 233.
+(Font)              Font shape `T1/lmss/bx/it' tried instead on input line 238.
 
 LaTeX Font Info:    Font shape `T1/lmss/bx/it' in size <6> not available
-(Font)              Font shape `T1/lmss/bx/sl' tried instead on input line 233.
+(Font)              Font shape `T1/lmss/bx/sl' tried instead on input line 238.
 
 
-Overfull \vbox (6.06952pt too high) detected at line 233
+Overfull \vbox (6.06952pt too high) detected at line 238
  []
 
 [8
 
 {/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}]
+LaTeX Font Info:    Font shape `OT1/lmss/b/n' in size <10> not available
+(Font)              Font shape `OT1/lmss/bx/n' tried instead on input line 259.
+
+LaTeX Font Info:    Font shape `OT1/lmss/b/n' in size <7> not available
+(Font)              Font shape `OT1/lmss/bx/n' tried instead on input line 259.
+
+LaTeX Font Info:    Font shape `OT1/lmss/b/n' in size <5> not available
+(Font)              Font shape `OT1/lmss/bx/n' tried instead on input line 259.
+
+LaTeX Font Info:    Font shape `T1/lmss/b/n' in size <10> not available
+(Font)              Font shape `T1/lmss/bx/n' tried instead on input line 259.
+LaTeX Font Info:    Font shape `T1/lmss/b/n' in size <7> not available
+(Font)              Font shape `T1/lmss/bx/n' tried instead on input line 259.
+LaTeX Font Info:    Font shape `T1/lmss/b/n' in size <5> not available
+(Font)              Font shape `T1/lmss/bx/n' tried instead on input line 259.
+LaTeX Font Info:    Font shape `T1/lmss/b/it' in size <10> not available
+(Font)              Font shape `T1/lmss/bx/it' tried instead on input line 259.
+
+LaTeX Font Info:    Font shape `T1/lmss/bx/it' in size <10> not available
+(Font)              Font shape `T1/lmss/bx/sl' tried instead on input line 259.
+
+LaTeX Font Info:    Font shape `T1/lmss/b/it' in size <7> not available
+(Font)              Font shape `T1/lmss/bx/it' tried instead on input line 259.
+
+LaTeX Font Info:    Font shape `T1/lmss/bx/it' in size <7> not available
+(Font)              Font shape `T1/lmss/bx/sl' tried instead on input line 259.
+
+LaTeX Font Info:    Font shape `T1/lmss/b/it' in size <5> not available
+(Font)              Font shape `T1/lmss/bx/it' tried instead on input line 259.
+
+LaTeX Font Info:    Font shape `T1/lmss/bx/it' in size <5> not available
+(Font)              Font shape `T1/lmss/bx/sl' tried instead on input line 259.
+
+
+
+LaTeX Font Warning: Font shape `T1/lmss/m/sc' in size <9> not available
+(Font)              Font shape `T1/lmr/m/sc' tried instead on input line 259.
+
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <9> on input line 259.
+LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <9> not available
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 259.
+[9
+
+]
+LaTeX Font Info:    Font shape `T1/lmss/bx/it' in size <10.95> not available
+(Font)              Font shape `T1/lmss/bx/sl' tried instead on input line 278.
+
+
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 27
+8.
+
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 27
+8.
+
+
+Overfull \vbox (18.28958pt too high) detected at line 278
+ []
+
+[10
+
+] [11
+
+]
 \tf@nav=\write7
 \openout7 = `slides.nav'.
 
@@ -1658,8 +1724,7 @@ Overfull \vbox (6.06952pt too high) detected at line 233
 \tf@snm=\write9
 \openout9 = `slides.snm'.
 
-
-(./slides.aux)
+ (./slides.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
@@ -1671,29 +1736,33 @@ Package logreq Info: Writing requests to 'slides.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 45922 strings out of 474116
- 1052524 string characters out of 5743683
- 1939187 words of memory out of 5000000
- 67482 multiletter control sequences out of 15000+600000
- 665013 words of font info for 105 fonts, out of 8000000 for 9000
+ 46034 strings out of 474116
+ 1055171 string characters out of 5743683
+ 1942187 words of memory out of 5000000
+ 67581 multiletter control sequences out of 15000+600000
+ 701245 words of font info for 127 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 128i,11n,123p,1130b,1643s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 128i,13n,123p,1130b,1643s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmcsc10.pfb></usr/l
 ocal/texlive/2024/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texli
 ve/2024/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2024/te
-xmf-dist/fonts/type1/public/lm/lmmi8.pfb></usr/local/texlive/2024/texmf-dist/fo
-nts/type1/public/lm/lmss10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/
-public/lm/lmss8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/l
-mssbo10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmssbx10.
-pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmsso10.pfb></usr
-/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmsso8.pfb></usr/local/tex
-live/2024/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2024/
-texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2024/texmf-dist/
-fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on slides.pdf (8 pages, 203923 bytes).
+xmf-dist/fonts/type1/public/lm/lmmi6.pfb></usr/local/texlive/2024/texmf-dist/fo
+nts/type1/public/lm/lmmi7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/p
+ublic/lm/lmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lm
+ss10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmss8.pfb></
+usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmss9.pfb></usr/local/t
+exlive/2024/texmf-dist/fonts/type1/public/lm/lmssbo10.pfb></usr/local/texlive/2
+024/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb></usr/local/texlive/2024/texm
+f-dist/fonts/type1/public/lm/lmsso10.pfb></usr/local/texlive/2024/texmf-dist/fo
+nts/type1/public/lm/lmsso8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/
+public/lm/lmsso9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/
+lmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmsy7.pfb>
+</usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/local
+/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on slides.pdf (11 pages, 269599 bytes).
 PDF statistics:
- 166 PDF objects out of 1000 (max. 8388607)
- 107 compressed objects within 2 object streams
- 17 named destinations out of 1000 (max. 500000)
- 121 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 255 PDF objects out of 1000 (max. 8388607)
+ 159 compressed objects within 2 object streams
+ 23 named destinations out of 1000 (max. 500000)
+ 259 words of extra memory for PDF output out of 10000 (max. 10000000)
 
