@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.6)  10 APR 2025 17:23
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.6)  23 APR 2025 13:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1714,6 +1714,37 @@ Overfull \vbox (18.28958pt too high) detected at line 278
 
 ] [11
 
+] [12
+
+]
+Overfull \vbox (6.47157pt too high) detected at line 322
+ []
+
+[13
+
+] [14
+
+] [15
+
+] [16
+
+]
+Overfull \vbox (10.60008pt too high) detected at line 389
+ []
+
+[17
+
+]
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 3
+93.
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/lm/t1lmtt.fd
+File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+) [18
+
+ </usr/local/texlive/2024/texmf-dist/tex/latex/beamer/beamericonarticle.pdf>] [
+19
+
+
 ]
 \tf@nav=\write7
 \openout7 = `slides.nav'.
@@ -1724,25 +1755,26 @@ Overfull \vbox (18.28958pt too high) detected at line 278
 \tf@snm=\write9
 \openout9 = `slides.snm'.
 
- (./slides.aux)
+
+(./slides.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
 Package rerunfilecheck Info: File `slides.out' has not changed.
-(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+(rerunfilecheck)             Checksum: 93AAE74C7C9D177DFE421A3AFA5CD24D;193.
 Package logreq Info: Writing requests to 'slides.run.xml'.
 \openout1 = `slides.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 46034 strings out of 474116
- 1055171 string characters out of 5743683
+ 46394 strings out of 474116
+ 1062800 string characters out of 5743683
  1942187 words of memory out of 5000000
- 67581 multiletter control sequences out of 15000+600000
- 701245 words of font info for 127 fonts, out of 8000000 for 9000
+ 67913 multiletter control sequences out of 15000+600000
+ 701564 words of font info for 128 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 128i,13n,123p,1130b,1643s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 128i,13n,123p,1344b,1651s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmcsc10.pfb></usr/l
 ocal/texlive/2024/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texli
 ve/2024/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2024/te
@@ -1758,11 +1790,12 @@ nts/type1/public/lm/lmsso8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/
 public/lm/lmsso9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/
 lmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmsy7.pfb>
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/local
-/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on slides.pdf (11 pages, 269599 bytes).
+/texlive/2024/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/local/texlive/2
+024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on slides.pdf (19 pages, 322519 bytes).
 PDF statistics:
- 255 PDF objects out of 1000 (max. 8388607)
- 159 compressed objects within 2 object streams
- 23 named destinations out of 1000 (max. 500000)
- 259 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 359 PDF objects out of 1000 (max. 8388607)
+ 243 compressed objects within 3 object streams
+ 47 named destinations out of 1000 (max. 500000)
+ 311 words of extra memory for PDF output out of 10000 (max. 10000000)
 

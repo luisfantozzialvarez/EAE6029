@@ -290,14 +290,110 @@ A escolha de pesos $A$ implícita ao estimador de MQO em dois estágios possui p
 	$$\operatorname{Avar}(\sqrt{n}(\hat{\gamma}_{C}-\beta)) - \operatorname{Avar}(\sqrt{n}(\hat{b}_{\text{2SLS}}-\beta)) \text{ é positiva semidefinida}$$
 \end{proposition}
 \end{frame}
-\end{document}
 
+\begin{frame}{Teste de relevância}
+	\begin{itemize}
+		\item Assim como no estimador de Wald, é possível usar o primeiro estágio para testar a hipótese de relevância de que $\mathbb{E}[ZX']$ tem posto $k$.
+		\begin{itemize}
+			\item Se só há somente uma variável endógena em $X$, só há efetivamente um primeiro estágio a ser rodado (por quê?), e podemos testar relevância realizando um teste de Wald de que os coeficientes de primeiro estágio associados aos instrumentos excluídos (isto é, que não constam entre as variáveis exógenas em $X$) são todos iguais a zero.
+			\item Se há mais de uma endógena, temos de fazer um teste de Wald multi-equação, que pode ser construído a partir do ``empilhamento'' dos diferentes primeiros estágios (veja o livro do Wooldridge para mais discussão).
+		\end{itemize}
+	\end{itemize}
+\end{frame}
 \begin{frame}{Teste de endogeneidade}
-	conteúdo...
+\begin{itemize}
+	\item Se $Z \neq X$, é possível construir um teste da hipótese nula:
+	$$\operatorname{cov}(X,U) = 0$$
+	contra a alternativa de que $\operatorname{cov}(X,U)\neq =0$.
+	\item Ideia é basear teste em estatística de Wald que meça a  ``magnitude'' de:
+	
+	$$\frac{1}{n}\sum_{i=1}^n X_i (Y_i - X_i'\hat{b}_{2SLS})$$
+	\vspace{-1em}
+	\begin{itemize}
+		\item Observe que, se $Z = X$, $\hat{b}_{2SLS}=\hat{b}_{MQO}$, e essa magnitude sempre seria zero (teste teria poder trivial).
+	\end{itemize}
+	\item Não é difícil ver que a magnitude da covariância entre o resíduo do estimador de 2SLS e $X$ depende crucialmente da diferença:
+	$$\hat{b}_{MQO} -\hat{b}_{2SLS}\, .$$
+	\vspace{-1em}
+	\begin{itemize}
+		\item Aplicação do {\color{blue}princípio de Hausman} para a construção de testes, em que comparamos dois estimadores, sendo que um deles é consistente sob a nula e inconsistente sob a alternativa (MQO), enquanto o outro é consistente sob a nula e a alternativa (2SLS) (ver Wooldridge).
+	\end{itemize}
+\end{itemize}
 \end{frame}
 
 \begin{frame}{Teste de restrições sobreidentificadoras}
-	conteúdo...
+\begin{itemize}
+	\item Quando $l > k$, é possível construir um teste para a hipótese nula:
+	$$\mathbb{E}[Zu]=0$$
+	contra a alternativa de que $$\mathbb{E}[Zu]\neq0$$ com base em uma estatística de Wald que meça a magnitude de:
+	
+		$$\frac{1}{n}\sum_{i=1}^n Z_i (Y_i - X_i'\hat{b}_{2SLS})$$
+		\begin{itemize}
+			\item Se $l = k$, essa magnitude é igual a zero, e poder do teste seria trivial.
+		\end{itemize}
+		\item Teste baseado no fato de que há mais instrumentos que o necessário para a identificação (restrições sobreidentificadoras).
+		\begin{itemize}
+			\item Rejeição da nula não aponta \textbf{qual} instrumento é inválido.
+			\item Ver Wooldridge para a construção do teste.
+		\end{itemize}
+\end{itemize}
 \end{frame}
+
+\begin{frame}{interpretação sob heterogeneidade}
+	\begin{itemize}
+		\item Os resultados de identificação apresentados anteriormente suponham um modelo causal linear.
+		\item \citet{Imbens1994} estudam a interpretação do estimando de Wald sob um modelo causal heterogêneo.
+		\item Vamos considerar um resultado de interesse $Y$, causa binária $X \in \{0,1\}$ cujo efeito queremos aferir, e um instrumento binário $Z \in \{0,1\}$.
+		\item Definimos os seguintes resultados potenciais, associados a manipulações hipotéticas das causas e dos instrumentos:
+		
+		$$Y(d,z), \quad (d,z) \in \{0,1\}^2$$
+		$$D(z), \quad z \in \{0,1\}^2$$
+		\item As variáveis observáveis são dadas por:
+		{\small 
+		$$D = Z D(1)+(1-Z) D(0)\, ,$$
+		$$Y = ZD Y(1,1) + (1-Z)DY(1,0) + Z(1-D) Y(0,1) + (1-Z)(1-D) Y(0,0)$$
+	}
+	\end{itemize}
+\end{frame}
+\begin{frame}{Hipóteses sobre o modelo causal heterogêneo}
+\begin{itemize}
+	\item 	\citet{Imbens1994} supõem as seguintes hipóteses sobre o modelo causal:
+	\begin{enumerate}
+		\item \textbf{Exclusão:} $$Y(d,0)= Y(d,1) =: Y(d)\, ,\quad d \in \{),1\}$$.
+		\item \textbf{Independênca} $Z$ é independente de $\{Y(0), Y(1), D(1), D(0)\}$.
+		\item \textbf{Relevância}: $$\frac{\operatorname{cov}(D,Z)}{\operatorname{var}(Z)} = \mathbb{E}[D|Z=1] - \mathbb{E}[D|Z=0]\neq 0$$.
+		\item  \text{Monotonicidade:} ou $\mathbb{P}[D(1)\geq D(0)]=1$, ou $\mathbb{P}[D(1)\leq D(0)]=1$.
+	\end{enumerate}
+	\begin{itemize}
+		\item Hipótese de monotonicidade requer que tratamento exerça um efeito unidirecional sobre o tratamento $D$ na população de interesse.
+		\begin{itemize}
+			\item Ou manipulação de $Z=0$ para $Z=1$ aumenta (fracamente) o valor de $D$ para todos os indivíduos na população, ou diminui.
+		\end{itemize}
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{\citet{Imbens1994}}
+	\begin{proposition}
+		Sob as hipótese 1-4, estimando de Wald:
+		
+		$$\gamma_{\text{Wald}} =\frac{\operatorname{cov}(Y,Z)}{\operatorname{cov}(D,Z)} =\frac{\mathbb{E}[Y|Z=1] -\mathbb{E}[Y|Z=0]}{\mathbb{E}[D|Z=1]-\mathbb{E}[D|Z=0]}$$
+		é igual ao efeito médio do tratamento na subpopulação induzida ao tratamento pelo instrumento (\textit{compliers}), isto é:
+		
+		$$\gamma_{\text{Wald}} =  \frac{\mathbb{E}[(Y(1)-Y(0))\mathbf{1}_{D(1)\neq D(0)}]}{\mathbb{P}[D(1)\neq D(0)]} =\mathbb{E}[Y(1)-Y(0)|D(1)\neq D(0)]$$
+	\end{proposition}
+	\begin{itemize}
+		\item Estimando identifica um efeito médio de tratamento local (LATE).
+		\item Existem extensões para instrumentos discretos \citep{Imbens1994}, tratamentos ordenados \citep{Angrist1995}, tratamentos contínuos \citet{Angrist2000}, especificações com controles (2SLS) \citep{Stoczynski2022,blandhol2022tsls}, instrumentos contínuos \citep{Alvarez2024}.
+	\end{itemize}
+\end{frame}
+\appendix
+\begin{frame}[allowframebreaks]
+	\printbibliography
+\end{frame}
+
+\end{document}
+
+
 
 

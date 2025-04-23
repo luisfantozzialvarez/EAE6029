@@ -19,142 +19,258 @@
 
 \refsection{0}
   \datalist[entry]{nyt/global//global/global}
-    \entry{Haavelmo1944}{article}{}
-      \name{author}{1}{}{%
-        {{hash=50beac29154cfda3b77a2b40a8679b08}{%
-           family={Haavelmo},
-           familyi={H\bibinitperiod},
-           given={Trygve},
-           giveni={T\bibinitperiod}}}%
+    \entry{Alvarez2024}{article}{}
+      \name{author}{2}{}{%
+        {{hash=cee8c157d3d12086620b99d8a8d9b439}{%
+           family={Alvarez},
+           familyi={A\bibinitperiod},
+           given={Luis\bibnamedelima A.F.},
+           giveni={L\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=9d581f92d9da0579c8c779797e1e7995}{%
+           family={Toneto},
+           familyi={T\bibinitperiod},
+           given={Rodrigo},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{eec26e91e51d9c5ba1d3d9998336020c}
+      \strng{fullhash}{eec26e91e51d9c5ba1d3d9998336020c}
+      \strng{bibnamehash}{eec26e91e51d9c5ba1d3d9998336020c}
+      \strng{authorbibnamehash}{eec26e91e51d9c5ba1d3d9998336020c}
+      \strng{authornamehash}{eec26e91e51d9c5ba1d3d9998336020c}
+      \strng{authorfullhash}{eec26e91e51d9c5ba1d3d9998336020c}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This note introduces a novel weighted local average treatment effect representation for the two-stages least-squares (2SLS) estimand in the continuous instrument with binary treatment case. Under standard conditions, we obtain weights that are nonnegative, integrate to unity, and assign larger values to instrument support points that deviate from their average. Our representation does not require instruments to be discretized nor relies on limiting arguments, such as those used in the definition of the marginal treatment effect (MTE). The pattern of the weights also has a clear interpretation. We believe these features of the representation to be useful for applied researchers when communicating their results. As a direct byproduct of our approach, we also obtain a representation of the 2SLS estimand as a weighted average of treatment effects among “marginal compliance” groups, without having to resort to the threshold-crossing representation underlying the MTE construction. The latter representation has an intuitive interpretation as well.}
+      \field{issn}{0165-1765}
+      \field{journaltitle}{Economics Letters}
+      \field{title}{The interpretation of 2SLS with a continuous instrument: A weighted LATE representation}
+      \field{volume}{237}
+      \field{year}{2024}
+      \field{pages}{111658}
+      \range{pages}{1}
+      \verb{doi}
+      \verb https://doi.org/10.1016/j.econlet.2024.111658
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/S0165176524001411
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/S0165176524001411
+      \endverb
+      \keyw{Instrumental variables,Local average treatment effects,Underlying weights}
+    \endentry
+    \entry{Angrist2000}{article}{}
+      \name{author}{3}{}{%
+        {{hash=ee326f34eea24952d04c41cef1771bfc}{%
+           family={Angrist},
+           familyi={A\bibinitperiod},
+           given={Joshua\bibnamedelima D.},
+           giveni={J\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=1f07b0a68bdaca41b9a592c1b7a48879}{%
+           family={Graddy},
+           familyi={G\bibinitperiod},
+           given={Kathryn},
+           giveni={K\bibinitperiod}}}%
+        {{hash=9f4fa8d00c0311b9cdad0f20ad429e57}{%
+           family={Imbens},
+           familyi={I\bibinitperiod},
+           given={Guido\bibnamedelima W.},
+           giveni={G\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {[Oxford University Press, Review of Economic Studies, Ltd.]}%
+      }
+      \strng{namehash}{7e840a30008478122d1ff3936cb6fd8d}
+      \strng{fullhash}{7e840a30008478122d1ff3936cb6fd8d}
+      \strng{bibnamehash}{7e840a30008478122d1ff3936cb6fd8d}
+      \strng{authorbibnamehash}{7e840a30008478122d1ff3936cb6fd8d}
+      \strng{authornamehash}{7e840a30008478122d1ff3936cb6fd8d}
+      \strng{authorfullhash}{7e840a30008478122d1ff3936cb6fd8d}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{In markets where prices are determined by the intersection of supply and demand curves, standard identification results require the presence of instruments that shift one curve but not the other. These results are typically presented in the context of linear models with fixed coefficients and additive residuals. The first contribution of this paper is an investigation of the consequences of relaxing both the linearity and the additivity assumption for the interpretation of linear instrumental variables estimators. Without these assumptions, the standard linear instrumental variables estimator identifies a weighted average of the derivative of the behavioural relationship of interest. A second contribution is the formulation of critical identifying assumptions in terms of demand and supply at different prices and instruments, rather than in terms of functional-form specific residuals. Our approach to the simultaneous equations problem and the average-derivative interpretation of instrumental variables estimates is illustrated by estimating the demand for fresh whiting at the Fulton fish market. Strong and credible instruments for identification of this demand function are available in the form of weather conditions at sea.}
+      \field{issn}{00346527, 1467937X}
+      \field{journaltitle}{The Review of Economic Studies}
+      \field{number}{3}
+      \field{title}{The Interpretation of Instrumental Variables Estimators in Simultaneous Equations Models with an Application to the Demand for Fish}
+      \field{urlday}{16}
+      \field{urlmonth}{10}
+      \field{urlyear}{2023}
+      \field{volume}{67}
+      \field{year}{2000}
+      \field{urldateera}{ce}
+      \field{pages}{499\bibrangedash 527}
+      \range{pages}{29}
+      \verb{urlraw}
+      \verb http://www.jstor.org/stable/2566964
+      \endverb
+      \verb{url}
+      \verb http://www.jstor.org/stable/2566964
+      \endverb
+    \endentry
+    \entry{Angrist1995}{article}{}
+      \name{author}{2}{}{%
+        {{hash=ee326f34eea24952d04c41cef1771bfc}{%
+           family={Angrist},
+           familyi={A\bibinitperiod},
+           given={Joshua\bibnamedelima D.},
+           giveni={J\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=9f4fa8d00c0311b9cdad0f20ad429e57}{%
+           family={Imbens},
+           familyi={I\bibinitperiod},
+           given={Guido\bibnamedelima W.},
+           giveni={G\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Taylor & Francis}%
+      }
+      \strng{namehash}{fb6fa0691b2637fa874fbf6303f66473}
+      \strng{fullhash}{fb6fa0691b2637fa874fbf6303f66473}
+      \strng{bibnamehash}{fb6fa0691b2637fa874fbf6303f66473}
+      \strng{authorbibnamehash}{fb6fa0691b2637fa874fbf6303f66473}
+      \strng{authornamehash}{fb6fa0691b2637fa874fbf6303f66473}
+      \strng{authorfullhash}{fb6fa0691b2637fa874fbf6303f66473}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of the American Statistical Association}
+      \field{number}{430}
+      \field{title}{Two-Stage Least Squares Estimation of Average Causal Effects in Models with Variable Treatment Intensity}
+      \field{volume}{90}
+      \field{year}{1995}
+      \field{pages}{431\bibrangedash 442}
+      \range{pages}{12}
+      \verb{doi}
+      \verb 10.1080/01621459.1995.10476535
+      \endverb
+    \endentry
+    \entry{blandhol2022tsls}{report}{}
+      \name{author}{4}{}{%
+        {{hash=2a9fa65b3c6e349ef1c580372dd0208e}{%
+           family={Blandhol},
+           familyi={B\bibinitperiod},
+           given={Christine},
+           giveni={C\bibinitperiod}}}%
+        {{hash=3b42f61bd9e5939f0f6964228c26a7aa}{%
+           family={Bonney},
+           familyi={B\bibinitperiod},
+           given={John},
+           giveni={J\bibinitperiod}}}%
+        {{hash=98a93a8ebb93b69e901fdf1b9926a748}{%
+           family={Mogstad},
+           familyi={M\bibinitperiod},
+           given={Magne},
+           giveni={M\bibinitperiod}}}%
+        {{hash=960e90343c415de5ae46d33cad473d25}{%
+           family={Torgovitsky},
+           familyi={T\bibinitperiod},
+           given={Alexander},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {National Bureau of Economic Research}%
+      }
+      \strng{namehash}{9a74f3f5dc2292956b44e4258b5e5de4}
+      \strng{fullhash}{479413743a447c1f5aab3ad15282d317}
+      \strng{bibnamehash}{9a74f3f5dc2292956b44e4258b5e5de4}
+      \strng{authorbibnamehash}{9a74f3f5dc2292956b44e4258b5e5de4}
+      \strng{authornamehash}{9a74f3f5dc2292956b44e4258b5e5de4}
+      \strng{authorfullhash}{479413743a447c1f5aab3ad15282d317}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{When is TSLS actually late?}
+      \field{type}{techreport}
+      \field{year}{2022}
+    \endentry
+    \entry{Imbens1994}{article}{}
+      \name{author}{2}{}{%
+        {{hash=9f4fa8d00c0311b9cdad0f20ad429e57}{%
+           family={Imbens},
+           familyi={I\bibinitperiod},
+           given={Guido\bibnamedelima W.},
+           giveni={G\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+        {{hash=ee326f34eea24952d04c41cef1771bfc}{%
+           family={Angrist},
+           familyi={A\bibinitperiod},
+           given={Joshua\bibnamedelima D.},
+           giveni={J\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
       }
       \list{publisher}{1}{%
         {[Wiley, Econometric Society]}%
       }
-      \strng{namehash}{50beac29154cfda3b77a2b40a8679b08}
-      \strng{fullhash}{50beac29154cfda3b77a2b40a8679b08}
-      \strng{bibnamehash}{50beac29154cfda3b77a2b40a8679b08}
-      \strng{authorbibnamehash}{50beac29154cfda3b77a2b40a8679b08}
-      \strng{authornamehash}{50beac29154cfda3b77a2b40a8679b08}
-      \strng{authorfullhash}{50beac29154cfda3b77a2b40a8679b08}
-      \field{sortinit}{H}
-      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \strng{namehash}{f50c6335d6f592bc253fb31d4b8ee774}
+      \strng{fullhash}{f50c6335d6f592bc253fb31d4b8ee774}
+      \strng{bibnamehash}{f50c6335d6f592bc253fb31d4b8ee774}
+      \strng{authorbibnamehash}{f50c6335d6f592bc253fb31d4b8ee774}
+      \strng{authornamehash}{f50c6335d6f592bc253fb31d4b8ee774}
+      \strng{authorfullhash}{f50c6335d6f592bc253fb31d4b8ee774}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{issn}{00129682, 14680262}
       \field{journaltitle}{Econometrica}
-      \field{title}{The Probability Approach in Econometrics}
-      \field{urlday}{6}
-      \field{urlmonth}{8}
-      \field{urlyear}{2024}
-      \field{volume}{12}
-      \field{year}{1944}
+      \field{number}{2}
+      \field{title}{Identification and Estimation of Local Average Treatment Effects}
+      \field{urlday}{13}
+      \field{urlmonth}{10}
+      \field{urlyear}{2023}
+      \field{volume}{62}
+      \field{year}{1994}
       \field{urldateera}{ce}
-      \field{pages}{iii\bibrangedash 115}
-      \range{pages}{113}
+      \field{pages}{467\bibrangedash 475}
+      \range{pages}{9}
       \verb{urlraw}
-      \verb http://www.jstor.org/stable/1906935
+      \verb http://www.jstor.org/stable/2951620
       \endverb
       \verb{url}
-      \verb http://www.jstor.org/stable/1906935
+      \verb http://www.jstor.org/stable/2951620
       \endverb
     \endentry
-    \entry{Heckman2024}{article}{}
-      \name{author}{2}{}{%
-        {{hash=31a1496cdbf5dc77b32758042c61ba9c}{%
-           family={Heckman},
-           familyi={H\bibinitperiod},
-           given={James},
-           giveni={J\bibinitperiod}}}%
-        {{hash=849dd9a14dde0cb5a20e04bb03796903}{%
-           family={Pinto},
-           familyi={P\bibinitperiod},
-           given={Rodrigo},
-           giveni={R\bibinitperiod}}}%
+    \entry{Stoczynski2022}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=a51435579b241e6e160ab43f38b40380}{%
+           family={Słoczyński},
+           familyi={S\bibinitperiod},
+           given={Tymon},
+           giveni={T\bibinitperiod}}}%
       }
-      \strng{namehash}{10861d2a81d410c6277928f7f0e99a94}
-      \strng{fullhash}{10861d2a81d410c6277928f7f0e99a94}
-      \strng{bibnamehash}{10861d2a81d410c6277928f7f0e99a94}
-      \strng{authorbibnamehash}{10861d2a81d410c6277928f7f0e99a94}
-      \strng{authornamehash}{10861d2a81d410c6277928f7f0e99a94}
-      \strng{authorfullhash}{10861d2a81d410c6277928f7f0e99a94}
-      \field{extraname}{1}
-      \field{sortinit}{H}
-      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \strng{namehash}{a51435579b241e6e160ab43f38b40380}
+      \strng{fullhash}{a51435579b241e6e160ab43f38b40380}
+      \strng{bibnamehash}{a51435579b241e6e160ab43f38b40380}
+      \strng{authorbibnamehash}{a51435579b241e6e160ab43f38b40380}
+      \strng{authornamehash}{a51435579b241e6e160ab43f38b40380}
+      \strng{authorfullhash}{a51435579b241e6e160ab43f38b40380}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{abstract}{This paper examines the econometric causal model and the interpretation of empirical evidence based on thought experiments that was developed by Ragnar Frisch and Trygve Haavelmo. We compare the econometric causal model with two currently popular causal frameworks: the Neyman–Rubin causal model and the Do-Calculus. The Neyman–Rubin causal model is based on the language of potential outcomes and was largely developed by statisticians. Instead of being based on thought experiments, it takes statistical experiments as its foundation. The Do-Calculus, developed by Judea Pearl and co-authors, relies on Directed Acyclic Graphs (DAGs) and is a popular causal framework in computer science and applied mathematics. We make the case that economists who uncritically use these frameworks often discard the substantial benefits of the econometric causal model to the detriment of more informative analyses. We illustrate the versatility and capabilities of the econometric framework using causal models developed in economics.}
-      \field{issn}{0304-4076}
-      \field{journaltitle}{Journal of Econometrics}
-      \field{number}{1}
-      \field{title}{Econometric causality: The central role of thought experiments}
-      \field{volume}{243}
-      \field{year}{2024}
-      \field{pages}{105719}
-      \range{pages}{1}
-      \verb{doi}
-      \verb https://doi.org/10.1016/j.jeconom.2024.105719
-      \endverb
-      \verb{urlraw}
-      \verb https://www.sciencedirect.com/science/article/pii/S0304407624000654
-      \endverb
-      \verb{url}
-      \verb https://www.sciencedirect.com/science/article/pii/S0304407624000654
-      \endverb
-      \keyw{Structural equation models,Causality,Causal inference,Directed acyclic graphs,Simultaneous causality}
-    \endentry
-    \entry{Heckman2022}{article}{}
-      \name{author}{2}{}{%
-        {{hash=b70b920520f54634a1f03f9312707db2}{%
-           family={Heckman},
-           familyi={H\bibinitperiod},
-           given={James\bibnamedelima J.},
-           giveni={J\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
-        {{hash=849dd9a14dde0cb5a20e04bb03796903}{%
-           family={Pinto},
-           familyi={P\bibinitperiod},
-           given={Rodrigo},
-           giveni={R\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {Annual Reviews}%
-      }
-      \strng{namehash}{f8126b22853b3df532011c15ef351228}
-      \strng{fullhash}{f8126b22853b3df532011c15ef351228}
-      \strng{bibnamehash}{f8126b22853b3df532011c15ef351228}
-      \strng{authorbibnamehash}{f8126b22853b3df532011c15ef351228}
-      \strng{authornamehash}{f8126b22853b3df532011c15ef351228}
-      \strng{authorfullhash}{f8126b22853b3df532011c15ef351228}
-      \field{extraname}{2}
-      \field{sortinit}{H}
-      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{abstract}{This article discusses the econometric model of causal policy analysis and two alternative frameworks that are popular in statistics and computer science. By employing the alternative frameworks uncritically, economists ignore the substantial advantages of an econometric approach, and this results in less informative analyses of economic policy. We show that the econometric approach to causality enables economists to characterize and analyze a wider range of policy problems than is allowed by alternative approaches.}
-      \field{issn}{1941-1391}
-      \field{journaltitle}{Annual Review of Economics}
-      \field{number}{Volume 14, 2022}
-      \field{title}{The Econometric Model for Causal Policy Analysis}
-      \field{type}{Journal Article}
-      \field{volume}{14}
+      \field{eprintclass}{econ.EM}
+      \field{eprinttype}{arXiv}
+      \field{title}{When Should We (Not) Interpret Linear IV Estimands as LATE?}
       \field{year}{2022}
-      \field{pages}{893\bibrangedash 923}
-      \range{pages}{31}
-      \verb{doi}
-      \verb https://doi.org/10.1146/annurev-economics-051520-015456
+      \verb{eprint}
+      \verb 2011.06695
       \endverb
-      \verb{urlraw}
-      \verb https://www.annualreviews.org/content/journals/10.1146/annurev-economics-051520-015456
-      \endverb
-      \verb{url}
-      \verb https://www.annualreviews.org/content/journals/10.1146/annurev-economics-051520-015456
-      \endverb
-      \keyw{causality}
     \endentry
   \enddatalist
 \endrefsection
