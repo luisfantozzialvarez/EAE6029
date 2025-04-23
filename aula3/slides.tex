@@ -135,7 +135,7 @@ natbib=true
 		\item Suponha que observemos uma variável $Z$ que satisfaz:
 		\begin{itemize}
 			\item (Relevância) $\operatorname{cov}(Z,X)\neq0$.
-			\item (Exogeneidade ou exclusão)  $\operatorname{cov}(X,U)=0$
+			\item (Exogeneidade ou exclusão)  $\operatorname{cov}(Z,U)=0$
 		\end{itemize}
 		\item À variável $Z$ damos o nome de {\color{green}instrumento}:
 		\begin{itemize}
@@ -157,8 +157,8 @@ natbib=true
 	\begin{itemize}
 		\item Dada uma amostra aleatória $(Y_i,X_i,Z_i)\sim (Y,X,Z)$, resultado anterior sugere que estimemos o efeito causal como:
 		
-		$$\hat{\gamma}_{\text{Wald}} = \frac{\widehat{\operatorname{cov}(Z,Y)}}{\widehat{\operatorname{cov}(Z,X)}} = \frac{\hat{b}_{Y,Z}}{\hat{b}_{Z,X}}\, ,$$
-		onde $\hat{b}_{S,Z}$ é o estimador de MQO para o coeficiente de $S$ numa regressão de $S$ num intercepto e $Z$.
+		$$\hat{\gamma}_{\text{Wald}} = \frac{\widehat{\operatorname{cov}(Z,Y)}}{\widehat{\operatorname{cov}(Z,X)}} = \frac{\hat{b}_{Y,Z}}{\hat{b}_{X,Z}}\, ,$$
+		onde $\hat{b}_{S,Z}$ é o estimador de MQO para o coeficiente de $Z$ numa regressão de $S$ num intercepto e $Z$.
 		\item Sob condições de regularidade da aula anterior, vimos que, com $n \to \infty$ $$\hat{b}_{Y,Z} \overset{p}{\to} \frac{\operatorname{cov}(Y,Z)}{\mathbb{V}(Z)}$$
 		
 		$$\hat{b}_{X,Z} \overset{p}{\to} \frac{\operatorname{cov}(X,Z)}{\mathbb{V}(Z)}$$
@@ -194,7 +194,10 @@ onde $X$ é um vetor de $k$ causas observadas.
 \end{itemize}
 
 \begin{itemize}
-	\item Note que a hipótese de exogeneidade é equivalente a $\operatorname{cov}(Z,\epsilon)=0$ quando $X$ inclui um intercepto, pois nesse caso podemos supor que $U$ tem média zero ``absorvendo sua média'' ao intercepto.
+	\item Note que a hipótese de exogeneidade é equivalente a $\operatorname{cov}(Z,U)=0$ quando $X$ inclui um intercepto, pois nesse caso podemos supor que $U$ tem média zero ``absorvendo sua média'' ao intercepto.
+	\begin{itemize}
+		\item Note, no entanto, que isso muda a interpretação do intercepto, que supomos não ser de interesse direto no caso.
+	\end{itemize}
 \end{itemize}
 
 \end{frame}
@@ -204,7 +207,7 @@ onde $X$ é um vetor de $k$ causas observadas.
 	\item A condição de relevância implica que necessitamos de $l\geq k$ variáveis que exibam suficiente variação com as causas $X$, e que não exibam associação com as causas $U$.
 	\begin{itemize}
 		\item Se uma entrada $X_j$ é {\color{blue}exógena} por hipótese, i.e. $\mathbb{E}[X_j U] = 0$, podemos incluí-la entre os instrumentos $Z$.
-		\item Por outro lado, para cada variável $X_s$  {\color{blue}endógena}, i.e. tal que potencialmente $\mathbb{E}[X_j U] \neq 0$, precisamos de pelo menos um instrumento que exiba associação com as causas observadas, mas não com as causas não observadas.
+		\item Por outro lado, para cada variável $X_s$  {\color{blue}endógena}, i.e. tal que potencialmente $\mathbb{E}[X_s U] \neq 0$, precisamos de pelo menos um instrumento que exiba associação com as causas observadas, mas não com as causas não observadas.
 	\end{itemize}
 \end{itemize}
 \end{frame}
@@ -249,7 +252,7 @@ onde $X$ é um vetor de $k$ causas observadas.
 	onde $P_{\boldsymbol{Z}}$ é a matriz de projeção de $\boldsymbol{Z}$.
 	\item Estimador pode ser obtido em dois estágios
 	\begin{itemize}
-		\item Primeiro, regredimos cada uma das $v=1\,l\dots,k$ variáveis em$\boldsymbol{X}$, $X_{i,v}$, em $Z_i$, e guardamos os valores preditos $\hat{X}_{i,v} = \hat{c}_{v}'Z_i$.
+		\item Primeiro, regredimos cada uma das $v=1\,2\dots,k$ variáveis em$\boldsymbol{X}$, $X_{i,v}$, em $Z_i$, e guardamos os valores preditos $\hat{X}_{i,v} = \hat{c}_{v}'Z_i$.
 		\begin{itemize}
 			\item Note que $\hat{X}_{i,v} = X_{i,v} $ se $X_{v}$ é variável inclusa em $Z$. 
 		\end{itemize}
@@ -304,7 +307,7 @@ A escolha de pesos $A$ implícita ao estimador de MQO em dois estágios possui p
 \begin{itemize}
 	\item Se $Z \neq X$, é possível construir um teste da hipótese nula:
 	$$\operatorname{cov}(X,U) = 0$$
-	contra a alternativa de que $\operatorname{cov}(X,U)\neq =0$.
+	contra a alternativa de que $\operatorname{cov}(X,U)\neq 0$.
 	\item Ideia é basear teste em estatística de Wald que meça a  ``magnitude'' de:
 	
 	$$\frac{1}{n}\sum_{i=1}^n X_i (Y_i - X_i'\hat{b}_{2SLS})$$
@@ -343,7 +346,7 @@ A escolha de pesos $A$ implícita ao estimador de MQO em dois estágios possui p
 	\begin{itemize}
 		\item Os resultados de identificação apresentados anteriormente suponham um modelo causal linear.
 		\item \citet{Imbens1994} estudam a interpretação do estimando de Wald sob um modelo causal heterogêneo.
-		\item Vamos considerar um resultado de interesse $Y$, causa binária $X \in \{0,1\}$ cujo efeito queremos aferir, e um instrumento binário $Z \in \{0,1\}$.
+		\item Vamos considerar um resultado de interesse $Y$, causa binária $D \in \{0,1\}$ cujo efeito queremos aferir, e um instrumento binário $Z \in \{0,1\}$.
 		\item Definimos os seguintes resultados potenciais, associados a manipulações hipotéticas das causas e dos instrumentos:
 		
 		$$Y(d,z), \quad (d,z) \in \{0,1\}^2$$
