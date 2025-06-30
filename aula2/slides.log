@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.6)  10 APR 2025 10:51
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.6)  30 JUN 2025 16:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1852,13 +1852,13 @@ Package logreq Info: Writing requests to 'slides.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 46292 strings out of 474116
- 1059834 string characters out of 5743683
+ 46274 strings out of 474116
+ 1059470 string characters out of 5743683
  1944187 words of memory out of 5000000
- 67767 multiletter control sequences out of 15000+600000
+ 67749 multiletter control sequences out of 15000+600000
  728627 words of font info for 144 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 128i,18n,123p,1130b,1647s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 128i,18n,123p,719b,1647s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmcsc10.pfb></usr/l
 ocal/texlive/2024/texmf-dist/fonts/type1/public/lm/lmcsco10.pfb></usr/local/tex
 live/2024/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texlive/2024/
@@ -1885,7 +1885,7 @@ fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type
 24/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/local/texlive/2024/texmf-d
 ist/fonts/type1/public/lm/lmtt9.pfb></usr/local/texlive/2024/texmf-dist/fonts/t
 ype1/public/amsfonts/symbols/msbm10.pfb>
-Output written on slides.pdf (41 pages, 530500 bytes).
+Output written on slides.pdf (41 pages, 533889 bytes).
 PDF statistics:
  568 PDF objects out of 1000 (max. 8388607)
  375 compressed objects within 4 object streams
