@@ -22,8 +22,8 @@ natbib=true
 \usepackage{geometry}
 \addbibresource{../bibliography.bib}
 
-\title{}
-\author{\normalsize Exercícios sobre Estimação por MQO}
+\title{EAE6029}
+\author{Exercícios sobre Estimação por MQO}
 \date{}
 \begin{document}
 	\maketitle
@@ -57,8 +57,23 @@ natbib=true
  	\item[f] Usando a  lei da variância total e os dois resultados anteriores, mostre que a diferença entre as variâncias \emph{incondicionais} de $\tilde{b}_1$ e $\hat{b}_1$ se fatoram em dois termos, $A$ e $B$, em que $A$ é a esperança de uma matriz aleatória positiva semidefinida e $B$ a esparança de uma matriz negativa semidefinida. Proveja uma intuição para esse resultado. Se o interesse reside em $\beta_1$, quando fará sentido incluir $\boldsymbol{X}_2$ na regressão?
  	\item[g] Mostre que se $\beta_2 = 0$, então  $\mathbb{V}[\hat{\beta}_1] - \mathbb{V}[\tilde{\beta}_1] $ é positiva semidefinida. Esse resultado contradiz o teorema de Gauss-Markov? Por quê?
  \end{itemize}
+ \vspace{1em}
+
+		Para os próximos dois exercícios, suponha sempre que as variáveis aleatórias têm variância estritamente positiva e finita.
+			
+ \paragraph{Exercício 4} Considere variáveis aleatórias $Y$ e $D$ cuja distribuição conjunta representa a distribuição, em uma população de interesse, de um resultado de interesse $Y$, e uma causa binária ($D$) cujos efeitos causais desejamos aferir. Defina as variáveis aleatórias $Y(0)$ e $Y(1)$ correspondentes ao experimento hipotético de se amostrar um indivíduo da população e manipular (\textit{ceteris paribus}) a causa binária para $0$ ($Y(0)$) e $1$ ($Y(1)$), de modo que o resultado observado é dado por $Y = DY(1)+(1-D)Y(0)$. Vamos supor que $D$ é independente de $(Y(0),Y(1))$, de modo que não há associação sistemática, na população, entre o valor observado da causa binária e os resultados que seriam observados caso o tratamento fosse fixado externamente em $0$ ou em $1$. 
  
-  \paragraph{Exercício 4} Suponha que você esteja interessado em estudar o efeito de infraestrutura escolar no desempenho escolar médio dos aluno. Você possui acesso a uma amostra aleatória de municípios, para os quais você observa o desempenho escolar médio dos alunos de $C$ escolas, $c=1,\ldots, C$, em cada um dos $M$ munícipios,  $m=1,\ldots, M$, amostrados ($Y_{c,m}$), e uma medida de conectividade da escola à Internet, em \textit{megabytes por segundo} (mbps) ($X_{c,m}$). Você então postula o seguinte modelo causal linear para $Y_{c,m}$
+ \begin{itemize}
+ 	\item[a] Mostre que $Y$ pode ser escrito como:
+ 	$$Y = \alpha + \beta D + U \, ,$$
+ 	onde $\beta = \mathbb{E}[Y(1)-Y(0)]$ é o efeito esperado de se amostrar um indivíduo da população e avaliar o efeito da causa $D$ sobre ele; $\mathbb{E}[U] =0$ e $\operatorname{cov}(D,U) =0$. 
+ 	\item[b]   Mostre que o estimador de MQO do coeficiente associado a $D$ numa regressão de $Y$ num intercepto, com base numa amostra aleatória de $(D,Y)$, é consistente para $\beta$. O estimador é não viciado para $\beta$? Justifique.
+ 	\item[c] Mostre que, se não houver heterogeneidade no efeito do tratamento, i.e. $\mathbb{V}[Y(1)-Y(0)]=0$, então existirá $\sigma^2$ tal que a variável aleatória $U$ do modelo definido no item (a) satisfaz: $\mathbb{V}[U|D] = \sigma^2$ (com probabilidade 1).
+ 	\item[d] Com base no resultado do item anterior e numa amostra aleatória de $(D,Y)$, sugira um teste para a hipótese nula de que não há heterogeneidade no efeito do tratamento, contra a alternativa de que há.
+ \end{itemize}
+ 
+ 
+  \paragraph{Exercício 5} Suponha que você esteja interessado em estudar o efeito de infraestrutura escolar no desempenho escolar médio dos aluno. Você possui acesso a uma amostra aleatória de municípios, para os quais você observa o desempenho escolar médio dos alunos de $C$ escolas, $c=1,\ldots, C$, em cada um dos $M$ munícipios,  $m=1,\ldots, M$, amostrados ($Y_{c,m}$), e uma medida de conectividade da escola à Internet, em \textit{megabytes por segundo} (mbps) ($X_{c,m}$). Você então postula o seguinte modelo causal linear para $Y_{c,m}$
   
   $$Y_{c,m} = \gamma X_{c,m} + \epsilon_{c,m}\,,\quad c=1, \ldots,  C, \, \, m=1,\ldots, M\, ,$$
  onde $\gamma$ é o efeito causal de se aumentar a conectivadade da escola em 1mbps sobre o desempenho médio dos alunos, e $\epsilon_{c,m}$ são as demais causas não observadas do desempenho escolar.
@@ -84,7 +99,7 @@ natbib=true
  \end{itemize}
  
  
- \paragraph{Exercício 5} O arquivo \texttt{cps\_union\_data.csv} conté uma amostra \textbf{12.834 indivíduos na força de trabalho norte-americana}, extraída do suplemento anual de 2019 da \textit{Pesquisa de População Atual dos EUA (Current Population Survey)}. Seu objetivo é \textbf{estimar o efeito causal da filiação/cobertura sindical} (variável \texttt{union}) sobre os \textbf{rendimentos semanais} (variável \texttt{earnings}). O conjunto de dados contém diversas outras variáveis que podem ser utilizadas como controles (verifique o dicionário do conjunto de dados, disponível em \texttt{dictionary.xlsx}).
+ \paragraph{Exercício 6} O arquivo \texttt{cps\_union\_data.csv} conté uma amostra \textbf{12.834 indivíduos na força de trabalho norte-americana}, extraída do suplemento anual de 2019 da \textit{Pesquisa de População Atual dos EUA (Current Population Survey)}. Seu objetivo é \textbf{estimar o efeito causal da filiação/cobertura sindical} (variável \texttt{union}) sobre os \textbf{rendimentos semanais} (variável \texttt{earnings}). O conjunto de dados contém diversas outras variáveis que podem ser utilizadas como controles (verifique o dicionário do conjunto de dados, disponível em \texttt{dictionary.xlsx}).
  
  \begin{enumerate}
  	
@@ -136,7 +151,7 @@ natbib=true
  	
  \end{enumerate}
 
- \paragraph{Exercício 6} O objetivo deste exercício consiste em entender as propriedades do estimador da variância robusta a \textit{cluster}. Para isso, usaremos os dados do resultado da aplicação de um teste lógico em alunos de um conjunto de escolas primárias, disponível em \texttt{dados.csv}.
+ \paragraph{Exercício 7} O objetivo deste exercício consiste em entender as propriedades do estimador da variância robusta a \textit{cluster}. Para isso, usaremos os dados do resultado da aplicação de um teste lógico em alunos de um conjunto de escolas primárias, disponível em \texttt{dados.csv}.
  \begin{itemize}
  	\item[a] Construa uma função em \texttt{R} que:
  	\begin{enumerate}
@@ -152,4 +167,141 @@ natbib=true
  	\item[c] Agora adapte a função anterior, permitindo que o tratamento, agora denotado por $\tilde{X}_{i,c}\sim \operatorname{Uniforme}[0,1]$, varie no nível individual de forma independente. Aplique a nova função mil vezes. Reporte a proporção de casos em que se rejeitou a hipótese nula. O que ocorreu? Por quê?
  	\item[d] Adapte mais uma vez a função, agora permitindo que o tratamento exerça um efeito heterogêneo entre escolas. Especificamente, você gerará $\widetilde{\texttt{logico}}_{i,c} = \texttt{logico}_{i,c}  + \tau_c \tilde{X}_{i,c}$, onde $\tau_c = 1$ com probabilidade $1/2$ e -1 com probabilidade $1/2$, e independente das demais variáveis. Nós continuaremos rodando a regressão linear de $\tilde{\texttt{logico}}_{i,c}$ em $\tilde{X}_{i,c}$ e controles. Aplique a função nova 1000 vezes. Qual a proporção de casos rejeitados agora? Por quê? 
  \end{itemize}
+ 
+ 
+ 
+ \paragraph{Exercício 8: Aproximação não parámetrica.}  Considere $Y$ uma variável aleatória real, e $X$ um vetor aleatório de dimensão $k$, ambos definidos num mesmo espaço de probabilidade $(\Omega, \Sigma, \mathbb{P})$. Seja $m$ a função de esperança condicional de $Y$ em $X$, i.e. $m(X) = \mathbb{E}[Y|X]$. Dizemos que uma coleção de funções $p_l: \mathbb{R}^k \mapsto \mathbb{R}$, $l \in \mathbb{N}$, aproxima $m$ em $L_2(\mathbb{P}_X)$ se existe uma sequência $\beta_j \in \mathbb{R}^j$, $j \in \mathbb{N}$, tal que:
+ 
+ $$\lim_{j \to \infty}\int (m(x) - \beta_j'\boldsymbol{P}_j(x))^2 \mathbb{P}_X(dx) = 0$$
+ com $\boldsymbol{P}_j(x) = (p_1(x),p_2(x),\ldots p_j(x))'$, e onde $\mathbb{P}_X$ denota a lei de probabilidade induzida por $X$.
+ 
+ Seja $(X_i, Y_i)$, $i=1,\ldots, n$ uma amostra aleatória de $(X,Y)$. Dada uma coleção $\{p_l\}_{l\in \mathbb{N}}$ que aproxima $m$ em $L_2(\mathbb{P}_X)$, defina, para $J \in \mathbb{N}$, o estimador de MQO de $Y_i$ em $\boldsymbol{P}_J(X_i)$ como:
+ 
+ $$\hat{b}_{J}  = \left(\boldsymbol{Z}_J' \boldsymbol{Z}_{J}\right)^{-1}\boldsymbol{Z}_J'\boldsymbol{y}\,, $$
+ onde: $$\boldsymbol{y} = \begin{pmatrix}
+ 	Y_1\\
+ 	\vdots \\
+ 	Y_n
+ \end{pmatrix}$$ e $$\boldsymbol{Z}_J = \begin{bmatrix}
+ 	\boldsymbol{P}_J(X_1) '\\
+ 	\boldsymbol{P}_J(X_2)' \\
+ 	\vdots \\
+ 	\boldsymbol{P}_J(X_n)'
+ \end{bmatrix}\, .$$ No que segue, suporemos sempre que $J \leq n$, e que $\left(\boldsymbol{Z}_{J}' \boldsymbol{Z}_{J}\right)^{-1}$ existe com probabilidade 1. Além disso, como estaremos interessados nas propriedades do espaço gerado pelas colunas de $\boldsymbol{Z}_{J}$, vamos supor, sem perda de de generalidade, que $\frac{1}{n}\left(\boldsymbol{Z}_{J}'\boldsymbol{Z}_{J}\right) = \mathbb{I}_{J \times J}$.\footnote{De fato, o espaço gerado pelas colunas de $\boldsymbol{Z}_{J}$ é igual ao espaço gerado pelas colunas de $\tilde{\boldsymbol{Z}}_J = \sqrt{n}\boldsymbol{Z}_{J} (\boldsymbol{Z}_J'\boldsymbol{Z}_J)^{-1/2}$.}
+ 
+ \begin{itemize}
+ 	\item[a] Seja $\beta_J \in \mathbb{R}^J$ o $J$-ésimo elemento da sequência de coeficientes que satisfaz a propriedade de aproximação de $m$. Mostre que:
+ 	
+ 	$$\lVert \hat{b}_{J} - \beta_J \rVert_2 \leq \lVert  (\boldsymbol{Z}_J'\boldsymbol{Z}_J)^{-1}\boldsymbol{Z}_J'\left(\boldsymbol{m} -\boldsymbol{Z}_J \beta_J\right)\rVert_2 + \lVert  (\boldsymbol{Z}_J'\boldsymbol{Z}_J)^{-1}\boldsymbol{Z}_J'\boldsymbol{\epsilon}\rVert_2$$ 
+ 	
+ 	onde $$\boldsymbol{m} = \begin{bmatrix}
+ 		m(X_1) \\
+ 		m(X_2) \\
+ 		\vdots \\
+ 		m(X_n)
+ 	\end{bmatrix}$$ e $$\boldsymbol{\epsilon} = \begin{bmatrix}
+ 		Y_1 - m(X_1)\\
+ 		Y_2 - m(X_2) \\
+ 		\vdots\\
+ 		Y_n - m(X_n)
+ 	\end{bmatrix}\, .$$ Mostre, além disso, que que:
+ 	\vspace{1em}
+ 	
+ 	$$\lVert  (\boldsymbol{Z}_J'\boldsymbol{Z}_J)^{-1}\boldsymbol{Z}_J'\left(\boldsymbol{m} -\boldsymbol{Z}_J \beta_J\right)\rVert_2^2  = \frac{1}{n}(\boldsymbol{m}-\boldsymbol{Z}_J\beta_J)'\boldsymbol{\Pi}_J(\boldsymbol{m}-\boldsymbol{Z}_J\beta_J)$$
+ 	
+ 	$$\lVert  (\boldsymbol{Z}_J'\boldsymbol{Z}_J)^{-1}\boldsymbol{Z}_J'\boldsymbol{\epsilon}\rVert_2^2  = \frac{1}{n}\boldsymbol{\epsilon}'\boldsymbol{\Pi}_J\boldsymbol{\epsilon}$$
+ 	
+ 	onde $\boldsymbol{\Pi}_J$ é a matriz de projeção de $\boldsymbol{Z}_J$.
+ 	\item[b]  Mostre que, se existe $C$ tal que $\mathbb{V}[Y|X] < C$ com probabilidade 1, então, com probabilidade 1:
+ 	
+ 	$$\mathbb{E}\left[\boldsymbol{\epsilon}'\boldsymbol{\Pi}_J \boldsymbol{\epsilon}|\boldsymbol{X}\right] \leq C J$$
+ 	onde $\boldsymbol{X} = [X_1 X_2 \ldots X_n]'$. \textit{Dica:} use  a decomposição espectral de uma matriz simétrica.
+ 	\item[c]  Mostre que:
+ 	$$\mathbb{E}[(\boldsymbol{m}-\boldsymbol{Z}_J\beta_J)'\boldsymbol{\Pi}_J(\boldsymbol{m}-\boldsymbol{Z}_J\beta_J)] \leq n \mathbb{E}[(m(X) - \beta_J'\boldsymbol{P}_J(X))^2]$$
+ 	\item[d]  Conclua que, sob o limite a $\mathbb{V}[Y|X]$ anterior, se considerarmos uma sequência $(J_n)_{n \in \mathbb{N}}$ tal que, quando $n \to \infty$, $J_n \to \infty$ e $\frac{J_n}{n} \to 0$:
+ 	
+ 	$$\lim_{n \to \infty}\mathbb{E}[\lVert \hat{b}_{J_n} - \beta_{J_n} \rVert_2^2] = 0 \, .$$
+ 	
+ 	Use a desigualdade de Markov para concluir que $\lVert \hat{b}_{J_n} - \beta_{J_n} \rVert_2 \overset{p}{\to} 0$.
+ 	
+ 	\item[e] Use os resultados anteriores para concluir que, sob as hipóteses em $\mathbb{V}[Y|X]$ e no crescimento de $J_n$:
+ 	
+ 	$$\lim_{n\to \infty}\mathbb{E}\left[\int(m(s) - \hat{b}_{J_n}'\boldsymbol{P}_{J_n}(s))^2\mathbb{P}_X(ds)\right] = 0\, ,$$
+ 	onde a expectativa de fora se dá com respeito à distribuição do estimador  $\hat{b}_{J_n}$ em amostras repetivas. Use a desigualdade de Markov para concluir que:
+ 	
+ 	$$\int(m(s) - \hat{b}_{J_n}'\boldsymbol{P}_{J_n}(s))^2\mathbb{P}_X(ds) \overset{p}{\to} 0 \, .$$
+ 	
+ 	Qual a interpretação desse resultado?
+ \end{itemize}
+ \paragraph{Exercício 9: Implementação computacional} Vamos considerar um caso particular do ambiente do item anterior. Especificamente, de agora em diante, consideramos que $X \sim \operatorname{Uniforme}[0,1]$.
+ 
+ \begin{itemize}
+ 	\item[a] Considere a classe de polinômios, $p_l(x) = x^{l-1}$, $l\in \mathbb{N}$. Use o teorema de Stone-Weierstrass para argumentar que, se $m$ é contínua, $\{p_l\}_{l \in \mathcal{N}}$ exibirára a propriedade de aproximação em $L_2(\mathbb{P}_X)$ para $m$.
+ 	\item[b] Vamos especializar ainda mais o ambiente. Consideremos que $m: [0,1] \mapsto \mathbb{R}$ toma a forma:
+ 	
+ 	$$m(x) = \begin{cases}
+ 		\exp(x) & \text{se } x \leq 0.5 \\
+ 		\exp(0.5) + \sin(10\pi(x-0.5)) & \text{se } x> 0.5
+ 	\end{cases}$$
+ 	e consideremos que:
+ 	
+ 	$$Y = m(X) + \epsilon, \quad \epsilon \sim \mathcal{N}(0,1)\, ,$$
+ 	com $\epsilon$ independente de $X$.
+ 	
+ 	Apresente a implementação computacional de uma função que, tomando como argumentos $(n,J)$.
+ 	
+ 	\begin{itemize}
+ 		\item Simula uma amostra aleatória $(Y_i,X_i) \overset{iid}{\sim} (Y,X)$ de tamanho $n$.
+ 		\item Implementa o estimador de MQO de $Y_i$ em $p_{l}(X_i)$, $l=1,\ldots J$, retornando os coeficientes estimados. \text{Dica:} no \texttt{R}, o comando \textit{poly} pode ser usado para produzir uma matriz $n \times J$ com os polinômios construídos a partir de um vetor $n \times 1$. A opção \texttt{raw = T} já reporta o polinômio devidademente ortogonalizado (i.e. tal que a matriz resultante satisfaça $\boldsymbol{Z}_J'\boldsymbol{Z}_J = \mathbb{I}_{J \times J}$), o que acelera a implementação da estimação por MQO.
+ 	\end{itemize}
+ 	
+ 	\item[c]  Usando a função apresentada anteriormente, e para as seguintes configurações $(n,J) \in \{100, 200, 500\} \times \{1,2,\ldots, 50\}$, faça as seguintes etapas:
+ 	
+ 	\begin{itemize}
+ 		\item Aplique a função do item anterior $s=1,\ldots, 1000$ vezes, armazenando as estimativas $\hat{b}_{n,J}(s)$, $s=1,\ldots, 1000$.
+ 		\item Aproxime a quantidade
+ 		
+ 		$$\psi(n,J) = \mathbb{E}\left[\int(m(x) - \hat{b}_{n,J}'\boldsymbol{P}_{J}(x))^2\mathbb{P}_X(dx)\right]$$ por:
+ 		
+ 		$$\widetilde{\psi(n,J)} = \frac{1}{1000}\sum_{s=1}^{1000}\frac{1}{501}\sum_{i=0}^{500} \left(m\left(\frac{i}{500}\right) - P_J\left(\frac{i}{500}\right)'\hat{b}_{n,J}(s) \right)^2$$ 
+ 	\end{itemize}
+ 	Produza um gráfico em que, para cada valor de $n$, você esboce uma curva de como $\widetilde{\psi(n,J)}$ varia com $J$
+ 	
+ 	\item[d] Para cada $n$, em que valor a curva $J \mapsto \widetilde{\psi(n,J)}$ atinge o ponto mínimo? Qual a relação entre esses pontos de mínimo? Com base nas propriedades do estimador de MQO, proveja uma intuição para esse resultado.
+ \end{itemize}
+ 
+	\paragraph{Exercício 10} Considere um modelo linear da forma:
+
+$$\boldsymbol{y} = \boldsymbol{X}\beta + \boldsymbol{\epsilon}$$
+onde $\boldsymbol{y}$ é um vetor aleatório $n\times 1$, $\boldsymbol{X} = \begin{bmatrix}
+	X_1' \\
+	X_2' \\
+	\vdots \\
+	X_n'
+\end{bmatrix}$ é uma matriz aleatória $n \times k$ e $\boldsymbol{\epsilon}$ é um vetor aleatório de dimensão $n \times 1$. No que segue, vamos supor que $\boldsymbol{X}$ tem posto $k$ (com probabilidade 1), e que a hipótese de exogeneidade $\mathbb{E}[\boldsymbol{\epsilon}|\boldsymbol{X}] = 0$ é satisfeita. Suponha, também, que a matriz de variância  (condicional) dos $\boldsymbol{\epsilon}$ seja diagonal (i.e. os erros são condicionalmente não correlacionados), embora potencialmente heterocedástica, i.e.:
+
+$$\mathbb{V}[\boldsymbol{\epsilon}|\boldsymbol{X}] = \begin{bmatrix}
+	\sigma^2_1(\boldsymbol{X}) & 0 & 0 & \ldots & 0 \\
+	0 & 	\sigma^2_2(\boldsymbol{X}) & 0 & \ldots & 0 \\
+	\vdots & \vdots &\ddots & \ldots & \vdots  \\
+	0 & 0 & 0 & \ldots & \sigma^2_n(\boldsymbol{X})
+\end{bmatrix}\, ,$$
+onde os $\sigma^2_i$ são funções desconhecidas de $\boldsymbol{X}$. 
+\begin{itemize}
+	\item[a] Mostre que  a matriz de variância do estimador de MQO de $\beta$, denotado por $\hat{b}$ toma a forma:
+	
+	$$\mathbb{V}[\hat{b}|\boldsymbol{X}] = (\boldsymbol{X}'\boldsymbol{X})^{-1}\left(\sum_{i=1}^n X_i X_i' \sigma_i^2(\boldsymbol{X})\right)(\boldsymbol{X}'\boldsymbol{X})^{-1}$$
+	
+	\item[b] Suponha que a matriz $\boldsymbol{X}$ é robusta a eliminações de uma observação da amostra, no sentido de que as matrizes $(n-1)\times k$ que consistem na remoção da $i$-ésima linha de $\boldsymbol{X}$ e que denotamos por $\boldsymbol{X}_{-i}$ têm posto $k$, para todo $i=1\ldots, n$. Considere o seguinte resíduo modificado:
+	
+	$$\tilde{e}_i = (Y_i - X_i'\hat{b}_{-i})\,,$$
+	onde $\hat{b}_{-i}$ é o estimador de MQO de $\beta$ na subamostra de $(n-1)$ observações que exclui $i$. Mostre que (com probabilidade 1):
+	$$\mathbb{E}[\tilde{e}_i^2|\boldsymbol{X}]\geq \sigma^2_i(\boldsymbol{X})\, .$$
+	
+	\item[c]  Mostre que o resíduo convencional, $\hat{e}_i = Y_i-X_i'\hat{b}$, não necessariamente satisfaz $\mathbb{E}[\hat{e}_i^2|\boldsymbol{X}]\geq \sigma^2_i(\boldsymbol{X})$ com probabilidade 1. Dê uma intuição para esse resultado.
+	\item[d]  Com base nos resultados anteriores, construa um estimador $\hat{V}$ para a variância $\mathbb{V}[\hat{b}|\boldsymbol{X}]$ (em média) conservador, no sentido de que (com probabilidade 1):
+	$$\mathbb{E}[\hat{V}|\boldsymbol{X}] - \mathbb{V}[\hat{b}|\boldsymbol{X}]\, ,$$
+	é positiva semidefinida. Argumente que o estimador \textit{heteroskedasticity-consistent} de White para a variância visto em aula não necessariamente satisfará essa propriedade.
+\end{itemize} 
+
 \end{document}

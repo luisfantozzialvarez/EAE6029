@@ -20,8 +20,8 @@ natbib=true
 ]{biblatex}
 \addbibresource{../bibliography.bib}
 
-\title{}
-\author{\normalsize Exercícios sobre Modelos Lineares}
+\title{EAE 6029}
+\author{ Exercícios sobre Modelos Lineares}
 \date{}
 \begin{document}
 	\maketitle
@@ -58,6 +58,59 @@ onde $w$ denota o salário (em unidades do bem produzido pelo setor), aqui trata
 	\item[a] Encontre o melhor preditor linear da variável aleatória $\log(Y)$ como função de um intercepto e $\log(l)$. O coeficiente associado a $\log(l)$ coincide com $\alpha$? Por quê?
 	\item[b] Suponha que, caso $Y(\omega) - wl(\omega)<0$, a firma $\omega$ não opera, e, nesse caso, a demanda por trabalho e quantidade produzida não são observadas. Calcule o melhor preditor linear nesse caso. Ele corresponde ao obtido anteriormente? Por quê?
 \end{itemize}
+
+	\paragraph{Exercício 5: Interpretação do melhor preditor linear num modelo causal heterogêneo.} Considere uma tripla de variáveis aleatórias $(Y,D,X)$, definidas num espaço de probabilidade  $(\Omega, \Sigma,\mathbb{P})$, em que a distribuição conjunta de $(Y,D,X)$ reflete a distribuição em uma população de um resultado escalar ($Y$) de interesse, uma causa binária ($D$) de $Y$ observável de interesse, e outras $k$ causas observáveis ($X$) de $Y$ sobre as quais não temos interesse direto. Nós definimos os resultados potenciais $Y(0)$ e $Y(1)$ correspondentes ao experimento hipótetico de se amostrar um elemento da população de interesse e fixar externamente sua causa $D$ em $0$ ($Y(0)$) ou $1$ ($Y(1)$), mantidas as demais causas de $Y$, observáveis ou não, em seus valores originais. Com base nessa definição do modelo causal, segue que: 
+
+$$Y = Y(0) + D(Y(1)-Y(0))\, ,$$
+e a variável aleatória $\tau \coloneqq Y(1)-Y(0)$ representa o efeito causal de  $D$ sobre uma unidade amostraao da população de interesse. 
+
+No que segue, nós vamos supor que, \emph{condicionalmente a $X$}:
+
+$$Y(0) \text{ é independente de } D\, ,$$
+isto é, para quaisquer eventos $A \in \mathcal{B}(\mathbb{R})$ e $B \in 2^{\{0,1\}}$:
+$$\mathbb{P}[\{Y(0) \in A\}\cap \{D \in B\}|X ]=\mathbb{P}[Y(0) \in A|X] \mathbb{P}[D \in B|X]$$
+
+\begin{itemize}
+	\item[a] Proveja uma interpretação para a hipótese de independência condicional apresentada acima.
+	\item[b]  Mostre que, sob a hipótese de independência condicional apresentada acima, se  $\mathbb{P}[D=1|X](1-\mathbb{P}[D=1|X])>0$ quase certamente, e \textbf{ao menos uma} das duas condições abaixo for satisfeita:
+	
+	\begin{enumerate}
+		\item[i] $\exists \psi \in \mathbb{R}^k$, $\mathbb{E}[Y(0)|X] = \psi'X$.
+		\item[ii] $\exists \phi \in \mathbb{R}^k$, $\mathbb{E}[D|X] = \phi'X$.
+	\end{enumerate}
+	
+	Então o coficiente $\beta^*$ de $D$ no melhor preditor linear de $Y$ em $D$ e $X$ (com intercepto caso ele esteja incluso em $X$), {definido como}:
+	
+	$$(\beta^*, \gamma^*) \in \operatorname{argmin}_{b \in \mathbb{R}, c \in \mathbb{R}^k}\mathbb{E}[(Y-Db - c'X)^2]$$
+	
+	corresponderá a:
+	
+	$$\beta^* =\frac{\mathbb{E}[ \omega(X) \tau(X)]}{\mathbb{E}[\omega(X)]}\, ,$$
+	onde $\omega(X) = \mathbb{P}[D=1|X](1-\pi_*'X)$, com $\pi_* \in \operatorname{argmin}_{v \in \mathcal{R}^k}\mathbb{E}[(D-v'X)^2]$,  e $\tau(X)$ é a variável aleatória que denota o efeito médio de tratamento na subpopulação tratada definida pelos valores de $X$, i.e.
+	
+	$$\tau(X) \overset{\text{def}}{=} \mathbb{E}[(Y(1)-(0))|D=1,X] = \frac{\mathbb{E}[(Y(1)-Y(0))D|X]}{\mathbb{P}[D=1|X]}$$
+	
+	\textit{Dica:} use as condições de primeira ordem do melhor preditor linear para mostrar que:
+	$$\beta^* = \frac{\mathbb{E}[(D-\pi_*'X)Y]}{\mathbb{E}[(D-\pi_*'X)^2]}\, ,$$
+	onde você deve mostrar que $\mathbb{P}[D=1|X](1-\mathbb{P}[D=1|X]) > 0$ q.c. implica que $\mathbb{E}[(D-\pi_*'X)^2] > 0$. Para concluir, você precisará mostrar que, sob a hipótese de independência condicional, se ao menos (i) ou (ii) vale, então:
+	
+	$$\mathbb{E}[(D-\pi_*'X)Y(0)] = 0 \, .$$
+	
+	\item[c] Usando o resultado anterior, mostrar que:
+	
+	$$\beta^* = \int \omega^*(x) \tau(x) \mathbb{P}_X(dx)\, ,$$
+	onde $\mathbb{P}_X$ denota a lei de probabilidade induzida por $X$, e onde os \textbf{pesos} $\omega^*$ são tais que $\int \omega^*(x) \mathbb{P}_X(dx)  =  1$, . 	Quando a condição (ii) é satisfeita,  como esses pesos se comparam àqueles dados pelo efeito médio do tratamento na população tratada, definido como:
+	
+	\begin{equation*}
+		\begin{aligned}					\tau^{\text{ATT}}\overset{\text{def}}{=}\mathbb{E}[(Y(1)-Y(0))|D=1] = \frac{\mathbb{E}[(Y(1)-Y(0))D]}{\mathbb{P}[D=1]} = \\ \int \tau(x) \frac{\mathbb{P}[D=1|X=x]}{\mathbb{P}[D=1]} \mathbb{P}_X(dx)\, ,
+		\end{aligned}
+	\end{equation*}
+	
+	Proveja uma intuição para esse resultado.
+	
+	\item[d] Proveja uma condição suficiente para que os pesos $\omega^*$ sejam não negativos (quase certamente). Mostre que os pesos não serão positivos quase certamente se existir uma entrada $X_j$ de $X$ que toma, para qualquer intervalo da reta, valores nesse intervalo com probabilidade positiva, e tal que $\pi_{*,j}\neq 0$. Mostre que os  $\omega^*$ serão não negativos se $X = (\mathbf{1}_{\{z_1\}}(Z), \mathbf{1}_{\{z_2\}}(Z),\ldots \mathbf{1}_{\{z_k\}}(Z))'$ onde $Z$ é uma variável aleatória que toma valores no conjunto $\{z_1,\ldots, z_k\}$.
+\end{itemize}
+
 
 
  

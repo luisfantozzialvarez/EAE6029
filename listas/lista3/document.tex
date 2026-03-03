@@ -1,0 +1,105 @@
+% !TeX document-id = {1c0b4298-276a-4038-8e08-c4a1f4846da7}
+% !TeX TXS-program:bibliography = txs:///biber
+\documentclass[10pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{thmtools}
+\usepackage{xcolor}
+\usepackage{nameref}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{float}
+
+\usepackage[
+backend=biber,
+style=authoryear,
+natbib=true
+]{biblatex}
+
+\usepackage{geometry}
+\addbibresource{../bibliography.bib}
+
+\title{EAE6029}
+\author{Exercícios sobre Variáveis Instrumentais}
+\date{}
+\begin{document}
+	\maketitle
+	No que segue, sempre suponha que as variáveis aleatória relevantes estão definidas no mesmo espaço de probabilidade.
+ \paragraph{Exercício 1} Mostre que o estimador de Wald visto em aula para a estimação de um efeito causal de uma variável escalar $X$ sobre um resultado $Y$, usando como instrumento uma variável escalar $Z$, é \textbf{numericamente idêntico} ao coeficiente estimado de $X$ no estimador de MQO em dois estágios que instrumenta um intercepto e $X$ com base num intercepto e em $Z$.
+ 
+ \vspace{1em}
+ 		Para os próximos exercícios, suponha sempre que as variáveis aleatórias têm variância estritamente positiva e finita.
+ 
+	\paragraph{Exercício 2} Considere um modelo causal linear da forma:
+
+$$Y = X^* \beta + U\, ,$$
+onde $X^*$ é uma causa escalar de interesse, $U$ são as demais causas de um fenômeno, e $\beta$ é um efeito causal de interesse. 
+
+Suponha que o pesquisador não observe $X^*$, mas somente uma medida ruidosa $X = X^* + V$ de $X^*$, onde o erro de medida $V$ é tal que $\operatorname{cov}(V,X^*) = 0$ e $\operatorname{cov}(V, U)=0$. Suponha, ademais que $\operatorname{cov}(X^*,U)$.
+
+\begin{itemize}
+	\item[a] Considere o estimador de MQO de $Y$ num intercepto e $X$, baseado numa amostra aleatória de $(Y,X)$. Mostre que o estimador de MQO do coeficiente associado a $X$ \textbf{não} é consistente para $\beta$. Encontre o limite em probabilidade desse estimador. Qual é sua relação com $\beta$?
+	\item[b] Suponha que você também observe uma segunda medida ruidosa de $X^*$, $Z = X^* + \xi$, onde $\operatorname{cov}(\xi, X^*) = 0$, $\operatorname{cov}(\xi, U) = 0$ e $\operatorname{cov}(\xi, V) = 0$. Sugira um estimador consistente para $\beta$. Justifique.	Se o seu interesse reside em fazer previsões de $Y$ com base nas medidas observáveis de $X^*$ para novas observações fora de sua amostra, faz sentido usar esse estimador? Justifique.
+\end{itemize}
+
+	\paragraph{Exercício 3} Considere um modelo causal linear da forma:
+
+$$Y = X \beta + U\, ,$$
+onde $X$ é uma causa escalar de interesse, $U$ são as demais causas de um fenômeno, e $\beta$ é um efeito causal de interesse. Su
+
+\begin{itemize}
+	\item[a] Calcule o limite de probabilidade do estimador de MQO baseado em uma amostra aleatória de $(X,Y)$.
+	\item[b] Suponha, agora, que tenhamos acesso a um instrumento $Z$ relevante, mas não necessariamente válido. Calcule o limite de probabilidade do estimador de Wald baseado em uma amostra aleatória de $(X,Y,Z)$. Sob quais condições sobre $ \operatorname{cor}(X,U)$, $\operatorname{cor}(X,Z)$ e $\operatorname{cor}(Z,U)$, temos que $|\operatorname{plim}\hat \beta_{IV} -\beta|  > |\operatorname{plim}\hat \beta_{MQO} -\beta| $? Discuta seus resultados.
+	
+	\item[c] Suponha agora, que a relação de primeiro estágio entre $X$ e $Z$ é dada, numa amostra aleatória de tamanho $n$, por um modelo preditivo linear da forma:
+	
+	$$X = \gamma_n Z + V\, , \quad \operatorname{cov}(Z,V)=0$$
+	onde $\gamma_n = C/\sqrt{n}$ para algum $C \neq 0$. A ideia é capturar uma situação em que a relevância do instrumento é da ordem da incerteza amostral.
+	
+	Suponha que $Z$ é válido, i.e. $\operatorname{cov}(Z,U)=0$. Mostre que:
+	
+	$$\hat{\beta}_{IV} \overset{d}{\to} \beta + \frac{N_1}{C + N_2}\, , $$
+	onde $$\footnotesize \begin{pmatrix}
+	N_1 \\
+	N_2
+	\end{pmatrix}  \sim \mathcal{N}\left(\begin{bmatrix}
+	0 \\
+	0
+	\end{bmatrix}, \begin{bmatrix}
+	\mathbb{E}[(Z-\mathbb{E}[Z])^2 (U  - \mathbb{E}[U])^2] & 	\mathbb{E}[(Z-\mathbb{E}[Z])^2 (U  - \mathbb{E}[U])(V-\mathbb{E}[V])] \\
+	\mathbb{E}[(Z-\mathbb{E}[V])^2 (U  - \mathbb{E}[U]) (V-\mathbb{E}[V])] & 	\mathbb{E}[(Z-\mathbb{E}[Z])^2 (V  - \mathbb{E}[V])^2] 
+	\end{bmatrix}\right)\, ,$$
+	
+	Conclua que o estimador de variáveis instrumentais, nesse caso, é inconsistente.
+	\item[d] Mostre que, sob as seguintes hipóteses de homocedasticidade:
+	
+	$$		\mathbb{E}[(Z-\mathbb{E}[Z])^2 (U  - \mathbb{E}[U])^2] = \mathbb{V}[Z]\mathbb{V}[U]$$
+		$$	\mathbb{E}[(Z-\mathbb{E}[Z])^2 (V  - \mathbb{E}[V])^2] = \mathbb{V}[Z]\mathbb{V}[V]$$
+				$$	\mathbb{E}[(Z-\mathbb{E}[Z])^2 (U  - \mathbb{E}[U])(V-\mathbb{E}[V])] = \mathbb{V}[Z]\operatorname{cov}(U,V)$$
+				o ``viés da distribuição assintótica'' de $\hat{\beta}_{IV} $, no regime assintótico do item (c), é dado por:
+				
+				$$ \theta \mathbb{E}\left[\frac{S}{S + \frac{C}{\operatorname{sd}(Z) \operatorname{sd}(V) }}\right]$$
+				onde $\theta = \operatorname{plim}\hat \beta_{MQO} -\beta$ e $S\sim N(0,1)$.
+		\item[d] Considere a estatística $t$ de primeiro estágio, calculada sob homocedasticidade, i.e.
+		
+		$$\hat{t} = \frac{\sum_{i=1}^n (X_i -\bar{X})(Z_i - \bar{Z})}{\hat{\sigma}_V \sqrt{\sum_{i=1}^n(Z_i-\bar{Z})^2}}\, .$$
+		
+		Mostre que, sob  o regime do item (c), temos que:
+		
+		 $$\sqrt{n}\hat t \overset{d}{\to}$$
+\end{itemize}
+
+\paragraph{Exercício 4}
+
+
+\paragraph{Exercício 5}
+
+
+\paragraph{Exercício 6}
+
+
+\paragraph{Exercício 7}
+\end{document}
