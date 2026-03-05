@@ -16,5 +16,135 @@
   {}
 \endgroup
 
+
+\refsection{0}
+  \datalist[entry]{nyt/global//global/global}
+    \entry{chen2015growth}{unpublished}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=a9940017ad7dd8651f47dce93080dd90}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Daniel\bibnamedelima L},
+           giveni={D\bibinitperiod\bibinitdelim L\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=f5eceb3ff5d5afc1fe0bf370255c1bd1}{%
+           family={Yeh},
+           familyi={Y\bibinitperiod},
+           given={Susan},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{9f6b88509421a4fc2f46d4fb20e716fb}
+      \strng{fullhash}{9f6b88509421a4fc2f46d4fb20e716fb}
+      \strng{bibnamehash}{9f6b88509421a4fc2f46d4fb20e716fb}
+      \strng{authorbibnamehash}{9f6b88509421a4fc2f46d4fb20e716fb}
+      \strng{authornamehash}{9f6b88509421a4fc2f46d4fb20e716fb}
+      \strng{authorfullhash}{9f6b88509421a4fc2f46d4fb20e716fb}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Growth Under the Shadow of Expropriation? The Economic Impacts of Eminent Domain}
+      \field{year}{2015}
+    \endentry
+    \entry{Graddy2006}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=1f07b0a68bdaca41b9a592c1b7a48879}{%
+           family={Graddy},
+           familyi={G\bibinitperiod},
+           given={Kathryn},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {American Economic Association}%
+      }
+      \strng{namehash}{1f07b0a68bdaca41b9a592c1b7a48879}
+      \strng{fullhash}{1f07b0a68bdaca41b9a592c1b7a48879}
+      \strng{bibnamehash}{1f07b0a68bdaca41b9a592c1b7a48879}
+      \strng{authorbibnamehash}{1f07b0a68bdaca41b9a592c1b7a48879}
+      \strng{authornamehash}{1f07b0a68bdaca41b9a592c1b7a48879}
+      \strng{authorfullhash}{1f07b0a68bdaca41b9a592c1b7a48879}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{08953309}
+      \field{journaltitle}{The Journal of Economic Perspectives}
+      \field{number}{2}
+      \field{title}{Markets: The Fulton Fish Market}
+      \field{urlday}{5}
+      \field{urlmonth}{3}
+      \field{urlyear}{2026}
+      \field{volume}{20}
+      \field{year}{2006}
+      \field{urldateera}{ce}
+      \field{pages}{207\bibrangedash 220}
+      \range{pages}{14}
+      \verb{urlraw}
+      \verb http://www.jstor.org/stable/30033657
+      \endverb
+      \verb{url}
+      \verb http://www.jstor.org/stable/30033657
+      \endverb
+    \endentry
+    \entry{Ponczek2012}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=a44255385da5711eb3cba125776fcdfc}{%
+           family={Ponczek},
+           familyi={P\bibinitperiod},
+           given={Vladimir},
+           giveni={V\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=6f3767ddf8d3896e142bb7b5d1850950}{%
+           family={Souza},
+           familyi={S\bibinitperiod},
+           given={Andre\bibnamedelima Portela},
+           giveni={A\bibinitperiod\bibinitdelim P\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {University of Wisconsin Press}%
+      }
+      \strng{namehash}{d017c40a3be815d59bbcd17dc71ad6b1}
+      \strng{fullhash}{d017c40a3be815d59bbcd17dc71ad6b1}
+      \strng{bibnamehash}{d017c40a3be815d59bbcd17dc71ad6b1}
+      \strng{authorbibnamehash}{d017c40a3be815d59bbcd17dc71ad6b1}
+      \strng{authornamehash}{d017c40a3be815d59bbcd17dc71ad6b1}
+      \strng{authorfullhash}{d017c40a3be815d59bbcd17dc71ad6b1}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This paper presents new evidence of the causal effect of family size on child quality in a developing-country context. We estimate the impact of family size on child labor and educational outcomes among Brazilian children and young adults by exploring the exogenous variation of family size driven by the presence of twins in the family. Using the Brazilian Census data for 1991, we find that the exogenous increase in family size is positively related to labor force participation for boys and girls and to household chores for young women. We also find negative effects on educational outcomes for boys and girls and negative impacts on human capital formation for young female adults. Moreover, we obtain suggestive evidence that credit and time constraints faced by poor families may explain the findings.}
+      \field{issn}{0022-166X}
+      \field{journaltitle}{Journal of Human Resources}
+      \field{number}{1}
+      \field{title}{New Evidence of the Causal Effect of Family Size on Child Quality in a Developing Country}
+      \field{volume}{47}
+      \field{year}{2012}
+      \field{pages}{64\bibrangedash 106}
+      \range{pages}{43}
+      \verb{doi}
+      \verb 10.3368/jhr.47.1.64
+      \endverb
+      \verb{eprint}
+      \verb https://jhr.uwpress.org/content/47/1/64.full.pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://jhr.uwpress.org/content/47/1/64
+      \endverb
+      \verb{url}
+      \verb https://jhr.uwpress.org/content/47/1/64
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
 \endinput
 

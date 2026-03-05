@@ -20,7 +20,7 @@ natbib=true
 ]{biblatex}
 
 \usepackage{geometry}
-\addbibresource{../bibliography.bib}
+\addbibresource{bibliography.bib}
 
 \title{EAE6029}
 \author{Exercícios sobre Variáveis Instrumentais}
@@ -28,7 +28,7 @@ natbib=true
 \begin{document}
 	\maketitle
 	No que segue, sempre suponha que as variáveis aleatória relevantes estão definidas no mesmo espaço de probabilidade.
- \paragraph{Exercício 1} Mostre que o estimador de Wald visto em aula para a estimação de um efeito causal de uma variável escalar $X$ sobre um resultado $Y$, usando como instrumento uma variável escalar $Z$, é \textbf{numericamente idêntico} ao coeficiente estimado de $X$ no estimador de MQO em dois estágios que instrumenta um intercepto e $X$ com base num intercepto e em $Z$.
+ \paragraph{Exercício 1 (Uma equivalência algébrica)} Mostre que o estimador de Wald visto em aula para a estimação de um efeito causal de uma variável escalar $X$ sobre um resultado $Y$, usando como instrumento uma variável escalar $Z$, é \textbf{numericamente idêntico} ao coeficiente estimado de $X$ no estimador de MQO em dois estágios que instrumenta um intercepto e $X$ com base num intercepto e em $Z$.
  
  \vspace{1em}
  		Para os próximos exercícios, suponha sempre que as variáveis aleatórias têm variância estritamente positiva e finita.
@@ -115,10 +115,65 @@ $$\mathbb{E}[(Z-\mathbb{E}[Z])^2 (V-\mathbb{E}[V])^2] = \mathbb{V}[Z]\mathbb{V}[
 
 \end{itemize}
 
-\paragraph{Exercício 4 (Mercado de Peixe Fulton)}
+\paragraph{Exercício 4 (Mercado de Peixe Fulton)} Considere o seguinte modelo causal linear para descrever as curvas de oferta e demanda no período $t$ em um mercado:
+$$\log(D_t(p)) = \psi \log(p) + \epsilon^D_t\, ,$$
+$$\log(S_t(p)) = \gamma \log(p) + \delta' Z_t + \epsilon^S_t\, , $$
+onde $\psi$ é a elasticidade-preço da demanda, e $\epsilon^D_t$ descrevem \textit{shifters} não observáveis da curva de demanda no mercado no período $t$. De forma análoga, $\gamma$ denota a elasticidade-preço da curva de demanda, $\epsilon^S_t$ denotam \textit{shifters} não observáveis da curvam oferta, e $Z_t$ são shifters observáveis da curva de oferta que sabemos não exibirem associação sistemática com os \textit{shifters} da demanda, i.e. $\operatorname{cov}(Z_t, \epsilon^S_t)=0$.
+
+\begin{itemize}
+	\item[a] Suponha que os preços e quantidades vendidas $(P_t,Q_t)$ em cada instante de tempo $t$ seja determinado pelo cruzamento das curvas de oferta e demanda, i.e.
+	$$Q_t = S_t(P_t)= D_t(P_t)\, .$$
+	
+	Mostre que, se for este o caso, o melhor preditor linear de $\log(Q_t)$ num intercepto e em $\log(P_T)$ não identificará a elasticidade $\psi$, e que a inclusão de $Z_t$ na predição linear também não garante a identificação.
+	
+	\item[b] Proponha uma estratégia de variável instrumental para identificar $\psi$ e demonstre a consistência do estimador resultante, baseado em uma amostra aleatória dos mercados ao longo de $T$ períodos.
+	
+	\item[c] Com base nos dados do mercado de peixe Fulton \citep{Graddy2006}, disponíveis na subpasta \texttt{dados}, proponha uma estratégia de variável instrumental para identificar a elasticidade da demanda nesse contexto. Implemente a estimação dessa estratégia. Com base em um nível de significância de 5\%, o instrumento é relevante? Você rejeita a hipótese nula de que a demanda tem elasticidade $-1$? \textit{Observação:} no \texttt{R}, use o pacote \texttt{fixest} para implementar a estratégia com erros padrão robustos a heterocedasticidade.
+\end{itemize}
 
 
-\paragraph{Exercício 5 (\textit{Eminent Domain})}
+\paragraph{Exercício 5 (\textit{Eminent Domain})} Neste exercício, vamos estudar o impacto do \emph{eminent domain} sobre os preços de imóveis nos Estados Unidos\footnote{Este exercício é baseado em \cite{chen2015growth}.}. \emph{Eminent domain} (ou leis de desapropriação) é o mecanismo legal pelo qual o governo pode adquirir compulsoriamente uma propriedade privada. Esse tipo de ação é bastante controverso, e os proprietários podem recorrer à Justiça para tentar reverter a decisão. Quando tribunais federais decidem que uma desapropriação foi ilegal (\emph{decisões favoráveis ao autor}, \emph{pro-plaintiff}), os direitos de propriedade são reforçados e cria-se um precedente que torna mais difícil a utilização futura do \emph{eminent domain}. Nosso objetivo será analisar o efeito causal dessas decisões favoráveis ao autor, proferidas nos tribunais federais de apelação, sobre os preços de imóveis.\footnote{``Uma compreensão básica do funcionamento dos tribunais federais dos EUA é importante para entender nossa estratégia de identificação, que se baseia na função de criação de precedentes dos tribunais de \emph{common law}. As decisões judiciais em casos atuais se tornam precedentes que podem ser utilizados em casos futuros no mesmo tribunal e em tribunais inferiores da mesma jurisdição. Existem três níveis de tribunais federais: Distrito, Circuito e a Suprema Corte dos EUA. Os 94 Tribunais Distritais funcionam como tribunais de primeira instância, onde um júri decide \emph{questões de fato}. Caso uma das partes recorra da decisão, o caso segue para um Tribunal de Circuito, que decide \emph{questões de direito}; esses tribunais tomam os fatos estabelecidos no Tribunal Distrital como dados e não utilizam júri. Os 12 Tribunais de Circuito, também conhecidos como Tribunais de Apelação, analisam apenas casos que levantam novas questões jurídicas (apenas 10--20\% das decisões dos tribunais distritais são objeto de recurso). Os casos que chegam aos tribunais de circuito costumam ser os mais complexos e controversos, com maior probabilidade de estabelecer novos precedentes.'' (Chen e Yeh, p. 11--12).} 
+
+\subparagraph{a} Importe \texttt{temp\_CSHomePrice.mat.csv}. Esse conjunto de dados contém informações sobre preços de imóveis (índice Case-Shiller) e decisões favoráveis ao autor por circuito judicial e período. Observe que, com exceção do índice Case-Shiller em log, todas as variáveis estão em frequência anual. Agregue os dados por ano, calculando a média \emph{dentro de cada circuito-ano} do log do índice de preços.
+
+\subparagraph{b} Estime uma especificação linear por MQO do log do índice de preços em um intercepto e  no número total de decisões de desapropriação em apelação favoráveis ao autor (\texttt{numpro\_casecat\_12}). O que você encontra? Esse coeficiente pode ser interpretado como uma estimativa de um efeito causal? Por quê?
+
+\vspace{0.5em}
+
+Para lidar com possíveis problemas de endogeneidade, Chen e Yeh (2015) exploram o fato de que, nos tribunais federais de apelação, os juízes são \emph{designados aleatoriamente} para compor painéis de três juízes que decidem os casos. Cada caso recebe três juízes sorteados de um conjunto (\emph{pool}) de magistrados do circuito, que varia aproximadamente entre 8 e 40 dependendo do tamanho do tribunal. Assim, \emph{condicionalmente às características desse conjunto de juízes}, as características observadas dos painéis sorteados devem satisfazer a restrição de exclusão, pois só podem afetar os preços dos imóveis por meio das decisões judiciais.
+
+\subparagraph{c} Faça o \emph{merge} do conjunto de dados \texttt{probs.txt} com sua base. Esse arquivo contém a distribuição das características dos juízes em cada circuito entre 1945 e 2007.
+
+\subparagraph{d} Considere o seguinte modelo linear causal:
+
+\begin{equation}
+	\ln(\text{Case\_Shiller})_{ct} = \beta_0 + \beta_1 \text{numpro\_casecat\_12}_{ct} + \gamma' W_{ct} + \epsilon_{ct}\, ,
+\end{equation}
+onde $W_{ct}$ inclui o conjunto completo de controles para as características do pool de juízes\footnotemark; uma variável indicadora para os casos em que não houve processos naquele circuito-ano (\texttt{missing\_cy\_12}); e o número total de decisões de apelação envolvendo desapropriações (\texttt{numcasecat\_12}). Como instrumento, utilizaremos o número de painéis com \emph{pelo menos um juiz Democrata} (\texttt{numpanels1x\_dem})\footnote{A justificativa \emph{a priori} dos autores para essa escolha baseia-se em evidências de que juízes Democratas tendem a ser mais favoráveis aos proprietários em casos de \emph{eminent domain}.}. 
+\footnotetext{A lista completa de controles para características do pool judicial é: prob\_1x\_dem, prob\_2x\_dem, prob\_3x\_dem, 
+	prob\_1x\_female, prob\_2x\_female, prob\_3x\_female, 
+	prob\_1x\_nonwhite, prob\_2x\_nonwhite, prob\_3x\_nonwhite, 
+	prob\_1x\_black, prob\_2x\_black, prob\_3x\_black, 
+	prob\_1x\_jewish, prob\_2x\_jewish, prob\_3x\_jewish, 
+	prob\_1x\_catholic, prob\_2x\_catholic, prob\_3x\_catholic, 
+	prob\_1x\_noreligion, prob\_2x\_noreligion, prob\_3x\_noreligion, 
+	prob\_1x\_instate\_ba, prob\_2x\_instate\_ba, prob\_3x\_instate\_ba, 
+	prob\_1x\_ba\_public, prob\_2x\_ba\_public, prob\_3x\_ba\_public, 
+	prob\_1x\_jd\_public, prob\_2x\_jd\_public, prob\_3x\_jd\_public, 
+	prob\_1x\_elev, prob\_2x\_elev, prob\_3x\_elev, 
+	prob\_1x\_female\_black, prob\_2x\_female\_black, prob\_3x\_female\_black, 
+	prob\_1x\_female\_noreligion, prob\_2x\_female\_noreligion, prob\_3x\_female\_noreligion, 
+	prob\_1x\_black\_noreligion, prob\_2x\_black\_noreligion, prob\_3x\_black\_noreligion, 
+	prob\_1x\_female\_jd\_public, prob\_2x\_female\_jd\_public, prob\_3x\_female\_jd\_public, 
+	prob\_1x\_black\_jd\_public, prob\_2x\_black\_jd\_public, prob\_3x\_black\_jd\_public, 
+	prob\_1x\_noreligion\_jd\_public, prob\_2x\_noreligion\_jd\_public, prob\_3x\_noreligion\_jd\_public, 
+	prob\_1x\_mainline, prob\_2x\_mainline, prob\_3x\_mainline, 
+	prob\_1x\_evangelical, prob\_2x\_evangelical, prob\_3x\_evangelical, 
+	prob\_1x\_protestant, prob\_2x\_protestant, prob\_3x\_protestant.}
+
+Estime o modelo acima utilizando o instrumento proposto. O instrumento satisfaz a condição de \emph{relevância}? Comente os resultados obtidos.
+
+\subparagraph{e} Você considera que o coeficiente estimado em (d) fornece uma estimativa \emph{crível do efeito causal} que queremos analisar? Por quê? Caso considere que não, seria possível utilizar os dados disponíveis para estimar uma \emph{especificação alternativa} que produza estimativas mais confiáveis? O que você encontrou?
 
 
 \paragraph{Exercício 6 (Interpretação Causal com Controles)}
@@ -126,5 +181,31 @@ $$\mathbb{E}[(Z-\mathbb{E}[Z])^2 (V-\mathbb{E}[V])^2] = \mathbb{V}[Z]\mathbb{V}[
 
 \paragraph{Exercício 7 (Tratamentos ordenados)}
 
-\paragraph{Exercício 8}
+\paragraph{Exercício 8 (\textit{Trade-off} quantidade-qualidade de filhos)} Seu objetivo é entender como a decisão de ter mais filhos impacta a alocação de recursos na educação do primeiro filho. A literatura de economia da família descreve um \textit{tradeoff} entre qualidade e quantidade na decisão de reprodução: ao escolherem ter mais filhos, famílias tendem a alocar menos recursos na educação dos filhos mais velhos. Seu objetivo é testar essa hipótese. Para isso, você se baseia em \citet{Ponczek2012} e usa dados familiares extraídos do censo brasileiro de 2010. Esses dados estão disponíveis em \texttt{censo\_data\_family\_size.csv}. Cada observação da base corresponde ao primeiro filho de uma família brasileira amostrada (famílias cujos primeiros filhos são gêmeos correspondem a mais de uma observação). Um dicionário com a descrição das variáveis da base está disponíbel em \texttt{dicionario.xlsx}.
+
+\begin{enumerate}
+	\item Carregue os dados. Restrinja a base aos primeiros filhos de famílias com mais de um parto ($\text{\texttt{family\_number\_births}}\geq 2$). Qual é o tamanho familiar médio das famílias dos primeiros filhos? \textit{\textbf{Dica:} Instale o pacote \texttt{data.table} e use a função \texttt{fread} para carregar os dados mais rapidamente.}
+	\item Para avaliar a relação prevista pela teoria econômica, você ajusta a seguinte especificação linear por MQO:
+	
+	\begin{equation*}
+		\text{\texttt{first\_child\_years\_of\_education}}_i = \beta_0 + \beta_1 \cdot 	\text{\texttt{family\_number\_children}}_i+\epsilon_i
+	\end{equation*}
+	
+	 Qual a interpretação da estimativa obtida? Ela é estatisticamente significante a 5\%? 
+	
+	\item Você acredita que a estimativa obtida no item anterior é crível para o efeito que se procura estimar? Por quê? \\ \\
+	Como forma de mitigar as preocupações com a estimação obtida anteriormente, você se propõe a estimar o efeito de se ter mais filhos sobre a educação do primeiro filho instrumentando  $	\text{\texttt{family\_number\_children}}$ com $\text{\texttt{second\_birth\_ismultiplebirth}}$, uma variável binária que é igual a 1 se o segundo parto da família foi de mais de uma criança (gêmeos, trigêmeos etc.).
+	
+	\item Quantos segundos partos na base são partos de múltiplas crianças?
+	
+	\item Sob quais conjuntos de hipóteses a metodologia de variáveis instrumentais recupera um efeito causal de interesse, nos seguintes casos: (i) a resposta ao \textit{trade-off} educação e qualidade é homogênea na população; (2) a resposta ao \textit{trade-off} educação e qualidade é heterogênea na população. Quais são os efeitos causais identificados em cada um dos casos? Você consegue pensar em violações dessas hipóteses?
+	
+	\item Rode o primeiro estágio da metodologia de variáveis instrumentais. Qual a interepretação dos coeficientes obtidos? O instrumento é \textbf{relevante}, a 5\% de significância?
+	
+	\item Rode o segundo estágio. Qual a interpretação do coeficiente obtido? Ele é estatisticamente significante a 5\%? \textit{Observação:} você deve implementar erros padrão com cluster no nível da família (por quê?).
+	
+\item Devido ao padrão de amostragem, sabemos que cada indivíduo na amostra é representativo de \texttt{person\_weight} indivíduos na população. Reestime os modelos usando essa variável como peso. Os resultados mudam?
+\end{enumerate}
+
+\printbibliography
 \end{document}
