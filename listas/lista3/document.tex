@@ -73,36 +73,58 @@ onde $X$ é uma causa escalar de interesse, $U$ são as demais causas de um fen�
 	\mathbb{E}[(Z-\mathbb{E}[V])^2 (U  - \mathbb{E}[U]) (V-\mathbb{E}[V])] & 	\mathbb{E}[(Z-\mathbb{E}[Z])^2 (V  - \mathbb{E}[V])^2] 
 	\end{bmatrix}\right)\, ,$$
 	
-	Conclua que o estimador de variáveis instrumentais, nesse caso, é inconsistente.
-%	\item[d] Mostre que, sob as seguintes hipóteses de homocedasticidade:
-%	
-%	$$		\mathbb{E}[(Z-\mathbb{E}[Z])^2 (U  - \mathbb{E}[U])^2] = \mathbb{V}[Z]\mathbb{V}[U]$$
-%		$$	\mathbb{E}[(Z-\mathbb{E}[Z])^2 (V  - \mathbb{E}[V])^2] = \mathbb{V}[Z]\mathbb{V}[V]$$
-%				$$	\mathbb{E}[(Z-\mathbb{E}[Z])^2 (U  - \mathbb{E}[U])(V-\mathbb{E}[V])] = \mathbb{V}[Z]\operatorname{cov}(U,V)$$
-%				o ``viés da distribuição assintótica'' de $\hat{\beta}_{IV} $, no regime assintótico do item (c), é dado por:
-%				
-%				$$ \theta \mathbb{E}\left[\frac{N}{N + \frac{C}{\operatorname{sd}(Z) \operatorname{sd}(V) }}\right]$$
-%				onde $\theta = \operatorname{plim}\hat \beta_{MQO} -\beta$ e $N\sim N(0,1)$.
-%		\item[d] Considere a estatística $t$ de primeiro estágio, calculada sob homocedasticidade, i.e.
-%		
-%		$$\hat{t} = \frac{\sum_{i=1}^n (X_i -\bar{X})(Z_i - \bar{Z})}{\hat{\sigma}_V \sqrt{\sum_{i=1}^n(Z_i-\bar{Z})^2}}\, .$$
-%		
-%		Mostre que, sob  o regime do item (c) e as hipóteses de homocedasticidade em (d), temos que:
-%		
-%		 $$\hat t \overset{d}{\to} \frac{C}{ \operatorname{sd}(V)\operatorname{sd}(Z)}+ N$$
-%		 onde $N \sim \mathcal{N}(0,1)$.
-%		 
-%		 \item[e] Usando os itens anteriores, proponha um teste para a hipótese 
+	Conclua que o estimador de variáveis instrumentais, nesse caso, é inconsistente. Mostre que, nesse mesmo regime assintótico, temos que:
+	
+	$$\hat \beta_{MQO}\overset{p}{\to} \beta + \theta\, ,$$
+	onde $\theta = \frac{\operatorname{cov}(U,V)}{\mathbb{V}[V]}$.
+	
+	\vspace{0.5em}
+	Para os próximos dois itens, vamos considerar o regime assintótico do item (c), e, ademais, supor as condições de homocedasticidade:
+	
+$$\mathbb{E}[(Z-\mathbb{E}[Z])^2 (U  - \mathbb{E}[U])(V-\mathbb{E}[V])]  = \mathbb{V}[Z]\operatorname{cov}(U,Z)\, .$$
+
+$$\mathbb{E}[(Z-\mathbb{E}[Z])^2 (V-\mathbb{E}[V])^2] = \mathbb{V}[Z]\mathbb{V}[V]$$
+		
+	\item[d] 	Seja $f:\mathbb{R}^2 \mapsto \mathbb{R}$ a função dada por $f(x) = \frac{x_1}{x_2}$. Para uma sequência de vetores aleatórios $\boldsymbol{S}_n$  com valores em $\mathbb{R}^2$ em que a média da variável aleatória na segunda posição é diferente de zero e em que $\lVert \boldsymbol{S}_n - \mathbb{E}[\boldsymbol{S}_n] \rVert = O_p(n^{-1/2})$, use a expansão de Taylor de segunda ordem:
+	
+	$$f(\boldsymbol{S}_N) - f(\mathbb{E}[\boldsymbol{S}_N]) \approx \nabla_x f(\mathbb{E}[\boldsymbol{S}_N])(S_n -\mathbb{E}[\boldsymbol{S}_n]) + \frac{1}{2} (S_n -\mathbb{E}[\boldsymbol{S}_n])' H(f;\mathbb{E}[\boldsymbol{S_n}]) (S_n -\mathbb{E}[\boldsymbol{S}_n]) + o_p(n^{-1})\, ,$$
+	e a aproximação resultante para a esperança:\footnote{Essa aproximação é conhecida na literatura como expansão de Nagar do viés de um estimador. Ela implicitamente supõe que o erro $R_n = o_p(n^{-1})$ da expansão de Taylor acima é tal que $\mathbb{E}[R_n] = o(n^{-1})$. Condições suficientes para que isso seja verdade estão fora do escopo desse curso. }
+	
+	$$\mathbb{E}[f(\boldsymbol{S}_n) - f(\mathbb{E}[\boldsymbol{S}_n])] =  + \frac{1}{2} \mathbb{E}[(S_n -\mathbb{E}[\boldsymbol{S}_n])' H(f;\mathbb{E}[\boldsymbol{S}_n]) (S_n -\mathbb{E}[\boldsymbol{S}_n]) ] + o(n^{-1})\, ,$$
+	para aproximar, no regime assintótico de (c), o viés do estimador de variável instrumental por:
+	
+	$$\mathbb{E}[\hat{\beta}_{IV}] - \beta = -\theta \frac{\mathbb{V}[V]}{C^2\mathbb{V}[Z]} + o(n^{-1})$$
+	
+			\item[e] Considere a estatística $t$ de primeiro estágio, calculada sob homocedasticidade, i.e.
+	
+	$$\hat{t} = \frac{\sum_{i=1}^n (X_i -\bar{X})(Z_i - \bar{Z})}{\hat{\sigma}_V \sqrt{\sum_{i=1}^n(Z_i-\bar{Z})^2}}\, .$$
+	
+	Mostre que:
+	
+	$$\hat t \overset{d}{\to} \mathcal{N}\left(\frac{C \operatorname{sd}(V)}{ \operatorname{sd}(Z)}, 1\right)\, .$$
+	
+	Calcule a distribuição assintótica da estatística $\hat F = \hat t^2$.
+
+	
+	
+
+   \item[f] Com base na estatística $\hat F$, proponha um teste assintoticamente correto, ao nível de significância de 5\%, da hipótese nula de que o viés assintótico do estimador de IV é no máximo 10\% do ``viés assintótico'' do estimador de MQO, i.e., queremos testar
+   
+   $$H_0: \frac{|\lim_{n \to \infty}\mathbb{E}[\hat{\beta}_{IV}] - \beta |}{|\operatorname{plim}_n \hat{\beta}_{MQO} -\beta|}\leq 0.1\, ,$$
+   contra a alternativa de que o viés relativo é maior que 10\%.
+
 \end{itemize}
 
-\paragraph{Exercício 4}
+\paragraph{Exercício 4 (Mercado de Peixe Fulton)}
 
 
-\paragraph{Exercício 5}
+\paragraph{Exercício 5 (\textit{Eminent Domain})}
 
 
-\paragraph{Exercício 6}
+\paragraph{Exercício 6 (Interpretação Causal com Controles)}
 
 
-\paragraph{Exercício 7}
+\paragraph{Exercício 7 (Tratamentos ordenados)}
+
+\paragraph{Exercício 8}
 \end{document}
