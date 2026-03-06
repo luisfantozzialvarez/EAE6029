@@ -134,17 +134,17 @@ onde $\psi$ é a elasticidade-preço da demanda, e $\epsilon^D_t$ descrevem \tex
 
 \paragraph{Exercício 5 (\textit{Eminent Domain})} Neste exercício, vamos estudar o impacto do \emph{eminent domain} sobre os preços de imóveis nos Estados Unidos\footnote{Este exercício é baseado em \citet{chen2015growth}.}. \emph{Eminent domain} (ou leis de desapropriação) é o mecanismo legal pelo qual o governo pode adquirir compulsoriamente uma propriedade privada. Esse tipo de ação é bastante controverso, e os proprietários podem recorrer à Justiça para tentar reverter a decisão. Quando tribunais federais decidem que uma desapropriação foi ilegal (\emph{decisões favoráveis ao autor}, \emph{pro-plaintiff}), os direitos de propriedade são reforçados e cria-se um precedente que torna mais difícil a utilização futura do \emph{eminent domain}. Nosso objetivo será analisar o efeito causal dessas decisões favoráveis ao autor, proferidas nos tribunais federais de apelação, sobre os preços de imóveis.\footnote{``Uma compreensão básica do funcionamento dos tribunais federais dos EUA é importante para entender nossa estratégia de identificação, que se baseia na função de criação de precedentes dos tribunais de \emph{common law}. As decisões judiciais em casos atuais se tornam precedentes que podem ser utilizados em casos futuros no mesmo tribunal e em tribunais inferiores da mesma jurisdição. Existem três níveis de tribunais federais: Distrito, Circuito e a Suprema Corte dos EUA. Os 94 Tribunais Distritais funcionam como tribunais de primeira instância, onde um júri decide \emph{questões de fato}. Caso uma das partes recorra da decisão, o caso segue para um Tribunal de Circuito, que decide \emph{questões de direito}; esses tribunais tomam os fatos estabelecidos no Tribunal Distrital como dados e não utilizam júri. Os 12 Tribunais de Circuito, também conhecidos como Tribunais de Apelação, analisam apenas casos que levantam novas questões jurídicas (apenas 10--20\% das decisões dos tribunais distritais são objeto de recurso). Os casos que chegam aos tribunais de circuito costumam ser os mais complexos e controversos, com maior probabilidade de estabelecer novos precedentes.'' (Chen e Yeh, p. 11--12).} 
 
-\subparagraph{a} Importe \texttt{temp\_CSHomePrice.mat.csv}, disponível na subpasta \texttt{dados}. Esse conjunto de dados contém informações sobre preços de imóveis (índice Case-Shiller) e decisões favoráveis ao autor por circuito judicial e período. Observe que, com exceção do índice Case-Shiller em log, todas as variáveis estão em frequência anual. Agregue os dados por ano, calculando a média \emph{dentro de cada circuito-ano} do log do índice de preços.
+\noindent \subparagraph{a} Importe \texttt{temp\_CSHomePrice.mat.csv}, disponível na subpasta \texttt{dados}. Esse conjunto de dados contém informações sobre preços de imóveis (índice Case-Shiller) e decisões favoráveis ao autor por circuito judicial e período. Observe que, com exceção do índice Case-Shiller em log, todas as variáveis estão em frequência anual. Agregue os dados por ano, calculando a média \emph{dentro de cada circuito-ano} do log do índice de preços.
 
-\subparagraph{b} Estime uma especificação linear por MQO do log do índice de preços em um intercepto e  no número total de decisões de desapropriação em apelação favoráveis ao autor (\texttt{numpro\_casecat\_12}). O que você encontra? Esse coeficiente pode ser interpretado como uma estimativa de um efeito causal? Por quê?
+\noindent \subparagraph{b} Estime uma especificação linear por MQO do log do índice de preços em um intercepto e  no número total de decisões de desapropriação em apelação favoráveis ao autor (\texttt{numpro\_casecat\_12}). O que você encontra? Esse coeficiente pode ser interpretado como uma estimativa de um efeito causal? Por quê?
 
 \vspace{0.5em}
 
 Para lidar com possíveis problemas de endogeneidade, \citet{chen2015growth} exploram o fato de que, nos tribunais federais de apelação, os juízes são \emph{designados aleatoriamente} para compor painéis de três juízes que decidem os casos. Cada caso recebe três juízes sorteados de um conjunto (\emph{pool}) de magistrados do circuito, que varia aproximadamente entre 8 e 40 dependendo do tamanho do tribunal. Assim, \emph{condicionalmente às características desse conjunto de juízes}, as características observadas dos painéis sorteados devem satisfazer a restrição de exclusão, pois só podem afetar os preços dos imóveis por meio das decisões judiciais.
 
-\subparagraph{c} Faça o \emph{merge} do conjunto de dados \texttt{probs.txt} com sua base. Esse arquivo contém a distribuição das características dos juízes em cada circuito entre 1945 e 2007.
+\noindent \subparagraph{c} Faça o \emph{merge} do conjunto de dados \texttt{probs.txt} com sua base. Esse arquivo contém a distribuição das características dos juízes em cada circuito entre 1945 e 2007.
 
-\subparagraph{d} Considere o seguinte modelo linear causal:
+\noindent \subparagraph{d} Considere o seguinte modelo linear causal:
 
 \begin{equation}
 	\ln(\text{Case\_Shiller})_{ct} = \beta_0 + \beta_1 \text{numpro\_casecat\_12}_{ct} + \gamma' W_{ct} + \epsilon_{ct}\, ,
@@ -173,7 +173,7 @@ onde $W_{ct}$ inclui o conjunto completo de controles para as características d
 
 Estime o modelo acima utilizando o instrumento proposto. O instrumento satisfaz a condição de \emph{relevância}? Comente os resultados obtidos.
 
-\subparagraph{e} Você considera que o coeficiente estimado em (d) fornece uma estimativa \emph{crível do efeito causal} que queremos analisar? Por quê? Caso considere que não, seria possível utilizar os dados disponíveis para estimar uma \emph{especificação alternativa} que produza estimativas mais confiáveis? O que você encontrou?
+\noindent \subparagraph{e} Você considera que o coeficiente estimado em (d) fornece uma estimativa \emph{crível do efeito causal} que queremos analisar? Por quê? Caso considere que não, seria possível utilizar os dados disponíveis para estimar uma \emph{especificação alternativa} que produza estimativas mais confiáveis? O que você encontrou?
 
 
 \paragraph{Exercício 6 (Interpretação Causal com Controles)} Considere uma tupla de variáveis aleatórias $(Y,D,Z,X)$, definidas num espaço de probabilidade  $(\Omega, \Sigma,\mathbb{P})$, em que a distribuição conjunta de $(Y,D,Z,X)$ reflete a distribuição em uma população de um resultado escalar ($Y$) de interesse, uma causa binária ($D$) de $Y$ observável de interesse, um ``instrumento'' binário $Z$ e um conjunto de causas observáveis $X$ de $Y$ sobre as quais não temos interesse direto, e que tomam valores num conjunto finito $\{x_1,\ldots, x_L\}$. Nós definimos os resultados potenciais $\{Y(d,z)\}_{(d,z)\in \{0,1\}^2}$ correspondentes ao experimento hipótetico de se amostrar um elemento da população de interesse e fixar externamente as causa $(D,Z)$ em $(d,z)$, mantidas as demais causas de $Y$, observáveis ou não, em seus valores originais. Também definimos resultados potenciais $(D(0),D(1))$ correspondentes ao experimento hipotético de se fixar externamente o valor de $Z$ em $0$ ou $1$, mantidas as demais causas de $D$, observáveis ou não, fixas.
@@ -187,9 +187,11 @@ Ademais, nós supomos as seguintes restrições:
 \begin{enumerate}
 	\item (Exclusão) $Y(d,0) = Y(d,1) =: Y(d)$ para $d \in \{0,1\}$.
 	\item (Aleatorização) Condiconalmente a $X$, $\{Y(1),Y(0),D(1),D(0)\}$ é independente de $Z$.
-	\item (Monotonicidade condicional) $\mathbb{P}$-quase certamente, temos que $\mathbb{P}[Z(1)\geq Z(0)|X]\in \{0,1\}$.
-	\item (Primeiro estágio condicional)  $\mathbb{P}[\mathbb{E}[Z(1)|X]-\mathbb{E}[Z(0)|X]]>0$.
+	\item (Monotonicidade condicional) $\mathbb{P}$-quase certamente, temos que $\mathbb{P}[D(1)\geq D(0)|X]\mathbb{P}[D(1)\leq D(0)|X]=0$ e $\mathbb{P}[D(1)\geq D(0)|X]+\mathbb{P}[D(1)\leq D(0)|X]=1$.
+	\item (Primeiro estágio condicional)  $\mathbb{P}[\mathbb{E}[D(1)|X] - \mathbb{E}[D(0)|X] \neq 0]>0$.
 \end{enumerate}
+
+\vspace{0.5em}
 
 No que segue, responda às seguintes perguntas:
 
@@ -200,7 +202,7 @@ No que segue, responda às seguintes perguntas:
 		\mathbf{1}_{\{x_2\}}(X) \\
 		\vdots \\
 		\mathbf{1}_{\{x_L\}}(X) 
-	\end{bmatrix}$, um vetor com ``dummmies'' indicadoras dos pontos de suporte de $X$. Mostre que o estimador de MQO em dois estágios de $\beta$ no sistema linear:
+	\end{bmatrix}$, um vetor com ``dummies'' indicadoras dos pontos de suporte de $X$. Mostre que o estimador de MQO em dois estágios de $\beta$ no sistema linear:
 	
 	$$Y = \beta D + \gamma' \boldsymbol{p}(X) + U\, , $$
 		$$D = \phi_1'Z \boldsymbol{p}(X)  + \phi_0' \boldsymbol{p}(X) + V\, ,$$
@@ -209,9 +211,30 @@ No que segue, responda às seguintes perguntas:
 		$$\beta^*_{WLATE} = \mathbb{E}[w(X)\tau_{LATE}(X)]$$
 		onde, $\tau_{LATE}(X)$ é o LATE condicional, definido como:
 		
-		$$\tau_{LATE}(X) = \frac{\mathbb{E}[(Y(1)-Y(0))\mathbf{1}_{Z(1)\neq Z(0)}|X]}{\mathbb{P}[Z(1)\neq Z(0)|X]}$$
-		e $w(X)$ são pesos tais que $w(X) \geq 0$ quase certamente, e $\mathbb{E}[w(X)]$. Para quais subpopulações definidas pelos valores de $X$ o estimando atribui maior peso ao efeito causal?
-\end{enumerate}
+		$$\tau_{LATE}(X) = \frac{\mathbb{E}[(Y(1)-Y(0))\mathbf{1}_{D(1)\neq D(0)}|X]}{\mathbb{P}[D(1)\neq D(0)|X]}$$
+		e $w(X)$ são pesos tais que $w(X) \geq 0$ quase certamente, e $\mathbb{E}[w(X)]$. Para quais subpopulações definidas pelos valores de $X$ o estimando atribui maior peso ao efeito causal? \textit{Dica:} use o teorema de Frisch-Waugh Lovell para mostrar que o limite de probabilidade do estimador de 2SLS é:
+		$$\operatorname{plim}_{n \to \infty} \hat \beta_{n,2SLS} = \frac{\mathbb{E}[(\mathbb{E}[D|Z,X]-\mathbb{E}[D|X])(\mathbb{E}[Y|Z,X]-\mathbb{E}[Y|X])]}{\mathbb{E}[(\mathbb{E}[D|Z,X]-\mathbb{E}[D|X])^2]}$$
+	\end{enumerate}
+		\vspace{0.5em}
+		
+Você se incomodou com a estimação do sistema linear dado acima, no sentido de que ele envolve um número grandes de instrumentos efetivos ($L$ variáveis excluídas). Você propõe, então, estimar um sistema mais simples, dado por:
+
+	$$Y = \alpha D + \pi' \boldsymbol{p}(X) + \epsilon\, , $$
+$$D = \tau Z   + \psi' \boldsymbol{p}(X) + \xi \, .$$
+
+Um colega, entretanto, tendo lido um artigo recentemente \citep{blandhol2022tsls}, nota que, nesse caso, para obter uma interpretação causal sob heterogeneidade irrestrita dos efeitos de tratamento, requererá modificar 3 e 4, para.
+
+\begin{itemize}
+	\item[3'] (Monotonicidade incondicional) $\mathbb{P}[D(1)\geq D(0)] =1$ ou $\mathbb{P}[D(1)\leq D(0)] =1$ .
+	\item[4'] (Primeiro estágio') $\mathbb{E}[(Z-\mathbb{E}[Z|X])(D-\mathbb{E}[D|X])] \neq 0$.
+\end{itemize}
+
+\begin{itemize}
+	\item[c] Interprete as novas condições. Mostre que $3' \implies 3$, mas que a recíproca não é verdadeira.
+	\item[d] Encontrei a interpretação causal do estimando de 2SLS do novo sistema em termos de uma média poderadas de LATEs condicionais. Como os pesos diferem da representação do estimando em (b)?
+	\item[\textbf{Bônus}] Você consegue encontrar uma intuição para a necessidade da condição $3'$ mais forte de heterogeneidade com o primeiro estágio simplificado?
+\end{itemize}
+
 
 \paragraph{Exercício 7 (Tratamentos ordenados)}
 
