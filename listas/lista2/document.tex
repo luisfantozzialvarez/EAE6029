@@ -12,7 +12,7 @@
 \usepackage{hyperref}
 \usepackage{color}
 \usepackage{float}
-
+\usepackage{enumitem}
 \usepackage[
 backend=biber,
 style=authoryear,
@@ -57,11 +57,48 @@ natbib=true
  	\item[f] Usando a  lei da variância total e os dois resultados anteriores, mostre que a diferença entre as variâncias \emph{incondicionais} de $\tilde{b}_1$ e $\hat{b}_1$ se fatoram em dois termos, $A$ e $B$, em que $A$ é a esperança de uma matriz aleatória positiva semidefinida e $B$ a esparança de uma matriz negativa semidefinida. Proveja uma intuição para esse resultado. Se o interesse reside em $\beta_1$, quando fará sentido incluir $\boldsymbol{X}_2$ na regressão?
  	\item[g] Mostre que se $\beta_2 = 0$, então  $\mathbb{V}[\hat{\beta}_1] - \mathbb{V}[\tilde{\beta}_1] $ é positiva semidefinida. Esse resultado contradiz o teorema de Gauss-Markov? Por quê?
  \end{itemize}
+ 
+ 
+ \paragraph{Exercício 4} Considere um modelo linear da forma:
+ 
+ $$\boldsymbol{y} = \boldsymbol{X}\beta + \boldsymbol{\epsilon}$$
+ onde $\boldsymbol{y}$ é um vetor aleatório $n\times 1$, $\boldsymbol{X} = \begin{bmatrix}
+ 	X_1' \\
+ 	X_2' \\
+ 	\vdots \\
+ 	X_n'
+ \end{bmatrix}$ é uma matriz aleatória $n \times k$ e $\boldsymbol{\epsilon}$ é um vetor aleatório de dimensão $n \times 1$. No que segue, vamos supor que $\boldsymbol{X}$ tem posto $k$ (com probabilidade 1), e que a hipótese de exogeneidade $\mathbb{E}[\boldsymbol{\epsilon}|\boldsymbol{X}] = 0$ é satisfeita. Suponha, também, que a matriz de variância  (condicional) dos $\boldsymbol{\epsilon}$ seja diagonal (i.e. os erros são condicionalmente não correlacionados), embora potencialmente heterocedástica, i.e.:
+ 
+ $$\mathbb{V}[\boldsymbol{\epsilon}|\boldsymbol{X}] = \begin{bmatrix}
+ 	\sigma^2_1(\boldsymbol{X}) & 0 & 0 & \ldots & 0 \\
+ 	0 & 	\sigma^2_2(\boldsymbol{X}) & 0 & \ldots & 0 \\
+ 	\vdots & \vdots &\ddots & \ldots & \vdots  \\
+ 	0 & 0 & 0 & \ldots & \sigma^2_n(\boldsymbol{X})
+ \end{bmatrix}\, ,$$
+ onde os $\sigma^2_i$ são funções desconhecidas de $\boldsymbol{X}$. 
+ \begin{itemize}
+ 	\item[a] Mostre que  a matriz de variância do estimador de MQO de $\beta$, denotado por $\hat{b}$ toma a forma:
+ 	
+ 	$$\mathbb{V}[\hat{b}|\boldsymbol{X}] = (\boldsymbol{X}'\boldsymbol{X})^{-1}\left(\sum_{i=1}^n X_i X_i' \sigma_i^2(\boldsymbol{X})\right)(\boldsymbol{X}'\boldsymbol{X})^{-1}$$
+ 	
+ 	\item[b] Suponha que a matriz $\boldsymbol{X}$ é robusta a eliminações de uma observação da amostra, no sentido de que as matrizes $(n-1)\times k$ que consistem na remoção da $i$-ésima linha de $\boldsymbol{X}$ e que denotamos por $\boldsymbol{X}_{-i}$ têm posto $k$, para todo $i=1\ldots, n$. Considere o seguinte resíduo modificado:
+ 	
+ 	$$\tilde{e}_i = (Y_i - X_i'\hat{b}_{-i})\,,$$
+ 	onde $\hat{b}_{-i}$ é o estimador de MQO de $\beta$ na subamostra de $(n-1)$ observações que exclui $i$. Mostre que (com probabilidade 1):
+ 	$$\mathbb{E}[\tilde{e}_i^2|\boldsymbol{X}]\geq \sigma^2_i(\boldsymbol{X})\, .$$
+ 	
+ 	\item[c]  Mostre que o resíduo convencional, $\hat{e}_i = Y_i-X_i'\hat{b}$, não necessariamente satisfaz $\mathbb{E}[\hat{e}_i^2|\boldsymbol{X}]\geq \sigma^2_i(\boldsymbol{X})$ com probabilidade 1. Dê uma intuição para esse resultado.
+ 	\item[d]  Com base nos resultados anteriores, construa um estimador $\hat{V}$ para a variância $\mathbb{V}[\hat{b}|\boldsymbol{X}]$ (em média) conservador, no sentido de que (com probabilidade 1):
+ 	$$\mathbb{E}[\hat{V}|\boldsymbol{X}] - \mathbb{V}[\hat{b}|\boldsymbol{X}]\, ,$$
+ 	é positiva semidefinida. Argumente que o estimador \textit{heteroskedasticity-consistent} de White para a variância visto em aula não necessariamente satisfará essa propriedade.
+ \end{itemize} 
+ 
+ 
  \vspace{1em}
 
-		Para os próximos dois exercícios, suponha sempre que as variáveis aleatórias têm variância estritamente positiva e finita.
+		Para o próximo exercício, suponha sempre que as variáveis aleatórias têm variância estritamente positiva e finita.
 			
- \paragraph{Exercício 4} Considere variáveis aleatórias $Y$ e $D$ cuja distribuição conjunta representa a distribuição, em uma população de interesse, de um resultado de interesse $Y$, e uma causa binária ($D$) cujos efeitos causais desejamos aferir. Defina as variáveis aleatórias $Y(0)$ e $Y(1)$ correspondentes ao experimento hipotético de se amostrar um indivíduo da população e manipular (\textit{ceteris paribus}) a causa binária para $0$ ($Y(0)$) e $1$ ($Y(1)$), de modo que o resultado observado é dado por $Y = DY(1)+(1-D)Y(0)$. Vamos supor que $D$ é independente de $(Y(0),Y(1))$, de modo que não há associação sistemática, na população, entre o valor observado da causa binária e os resultados que seriam observados caso o tratamento fosse fixado externamente em $0$ ou em $1$. 
+ \paragraph{Exercício 5} Considere variáveis aleatórias $Y$ e $D$ cuja distribuição conjunta representa a distribuição, em uma população de interesse, de um resultado de interesse $Y$, e uma causa binária ($D$) cujos efeitos causais desejamos aferir. Defina as variáveis aleatórias $Y(0)$ e $Y(1)$ correspondentes ao experimento hipotético de se amostrar um indivíduo da população e manipular (\textit{ceteris paribus}) a causa binária para $0$ ($Y(0)$) e $1$ ($Y(1)$), de modo que o resultado observado é dado por $Y = DY(1)+(1-D)Y(0)$. Vamos supor que $D$ é independente de $(Y(0),Y(1))$, de modo que não há associação sistemática, na população, entre o valor observado da causa binária e os resultados que seriam observados caso o tratamento fosse fixado externamente em $0$ ou em $1$. 
  
  \begin{itemize}
  	\item[a] Mostre que $Y$ pode ser escrito como:
@@ -73,35 +110,11 @@ natbib=true
  \end{itemize}
  
  
-  \paragraph{Exercício 5} Suponha que você esteja interessado em estudar o efeito de infraestrutura escolar no desempenho escolar médio dos aluno. Você possui acesso a uma amostra aleatória de municípios, para os quais você observa o desempenho escolar médio dos alunos de $C$ escolas, $c=1,\ldots, C$, em cada um dos $M$ munícipios,  $m=1,\ldots, M$, amostrados ($Y_{c,m}$), e uma medida de conectividade da escola à Internet, em \textit{megabytes por segundo} (mbps) ($X_{c,m}$). Você então postula o seguinte modelo causal linear para $Y_{c,m}$
-  
-  $$Y_{c,m} = \gamma X_{c,m} + \epsilon_{c,m}\,,\quad c=1, \ldots,  C, \, \, m=1,\ldots, M\, ,$$
- onde $\gamma$ é o efeito causal de se aumentar a conectivadade da escola em 1mbps sobre o desempenho médio dos alunos, e $\epsilon_{c,m}$ são as demais causas não observadas do desempenho escolar.
- 
- \begin{itemize}
- 	\item[a] Sob qual condição a inclinação do melhor preditor linear de $Y_{c,m}$ num intercepto e $X_{c,m}$ identifica $\gamma$? Você acredita que essa condição seria satisfeita na prática? Por quê?
- \end{itemize}
- \vspace{0.5 em}
- 
- Em virtude da dificuldade de se acreditar na hipótese anteriormente postulada, um colega seu sugere que você explicitamente acomode a presença de causas não observadas no nível municipal que afetam desempenho municipal, considerando a decomposição:
- 
- $$\epsilon_{c,m} = \psi_m + \nu_{c,m}\, , $$
- onde $\psi_m$ é um conjunto de causas comuns ao município, e $\nu_{c,m}$ são causas idiossincráticas às escolas. Seu colega lhe diz que é possível levar em conta  (``controlar'') as causas $\psi_m$ na estimação, mesmo que estas não sejam observadas, considerando uma regressão de $Y_{c,m}$ em $X_{c,m}$ e um conjunto de $M$ \textit{dummies} municipais, i.e. $D_{c,m}(l) =\mathbf{1}_{\{l\}}(m)$, $l=1\,\ldots, m$.
- 
- \begin{itemize}
- 	\item[b] Usando o teorema de Frisch-Waugh-Lovell, mostre que o estimador do coeficiente de $X_{c,m}$ sugerido pelo seu colega é algebricamente idêntico a se estimar $\gamma$ a partir de uma regressão (sem intercepto) de $Y_{c,m} - \bar{Y}_m$ em $X_{c,m} - \bar{X}_m$, onde $\bar{Z}_m = \frac{\sum_{i=1}^{C}}{C} Z_{i.m}$. Em outras palavras, o estimador sugeriod pelo seu colega é equivalente ao estimador de MQO do modelo transformado.
- 	
- 	$$Y_{c,m} - \bar{Y}_m = \gamma (X_{c,m}-\bar{X}_m) + \epsilon_{c,m}-\bar{\epsilon}_m\, .$$
- 	
- 	\item[c] Proveja condições suficientes para que o estimador de MQO sugerido seja consistente para o parâmetro de interesse, num regime assintótico em que $M \to \infty$. Qual a interpretação dessas condições?
- 	
- 	\item[d] Derive a variância assintótica do estimador, sob as hipóteses do item anterior, permitindo que haja correlação arbitrária entre os $\epsilon_{c,m}$ intramunicipais. Sugira um estimador consistente para a variância assintótica.
- \end{itemize}
  
  
  \paragraph{Exercício 6} O arquivo \texttt{cps\_union\_data.csv} conté uma amostra \textbf{12.834 indivíduos na força de trabalho norte-americana}, extraída do suplemento anual de 2019 da \textit{Pesquisa de População Atual dos EUA (Current Population Survey)}. Seu objetivo é \textbf{estimar o efeito causal da filiação/cobertura sindical} (variável \texttt{union}) sobre os \textbf{rendimentos semanais} (variável \texttt{earnings}). O conjunto de dados contém diversas outras variáveis que podem ser utilizadas como controles (verifique o dicionário do conjunto de dados, disponível em \texttt{dictionary.xlsx}).
  
- \begin{enumerate}
+ \begin{enumerate}[label=\roman*]
  	
  	\item Como ponto de partida, compare a \textbf{média dos rendimentos} entre os indivíduos com cobertura sindical (\texttt{union == 1}) e os indivíduos sem essa cobertura (\texttt{union == 0}). Qual é a diferença estimada? Usando um teste $t$ para comparação de médias entre duas populações, teste a hipótese nula de que a remuneração média na população filiada é igual à remuneração média na população não filiada, contra a alternativa bilateral. Você rejeita a hipótese nula a 5\% de significância? E a 1\%?  diferença é estatisticamente significativa? Você acredita que essa diferença é uma estimativa crível do impacto causal da cobertura sindical? Por quê? \textit{Dica:} utilize o comando \texttt{t.test} do pacote básico do \texttt{R}.
  	
@@ -121,8 +134,8 @@ natbib=true
  		
  		\item[b)] Estime o modelo especificado. Qual é a sua estimativa de $\beta_1$? Usando erros padrão robustos à heterocedasticidade, ela é estatisticamente significativa? Comente brevemente os seus resultados.
  		
-
- 			\item[c)]Usando o teorema de Frisch-Waugh-Lovell, mostre que o estimador de MQO para $\beta_1$ tem a seguinte forma:
+ 		
+ 		\item[c)]Usando o teorema de Frisch-Waugh-Lovell, mostre que o estimador de MQO para $\beta_1$ tem a seguinte forma:
  		
  		\begin{equation}
  			\hat{\beta}_1 = \sum_{i=1}^N  \text{union}_i \cdot \omega_i  \cdot \text{earnings}_i -  \sum_{i=1}^N (1-  \text{union}_i )\cdot \omega_i  \cdot \text{earnings}_i 
@@ -150,8 +163,37 @@ natbib=true
  	\end{enumerate}
  	
  \end{enumerate}
-
- \paragraph{Exercício 7} O objetivo deste exercício consiste em entender as propriedades do estimador da variância robusta a \textit{cluster}. Para isso, usaremos os dados do resultado da aplicação de um teste lógico em alunos de um conjunto de escolas primárias, disponível em \texttt{dados.csv}.
+ 
+ 
+ \vspace{1em}
+ 		Para o próximo exercício, suponha sempre que as variáveis aleatórias têm variância estritamente positiva e finita.
+ 
+  \paragraph{Exercício 7} Suponha que você esteja interessado em estudar o efeito de infraestrutura escolar no desempenho escolar médio dos aluno. Você possui acesso a uma amostra aleatória de municípios, para os quais você observa o desempenho escolar médio dos alunos de $C$ escolas, $c=1,\ldots, C$, em cada um dos $M$ munícipios,  $m=1,\ldots, M$, amostrados ($Y_{c,m}$), e uma medida de conectividade da escola à Internet, em \textit{megabytes por segundo} (mbps) ($X_{c,m}$). Você então postula o seguinte modelo causal linear para $Y_{c,m}$
+  
+  $$Y_{c,m} = \gamma X_{c,m} + \epsilon_{c,m}\,,\quad c=1, \ldots,  C, \, \, m=1,\ldots, M\, ,$$
+ onde $\gamma$ é o efeito causal de se aumentar a conectivadade da escola em 1mbps sobre o desempenho médio dos alunos, e $\epsilon_{c,m}$ são as demais causas não observadas do desempenho escolar.
+ 
+ \begin{itemize}
+ 	\item[a] Sob qual condição a inclinação do melhor preditor linear de $Y_{c,m}$ num intercepto e $X_{c,m}$ identifica $\gamma$? Você acredita que essa condição seria satisfeita na prática? Por quê?
+ \end{itemize}
+ \vspace{0.5 em}
+ 
+ Em virtude da dificuldade de se acreditar na hipótese anteriormente postulada, um colega seu sugere que você explicitamente acomode a presença de causas não observadas no nível municipal que afetam desempenho municipal, considerando a decomposição:
+ 
+ $$\epsilon_{c,m} = \psi_m + \nu_{c,m}\, , $$
+ onde $\psi_m$ é um conjunto de causas comuns ao município, e $\nu_{c,m}$ são causas idiossincráticas às escolas. Seu colega lhe diz que é possível levar em conta  (``controlar'') as causas $\psi_m$ na estimação, mesmo que estas não sejam observadas, considerando uma regressão de $Y_{c,m}$ em $X_{c,m}$ e um conjunto de $M$ \textit{dummies} municipais, i.e. $D_{c,m}(l) =\mathbf{1}_{\{l\}}(m)$, $l=1\,\ldots, m$.
+ 
+ \begin{itemize}
+ 	\item[b] Usando o teorema de Frisch-Waugh-Lovell, mostre que o estimador do coeficiente de $X_{c,m}$ sugerido pelo seu colega é algebricamente idêntico a se estimar $\gamma$ a partir de uma regressão (sem intercepto) de $Y_{c,m} - \bar{Y}_m$ em $X_{c,m} - \bar{X}_m$, onde $\bar{Z}_m = \frac{\sum_{i=1}^{C}}{C} Z_{i.m}$. Em outras palavras, o estimador sugeriod pelo seu colega é equivalente ao estimador de MQO do modelo transformado.
+ 	
+ 	$$Y_{c,m} - \bar{Y}_m = \gamma (X_{c,m}-\bar{X}_m) + \epsilon_{c,m}-\bar{\epsilon}_m\, .$$
+ 	
+ 	\item[c] Proveja condições suficientes para que o estimador de MQO sugerido seja consistente para o parâmetro de interesse, num regime assintótico em que $M \to \infty$. Qual a interpretação dessas condições?
+ 	
+ 	\item[d] Derive a variância assintótica do estimador, sob as hipóteses do item anterior, permitindo que haja correlação arbitrária entre os $\epsilon_{c,m}$ intramunicipais. Sugira um estimador consistente para a variância assintótica.
+ \end{itemize}
+ 
+ \paragraph{Exercício 8} O objetivo deste exercício consiste em entender as propriedades do estimador da variância robusta a \textit{cluster}. Para isso, usaremos os dados do resultado da aplicação de um teste lógico em alunos de um conjunto de escolas primárias, disponível em \texttt{dados.csv}.
  \begin{itemize}
  	\item[a] Construa uma função em \texttt{R} que:
  	\begin{enumerate}
@@ -168,9 +210,79 @@ natbib=true
  	\item[d] Adapte mais uma vez a função, agora permitindo que o tratamento exerça um efeito heterogêneo entre escolas. Especificamente, você gerará $\widetilde{\texttt{logico}}_{i,c} = \texttt{logico}_{i,c}  + \tau_c \tilde{X}_{i,c}$, onde $\tau_c = 1$ com probabilidade $1/2$ e -1 com probabilidade $1/2$, e independente das demais variáveis. Nós continuaremos rodando a regressão linear de $\tilde{\texttt{logico}}_{i,c}$ em $\tilde{X}_{i,c}$ e controles. Aplique a função nova 1000 vezes. Qual a proporção de casos rejeitados agora? Por quê? 
  \end{itemize}
  
+  \vspace{1em}
+ Para o próximo exercício, suponha sempre que as variáveis aleatórias têm variância estritamente positiva e finita.
  
  
- \paragraph{Exercício 8: Aproximação não parámetrica.}  Considere $Y$ uma variável aleatória real, e $X$ um vetor aleatório de dimensão $k$, ambos definidos num mesmo espaço de probabilidade $(\Omega, \Sigma, \mathbb{P})$. Seja $m$ a função de esperança condicional de $Y$ em $X$, i.e. $m(X) = \mathbb{E}[Y|X]$. Dizemos que uma coleção de funções $p_l: \mathbb{R}^k \mapsto \mathbb{R}$, $l \in \mathbb{N}$, aproxima $m$ em $L_2(\mathbb{P}_X)$ se existe uma sequência $\beta_j \in \mathbb{R}^j$, $j \in \mathbb{N}$, tal que:
+ \paragraph{Exercício 9} Suponha que temos uma amostra $\{(y_{it}, x_{it})_{t=1}^T\}_{i=1}^N$. As observações $(y_{it},x_{it})_{t=1}^T$ são i.i.d. \emph{entre indivíduos ($i$)}, mas não impomos restrições sobre a relação entre $(y_{it}, x_{it})$ ao longo de $t$ para um mesmo $i$ (você pode pensar que selecionamos uma amostra aleatória de $N$ indivíduos, para os quais observamos $y$ e $x$ ao longo de $T$ períodos). Estamos interessados no modelo linear:
+ 
+ \begin{equation}
+ 	y_{it} =  \beta_0 + \beta_1 x_{it} + \epsilon_{it} 
+ 	\quad \mathbb{E}[\epsilon_{it}]=0 
+ 	\quad \mathbb{E}[\epsilon_{it} x_{it}] = 0
+ \end{equation}
+ 
+ \begin{itemize}
+ 	\item[a] Suponha que $\mathbb{E}[\epsilon_{ik}\epsilon_{il}|x_{ik},x_{il}] = \sigma^2$ se $k = l$ e $\mathbb{E}[\epsilon_{ik}\epsilon_{il}|x_{ik},x_{il}] = 0 $ caso contrário. Mostre que, para $T$ fixo, quando $N \to \infty$, 
+ 	\[
+ 	\sqrt{N}(\hat{\beta}_1^\text{OLS} - \beta_1) \overset{d}{\to} N\left(0, V_1  \right),
+ 	\]
+ 	onde 
+ 	\[
+ 	V_1 \coloneqq \frac{\sigma^2 T^{-1}}{T^{-1}\sum_{t=1}^T\mathbb{E}[x_{it} - T^{-1}\sum_{t=1}^T \mathbb{E}[x_{it}]]^2}.
+ 	\]
+ 	O denominador de $V_1$ é conhecido como \emph{within-individual variance} de $X$, que denotamos por $\tau$.
+ 	
+ 	\item[b] Agora relaxe a hipótese anterior e suponha que $\mathbb{E}[\epsilon_{ik}\epsilon_{il}|x_{ik},x_{il}] = \sigma^2$ se $k = l$ e $\mathbb{E}[\epsilon_{ik}\epsilon_{il}|x_{ik},x_{il}] = \rho \sigma^2 $ se $k \neq l$. Mostre que, nesse caso, para $T$ fixo, quando $N \to \infty$,
+ 	\[
+ 	\sqrt{N}(\hat{\beta}_1^\text{OLS} - \beta_1) \overset{d}{\to} N(0, V_2),
+ 	\]
+ 	onde
+ 	\[
+ 	V_2 \coloneqq V_1 \left(1 + \rho \kappa (T-1)  \right)
+ 	\]
+ 	e 
+ 	\[
+ 	\kappa \coloneqq 
+ 	\frac{\sum_{k=1}^T \sum_{l\neq k }\mathbb{E}\left[\left(x_{ik} - T^{-1}\sum_{t=1}^T \mathbb{E}[x_{it}]\right)\left(x_{il} - T^{-1}\sum_{t=1}^T \mathbb{E}[x_{it}]\right)\right]}{T(T-1) \tau }
+ 	\]
+ 	é a correlação intra-indivíduo de $x$. Em quais casos $V_2$ é igual a $V_1$?
+ 	
+ 	\item[c] Mostre que, sob as hipóteses de (a), o estimador usual de variância computado sob homocedasticidade estima consistentemente $V_1$. Sob as hipóteses de (b), você consegue encontrar um estimador consistente para $V_2$? Mostre sua consistência.
+ 	
+ 	\item[d] Agora volte ao item (a) e relaxe a hipótese de homocedasticidade, mantendo ainda que $\mathbb{E}[\epsilon_{ik}\epsilon_{il}|x_{ik},x_{il}] = 0 $ se $k \neq l$. Qual é a variância assintótica ($V_3$) nesse caso?
+ 	
+ 	\item[e] Agora volte ao item (b) e relaxe a hipótese de homocedasticidade na estrutura de covariância. Qual é a variância assintótica ($V_4$) nesse caso? Em quais situações ela é igual à variância em (d)? Em geral, essas condições são as mesmas do item (b)?
+ 	
+ 	\item[f] Mostre que, sob as hipóteses do item (d), o estimador robusto usual de variância estima consistentemente a variância assintótica $V_3$. Sugira um estimador consistente para $V_4$ (sob as hipóteses do item (e)). Não é necessário provar sua consistência.
+ \end{itemize}
+ 
+ \paragraph{Exercício 10} Neste exercício, vamos estudar o impacto da disponibilidade de água durante o período gestacional sobre os resultados de saúde de recém-nascidos\footnote{Este exercício é baseado em \fullcite{rocha2015water}.}. Mais especificamente, estaremos interessados em como flutuações de chuva durante a gravidez afetam a mortalidade infantil por meio de dois canais: (i) menor produção agrícola e menor ingestão de nutrientes; e (ii) falta de água potável segura e maior incidência de doenças infecciosas.
+ 
+ \begin{itemize}
+ 	
+ 	\item[a] Baixe o conjunto de dados 
+ 	\texttt{\href{https://ars.els-cdn.com/content/image/1-s2.0-S0304387814001096-mmc1.zip}{base\_clima\_datasus2010.dta}}. 
+ 	Esse banco de dados contém informações em nível de município sobre variações de precipitação e indicadores de saúde de recém-nascidos. Quantos municípios existem na base? Quantos períodos de dados?
+ 	
+ 	\item[b] Para analisar o impacto das variações de chuva sobre a mortalidade infantil, propomos estimar a seguinte especificação linear:
+ 	
+ 	\begin{equation}
+ 		\text{infant\_mortality}_{mt} =  \beta_0 + \beta_1 R_{mt} + \epsilon_{mt}
+ 	\end{equation}
+ 	onde $\text{infant\_mortality}_{mt}$ denota a taxa de mortalidade infantil (por 1.000 nascimentos) no município $m$ no período $t$ (coluna \texttt{k\_obt\_nasc}) e $R_{mt}$ é um \emph{choque de precipitação}, definido como o desvio logarítmico da precipitação no último ano (períodos $t-11, t-10, \ldots, t$) em relação à sua média histórica anual no município $m$ (coluna \texttt{dyang\_last12}). 
+ 	
+ 	Qual é o coeficiente estimado? O que ele mede e como deve ser interpretado?
+ 	
+ 	\item[c] Calcule os estimadores $\hat{V}_1$, $\hat{V}_2$, $\hat{V}_3$, $\hat{V}_4$ do exercício anterior e os respectivos \emph{p-valores} para $\hat{\beta}_1$.
+ 	
+ 	\item[d] Você acha que o valor do coeficiente encontrado em (b) fornece uma estimativa crível do efeito causal que queremos analisar? Por quê? Caso a resposta seja negativa, seria possível usar os dados disponíveis para estimar uma especificação alternativa que produza estimativas mais confiáveis? O que você encontrou?
+ 	
+ \end{itemize}
+ 
+ 
+ 
+ \paragraph{Exercício 11: Aproximação não parámetrica.}  Considere $Y$ uma variável aleatória real, e $X$ um vetor aleatório de dimensão $k$, ambos definidos num mesmo espaço de probabilidade $(\Omega, \Sigma, \mathbb{P})$. Seja $m$ a função de esperança condicional de $Y$ em $X$, i.e. $m(X) = \mathbb{E}[Y|X]$. Dizemos que uma coleção de funções $p_l: \mathbb{R}^k \mapsto \mathbb{R}$, $l \in \mathbb{N}$, aproxima $m$ em $L_2(\mathbb{P}_X)$ se existe uma sequência $\beta_j \in \mathbb{R}^j$, $j \in \mathbb{N}$, tal que:
  
  $$\lim_{j \to \infty}\int (m(x) - \beta_j'\boldsymbol{P}_j(x))^2 \mathbb{P}_X(dx) = 0$$
  com $\boldsymbol{P}_j(x) = (p_1(x),p_2(x),\ldots p_j(x))'$, e onde $\mathbb{P}_X$ denota a lei de probabilidade induzida por $X$.
@@ -233,7 +345,7 @@ natbib=true
  	
  	Qual a interpretação desse resultado?
  \end{itemize}
- \paragraph{Exercício 9: Implementação computacional} Vamos considerar um caso particular do ambiente do item anterior. Especificamente, de agora em diante, consideramos que $X \sim \operatorname{Uniforme}[0,1]$.
+ \paragraph{Exercício 12: Implementação computacional} Vamos considerar um caso particular do ambiente do item anterior. Especificamente, de agora em diante, consideramos que $X \sim \operatorname{Uniforme}[0,1]$.
  
  \begin{itemize}
  	\item[a] Considere a classe de polinômios, $p_l(x) = x^{l-1}$, $l\in \mathbb{N}$. Use o teorema de Stone-Weierstrass para argumentar que, se $m$ é contínua, $\{p_l\}_{l \in \mathcal{N}}$ exibirára a propriedade de aproximação em $L_2(\mathbb{P}_X)$ para $m$.
@@ -270,99 +382,6 @@ natbib=true
  	\item[d] Para cada $n$, em que valor a curva $J \mapsto \widetilde{\psi(n,J)}$ atinge o ponto mínimo? Qual a relação entre esses pontos de mínimo? Com base nas propriedades do estimador de MQO, proveja uma intuição para esse resultado.
  \end{itemize}
  
-	\paragraph{Exercício 10} Considere um modelo linear da forma:
 
-$$\boldsymbol{y} = \boldsymbol{X}\beta + \boldsymbol{\epsilon}$$
-onde $\boldsymbol{y}$ é um vetor aleatório $n\times 1$, $\boldsymbol{X} = \begin{bmatrix}
-	X_1' \\
-	X_2' \\
-	\vdots \\
-	X_n'
-\end{bmatrix}$ é uma matriz aleatória $n \times k$ e $\boldsymbol{\epsilon}$ é um vetor aleatório de dimensão $n \times 1$. No que segue, vamos supor que $\boldsymbol{X}$ tem posto $k$ (com probabilidade 1), e que a hipótese de exogeneidade $\mathbb{E}[\boldsymbol{\epsilon}|\boldsymbol{X}] = 0$ é satisfeita. Suponha, também, que a matriz de variância  (condicional) dos $\boldsymbol{\epsilon}$ seja diagonal (i.e. os erros são condicionalmente não correlacionados), embora potencialmente heterocedástica, i.e.:
-
-$$\mathbb{V}[\boldsymbol{\epsilon}|\boldsymbol{X}] = \begin{bmatrix}
-	\sigma^2_1(\boldsymbol{X}) & 0 & 0 & \ldots & 0 \\
-	0 & 	\sigma^2_2(\boldsymbol{X}) & 0 & \ldots & 0 \\
-	\vdots & \vdots &\ddots & \ldots & \vdots  \\
-	0 & 0 & 0 & \ldots & \sigma^2_n(\boldsymbol{X})
-\end{bmatrix}\, ,$$
-onde os $\sigma^2_i$ são funções desconhecidas de $\boldsymbol{X}$. 
-\begin{itemize}
-	\item[a] Mostre que  a matriz de variância do estimador de MQO de $\beta$, denotado por $\hat{b}$ toma a forma:
-	
-	$$\mathbb{V}[\hat{b}|\boldsymbol{X}] = (\boldsymbol{X}'\boldsymbol{X})^{-1}\left(\sum_{i=1}^n X_i X_i' \sigma_i^2(\boldsymbol{X})\right)(\boldsymbol{X}'\boldsymbol{X})^{-1}$$
-	
-	\item[b] Suponha que a matriz $\boldsymbol{X}$ é robusta a eliminações de uma observação da amostra, no sentido de que as matrizes $(n-1)\times k$ que consistem na remoção da $i$-ésima linha de $\boldsymbol{X}$ e que denotamos por $\boldsymbol{X}_{-i}$ têm posto $k$, para todo $i=1\ldots, n$. Considere o seguinte resíduo modificado:
-	
-	$$\tilde{e}_i = (Y_i - X_i'\hat{b}_{-i})\,,$$
-	onde $\hat{b}_{-i}$ é o estimador de MQO de $\beta$ na subamostra de $(n-1)$ observações que exclui $i$. Mostre que (com probabilidade 1):
-	$$\mathbb{E}[\tilde{e}_i^2|\boldsymbol{X}]\geq \sigma^2_i(\boldsymbol{X})\, .$$
-	
-	\item[c]  Mostre que o resíduo convencional, $\hat{e}_i = Y_i-X_i'\hat{b}$, não necessariamente satisfaz $\mathbb{E}[\hat{e}_i^2|\boldsymbol{X}]\geq \sigma^2_i(\boldsymbol{X})$ com probabilidade 1. Dê uma intuição para esse resultado.
-	\item[d]  Com base nos resultados anteriores, construa um estimador $\hat{V}$ para a variância $\mathbb{V}[\hat{b}|\boldsymbol{X}]$ (em média) conservador, no sentido de que (com probabilidade 1):
-	$$\mathbb{E}[\hat{V}|\boldsymbol{X}] - \mathbb{V}[\hat{b}|\boldsymbol{X}]\, ,$$
-	é positiva semidefinida. Argumente que o estimador \textit{heteroskedasticity-consistent} de White para a variância visto em aula não necessariamente satisfará essa propriedade.
-\end{itemize} 
-
-
-\paragraph{Exercício 11} Suponha que temos uma amostra $\{(y_{it}, x_{it})_{t=1}^T\}_{i=1}^N$. As observações $(y_{it},x_{it})_{t=1}^T$ são i.i.d. \emph{entre indivíduos ($i$)}, mas não impomos restrições sobre a relação entre $(y_{it}, x_{it})$ ao longo de $t$ para um mesmo $i$ (você pode pensar que selecionamos uma amostra aleatória de $N$ indivíduos, para os quais observamos $y$ e $x$ ao longo de $T$ períodos). Estamos interessados no modelo linear:
-
-\begin{equation}
-	y_{it} =  \beta_0 + \beta_1 x_{it} + \epsilon_{it} 
-	\quad \mathbb{E}[\epsilon_{it}]=0 
-	\quad \mathbb{E}[\epsilon_{it} x_{it}] = 0
-\end{equation}
-
-\subparagraph{a} Suponha que $\mathbb{E}[\epsilon_{ik}\epsilon_{il}|x_{ik},x_{il}] = \sigma^2$ se $k = l$ e $\mathbb{E}[\epsilon_{ik}\epsilon_{il}|x_{ik},x_{il}] = 0 $ caso contrário. Mostre que, para $T$ fixo, quando $N \to \infty$, 
-\[
-\sqrt{N}(\hat{\beta}_1^\text{OLS} - \beta_1) \overset{d}{\to} N\left(0, V_1  \right),
-\]
-onde 
-\[
-V_1 \coloneqq \frac{\sigma^2 T^{-1}}{T^{-1}\sum_{t=1}^T\mathbb{E}[x_{it} - T^{-1}\sum_{t=1}^T \mathbb{E}[x_{it}]]^2}.
-\]
-O denominador de $V_1$ é conhecido como \emph{within-individual variance}, que denotamos por $\tau$.
-
-\subparagraph{b} Agora relaxe a hipótese anterior e suponha que $\mathbb{E}[\epsilon_{ik}\epsilon_{il}|x_{ik},x_{il}] = \sigma^2$ se $k = l$ e $\mathbb{E}[\epsilon_{ik}\epsilon_{il}|x_{ik},x_{il}] = \rho \sigma^2 $ se $k \neq l$. Mostre que, nesse caso, para $T$ fixo, quando $N \to \infty$,
-\[
-\sqrt{N}(\hat{\beta}_1^\text{OLS} - \beta_1) \overset{d}{\to} N(0, V_2),
-\]
-onde
-\[
-V_2 \coloneqq V_1 \left(1 + \rho \kappa (T-1)  \right)
-\]
-e 
-\[
-\kappa \coloneqq 
-\frac{\sum_{k=1}^T \sum_{l\neq k }\mathbb{E}\left[\left(x_{ik} - T^{-1}\sum_{t=1}^T \mathbb{E}[x_{it}]\right)\left(x_{il} - T^{-1}\sum_{t=1}^T \mathbb{E}[x_{it}]\right)\right]}{T(T-1) \tau }
-\]
-é a correlação intra-indivíduo de $x$. Em quais casos $V_2$ é igual a $V_1$?
-
-\subparagraph{c} Mostre que, sob as hipóteses de (a), o estimador usual de variância sob homocedasticidade estima consistentemente $V_1$. Sob as hipóteses de (b), você consegue encontrar um estimador consistente para $V_2$? Mostre sua consistência.
-
-\subparagraph{d} Agora volte ao item (a) e relaxe a hipótese de homocedasticidade, mantendo ainda que $\mathbb{E}[\epsilon_{ik}\epsilon_{il}|x_{ik},x_{il}] = 0 $ se $k \neq l$. Qual é a variância assintótica ($V_3$) nesse caso?
-
-\subparagraph{e} Agora volte ao item (b) e relaxe a hipótese de homocedasticidade na estrutura de covariância. Qual é a variância assintótica ($V_4$) nesse caso? Em quais situações ela é igual à variância em (d)? Em geral, essas condições são as mesmas do item (b)?
-
-\subparagraph{f} Mostre que, sob as hipóteses do item (d), o estimador robusto usual de variância estima consistentemente a variância assintótica $V_3$. Sugira um estimador consistente para $V_4$ (sob as hipóteses do item (e)). Não é necessário provar sua consistência.
-
-\paragraph{Exercício 12} Neste exercício, vamos estudar o impacto da disponibilidade de água durante o período gestacional sobre os resultados de saúde de recém-nascidos\footnote{Este exercício é baseado em \fullcite{rocha2015water}.}. Mais especificamente, estaremos interessados em como flutuações de chuva durante a gravidez afetam a mortalidade infantil por meio de dois canais: (i) menor produção agrícola e menor ingestão de nutrientes; e (ii) falta de água potável segura e maior incidência de doenças infecciosas.
-
-\subparagraph{a} Baixe o conjunto de dados 
-\texttt{\href{https://ars.els-cdn.com/content/image/1-s2.0-S0304387814001096-mmc1.zip}{base\_clima\_datasus2010.dta}}. 
-Esse banco de dados contém informações em nível de município sobre variações de precipitação e indicadores de saúde de recém-nascidos. Quantos municípios existem na base? Quantos períodos de dados?
-
-\subparagraph{b} Para analisar o impacto das variações de chuva sobre a mortalidade infantil, propomos estimar a seguinte especificação linear:
-
-\begin{equation}
-	\text{infant\_mortality}_{mt} =  \beta_0 + \beta_1 R_{mt} + \epsilon_{mt}
-\end{equation}
-onde $\text{infant\_mortality}_{mt}$ denota a taxa de mortalidade infantil (por 1.000 nascimentos) no município $m$ no período $t$ (coluna \texttt{k\_obt\_nasc}) e $R_{mt}$ é um \emph{choque de precipitação}, definido como o desvio logarítmico da precipitação no último ano (períodos $t-11, t-10, \ldots, t$) em relação à sua média histórica anual no município $m$ (coluna \texttt{dyang\_last12}). 
-
-Qual é o coeficiente estimado? O que ele mede e como deve ser interpretado?
-
-\subparagraph{c} Calcule os estimadores $\hat{V}_1$, $\hat{V}_2$, $\hat{V}_3$, $\hat{V}_4$ do exercício anterior e os respectivos \emph{p-valores} para $\hat{\beta}_1$.
-
-\subparagraph{d} Você acha que o valor do coeficiente encontrado em (b) fornece uma estimativa crível do efeito causal que queremos analisar? Por quê? Caso a resposta seja negativa, seria possível usar os dados disponíveis para estimar uma especificação alternativa que produza estimativas mais confiáveis? O que você encontrou?
 
 \end{document}

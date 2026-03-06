@@ -1,5 +1,5 @@
 % $ biblatex auxiliary file $
-% $ biblatex bbl format version 3.2 $
+% $ biblatex bbl format version 3.3 $
 % Do not modify the above lines!
 %
 % This is an auxiliary file used by the 'biblatex' package.
@@ -18,8 +18,8 @@
 
 
 \refsection{0}
-  \datalist[entry]{nyt/global//global/global}
-    \entry{blandhol2022tsls}{report}{}
+  \datalist[entry]{nyt/global//global/global/global}
+    \entry{blandhol2022tsls}{report}{}{}
       \name{author}{4}{}{%
         {{un=0,uniquepart=base,hash=2a9fa65b3c6e349ef1c580372dd0208e}{%
            family={Blandhol},
@@ -51,10 +51,12 @@
       }
       \strng{namehash}{9a74f3f5dc2292956b44e4258b5e5de4}
       \strng{fullhash}{479413743a447c1f5aab3ad15282d317}
+      \strng{fullhashraw}{479413743a447c1f5aab3ad15282d317}
       \strng{bibnamehash}{9a74f3f5dc2292956b44e4258b5e5de4}
       \strng{authorbibnamehash}{9a74f3f5dc2292956b44e4258b5e5de4}
       \strng{authornamehash}{9a74f3f5dc2292956b44e4258b5e5de4}
       \strng{authorfullhash}{479413743a447c1f5aab3ad15282d317}
+      \strng{authorfullhashraw}{479413743a447c1f5aab3ad15282d317}
       \field{sortinit}{B}
       \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
       \field{extradatescope}{labelyear}
@@ -65,7 +67,7 @@
       \field{type}{techreport}
       \field{year}{2022}
     \endentry
-    \entry{chen2015growth}{unpublished}{}
+    \entry{chen2015growth}{unpublished}{}{}
       \name{author}{2}{}{%
         {{un=0,uniquepart=base,hash=a9940017ad7dd8651f47dce93080dd90}{%
            family={Chen},
@@ -82,10 +84,12 @@
       }
       \strng{namehash}{9f6b88509421a4fc2f46d4fb20e716fb}
       \strng{fullhash}{9f6b88509421a4fc2f46d4fb20e716fb}
+      \strng{fullhashraw}{9f6b88509421a4fc2f46d4fb20e716fb}
       \strng{bibnamehash}{9f6b88509421a4fc2f46d4fb20e716fb}
       \strng{authorbibnamehash}{9f6b88509421a4fc2f46d4fb20e716fb}
       \strng{authornamehash}{9f6b88509421a4fc2f46d4fb20e716fb}
       \strng{authorfullhash}{9f6b88509421a4fc2f46d4fb20e716fb}
+      \strng{authorfullhashraw}{9f6b88509421a4fc2f46d4fb20e716fb}
       \field{sortinit}{C}
       \field{sortinithash}{4d103a86280481745c9c897c925753c0}
       \field{extradatescope}{labelyear}
@@ -95,7 +99,7 @@
       \field{title}{Growth Under the Shadow of Expropriation? The Economic Impacts of Eminent Domain}
       \field{year}{2015}
     \endentry
-    \entry{Graddy2006}{article}{}
+    \entry{Graddy2006}{article}{}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=1f07b0a68bdaca41b9a592c1b7a48879}{%
            family={Graddy},
@@ -109,10 +113,12 @@
       }
       \strng{namehash}{1f07b0a68bdaca41b9a592c1b7a48879}
       \strng{fullhash}{1f07b0a68bdaca41b9a592c1b7a48879}
+      \strng{fullhashraw}{1f07b0a68bdaca41b9a592c1b7a48879}
       \strng{bibnamehash}{1f07b0a68bdaca41b9a592c1b7a48879}
       \strng{authorbibnamehash}{1f07b0a68bdaca41b9a592c1b7a48879}
       \strng{authornamehash}{1f07b0a68bdaca41b9a592c1b7a48879}
       \strng{authorfullhash}{1f07b0a68bdaca41b9a592c1b7a48879}
+      \strng{authorfullhashraw}{1f07b0a68bdaca41b9a592c1b7a48879}
       \field{sortinit}{G}
       \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
       \field{extradatescope}{labelyear}
@@ -138,7 +144,7 @@
       \verb http://www.jstor.org/stable/30033657
       \endverb
     \endentry
-    \entry{Ponczek2012}{article}{}
+    \entry{Ponczek2012}{article}{}{}
       \name{author}{2}{}{%
         {{un=0,uniquepart=base,hash=a44255385da5711eb3cba125776fcdfc}{%
            family={Ponczek},
@@ -158,10 +164,12 @@
       }
       \strng{namehash}{d017c40a3be815d59bbcd17dc71ad6b1}
       \strng{fullhash}{d017c40a3be815d59bbcd17dc71ad6b1}
+      \strng{fullhashraw}{d017c40a3be815d59bbcd17dc71ad6b1}
       \strng{bibnamehash}{d017c40a3be815d59bbcd17dc71ad6b1}
       \strng{authorbibnamehash}{d017c40a3be815d59bbcd17dc71ad6b1}
       \strng{authornamehash}{d017c40a3be815d59bbcd17dc71ad6b1}
       \strng{authorfullhash}{d017c40a3be815d59bbcd17dc71ad6b1}
+      \strng{authorfullhashraw}{d017c40a3be815d59bbcd17dc71ad6b1}
       \field{sortinit}{P}
       \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
       \field{extradatescope}{labelyear}
