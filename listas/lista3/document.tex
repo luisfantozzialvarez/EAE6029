@@ -176,8 +176,42 @@ Estime o modelo acima utilizando o instrumento proposto. O instrumento satisfaz 
 \subparagraph{e} Você considera que o coeficiente estimado em (d) fornece uma estimativa \emph{crível do efeito causal} que queremos analisar? Por quê? Caso considere que não, seria possível utilizar os dados disponíveis para estimar uma \emph{especificação alternativa} que produza estimativas mais confiáveis? O que você encontrou?
 
 
-\paragraph{Exercício 6 (Interpretação Causal com Controles)}
+\paragraph{Exercício 6 (Interpretação Causal com Controles)} Considere uma tupla de variáveis aleatórias $(Y,D,Z,X)$, definidas num espaço de probabilidade  $(\Omega, \Sigma,\mathbb{P})$, em que a distribuição conjunta de $(Y,D,Z,X)$ reflete a distribuição em uma população de um resultado escalar ($Y$) de interesse, uma causa binária ($D$) de $Y$ observável de interesse, um ``instrumento'' binário $Z$ e um conjunto de causas observáveis $X$ de $Y$ sobre as quais não temos interesse direto, e que tomam valores num conjunto finito $\{x_1,\ldots, x_L\}$. Nós definimos os resultados potenciais $\{Y(d,z)\}_{(d,z)\in \{0,1\}^2}$ correspondentes ao experimento hipótetico de se amostrar um elemento da população de interesse e fixar externamente as causa $(D,Z)$ em $(d,z)$, mantidas as demais causas de $Y$, observáveis ou não, em seus valores originais. Também definimos resultados potenciais $(D(0),D(1))$ correspondentes ao experimento hipotético de se fixar externamente o valor de $Z$ em $0$ ou $1$, mantidas as demais causas de $D$, observáveis ou não, fixas.
+Com base nessa definição do modelo causal, segue que: 
 
+$$Y = Y(D,Z) = DZ Y(1,1) +(1-D)ZY(0,1) + D(1-Z)Y(1,0) +(1-D)(1-Z)Y(0,0)$$
+$$D = ZD + D(1-Z)$$
+
+Ademais, nós supomos as seguintes restrições:
+
+\begin{enumerate}
+	\item (Exclusão) $Y(d,0) = Y(d,1) =: Y(d)$ para $d \in \{0,1\}$.
+	\item (Aleatorização) Condiconalmente a $X$, $\{Y(1),Y(0),D(1),D(0)\}$ é independente de $Z$.
+	\item (Monotonicidade condicional) $\mathbb{P}$-quase certamente, temos que $\mathbb{P}[Z(1)\geq Z(0)|X]\in \{0,1\}$.
+	\item (Primeiro estágio condicional)  $\mathbb{P}[\mathbb{E}[Z(1)|X]-\mathbb{E}[Z(0)|X]]>0$.
+\end{enumerate}
+
+No que segue, responda às seguintes perguntas:
+
+\begin{enumerate}
+	\item[a] Proveja uma interpretação para cada uma das quatro hipóteses.
+	\item[b] Seja $\boldsymbol{p}(X) = \begin{bmatrix}
+		\mathbf{1}_{\{x_1\}}(X) \\
+		\mathbf{1}_{\{x_2\}}(X) \\
+		\vdots \\
+		\mathbf{1}_{\{x_L\}}(X) 
+	\end{bmatrix}$, um vetor com ``dummmies'' indicadoras dos pontos de suporte de $X$. Mostre que o estimador de MQO em dois estágios de $\beta$ no sistema linear:
+	
+	$$Y = \beta D + \gamma' \boldsymbol{p}(X) + U\, , $$
+		$$D = \phi_1'Z \boldsymbol{p}(X)  + \phi_0' \boldsymbol{p}(X) + V\, ,$$
+		construído com base numa amostra aleatória de $(Y,D,Z,X)$ é consistente para o parâmetro:
+		
+		$$\beta^*_{WLATE} = \mathbb{E}[w(X)\tau_{LATE}(X)]$$
+		onde, $\tau_{LATE}(X)$ é o LATE condicional, definido como:
+		
+		$$\tau_{LATE}(X) = \frac{\mathbb{E}[(Y(1)-Y(0))\mathbf{1}_{Z(1)\neq Z(0)}|X]}{\mathbb{P}[Z(1)\neq Z(0)|X]}$$
+		e $w(X)$ são pesos tais que $w(X) \geq 0$ quase certamente, e $\mathbb{E}[w(X)]$. Para quais subpopulações definidas pelos valores de $X$ o estimando atribui maior peso ao efeito causal?
+\end{enumerate}
 
 \paragraph{Exercício 7 (Tratamentos ordenados)}
 
