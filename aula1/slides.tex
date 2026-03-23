@@ -173,14 +173,17 @@ From this point of view we may consider the total number of possible observation
 	\begin{itemize}
 		\item Como alternativa ao problema anterior, podemos considerar classes de funções $h$ \textbf{mais simples}.
 		\item Por exemplo, se $\mathbb{E}[X_j^2] < \infty$ para $j=1,\ldots, k$, faz sentido considerar o melhor preditor na classe de funções lineares da forma $\mathcal{H}_{\text{Lin}} = \{h(x) = \alpha + x'\delta: \alpha \in \mathbb{R}, \delta \in \mathbb{R}^k \}$.
-		\item Nesse caso, problema de previsão se torna encontrar um $h_*$ da forma $h_*(x) = \alpha_* + x'\delta_*$, conhecido como \textbf{melhor preditor linear}, tal que:
+				\begin{itemize}
+			\item Funções lineares de ${X}$ e um intercepto (i.e. funções afins de ${X}$)
+		\end{itemize}
+		\item Nesse caso, problema de previsão se torna encontrar um $h_*$ da forma $h_*(x) = \alpha_* + x'\delta_*$, conhecido como \textbf{melhor preditor linear} (como função de ${X}$ e um intercepto), tal que:
 		
 		$$\operatorname{EQM}(h_*) = \min_{h \in \mathcal{H}_{\text{Lin}}} \operatorname{EQM}(h)= \min_{a \in \mathbb{R}, b \in \mathbb{R}^k}\mathbb{E}[(Y-a-b'X)^2] $$
 	\end{itemize}
 \end{frame}
 \begin{frame}{Esperança e variância de vetores aleatórios}
 \begin{itemize}
-	\item O valor esperado de um vetor (matriz) aleatória $U$ é denotado por $\mathbb{E}[U]$, e dado pelo vetor (matriz) em que a posição $i$ ($i,j$) é preenchida com $\mathbb{E}[U_i]$ ($\mathbb{E}[U_{i,j}]$).
+	\item O valor esperado de um vetor (matriz) aleatória $\boldsymbol{U}$ é denotado por $\mathbb{E}[\boldsymbol{U}]$, e dado pelo vetor (matriz) em que a posição $i$ ($[i,j]$) é preenchida com $\mathbb{E}[\boldsymbol{U}_i]$ ($\mathbb{E}[\boldsymbol{U}_{i,j}]$).
 	\item Para um vetor aleatório $\boldsymbol{Z}$ de dimensão $d$ tal que $\operatorname{tr}(\mathbb{E}[\boldsymbol{Z}\boldsymbol{Z}'])<\infty$, a matriz de variância-covariância, $\mathbb{V}[\boldsymbol{Z}] $, é definida como:
 	
 	$$\mathbb{V}[\boldsymbol{Z}]  = \mathbb{E}[\boldsymbol{Z}\boldsymbol{Z}'] - \mathbb{E}[\boldsymbol{Z}]\mathbb{E}[\boldsymbol{Z}']$$

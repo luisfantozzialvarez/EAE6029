@@ -1,5 +1,5 @@
 % $ biblatex auxiliary file $
-% $ biblatex bbl format version 3.2 $
+% $ biblatex bbl format version 3.3 $
 % Do not modify the above lines!
 %
 % This is an auxiliary file used by the 'biblatex' package.
@@ -18,8 +18,8 @@
 
 
 \refsection{0}
-  \datalist[entry]{nyt/global//global/global}
-    \entry{Haavelmo1944}{article}{}
+  \datalist[entry]{nyt/global//global/global/global}
+    \entry{Haavelmo1944}{article}{}{}
       \name{author}{1}{}{%
         {{hash=50beac29154cfda3b77a2b40a8679b08}{%
            family={Haavelmo},
@@ -32,10 +32,12 @@
       }
       \strng{namehash}{50beac29154cfda3b77a2b40a8679b08}
       \strng{fullhash}{50beac29154cfda3b77a2b40a8679b08}
+      \strng{fullhashraw}{50beac29154cfda3b77a2b40a8679b08}
       \strng{bibnamehash}{50beac29154cfda3b77a2b40a8679b08}
       \strng{authorbibnamehash}{50beac29154cfda3b77a2b40a8679b08}
       \strng{authornamehash}{50beac29154cfda3b77a2b40a8679b08}
       \strng{authorfullhash}{50beac29154cfda3b77a2b40a8679b08}
+      \strng{authorfullhashraw}{50beac29154cfda3b77a2b40a8679b08}
       \field{sortinit}{H}
       \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
       \field{extradatescope}{labelyear}
@@ -60,7 +62,7 @@
       \verb http://www.jstor.org/stable/1906935
       \endverb
     \endentry
-    \entry{Heckman2024}{article}{}
+    \entry{Heckman2024}{article}{}{}
       \name{author}{2}{}{%
         {{hash=31a1496cdbf5dc77b32758042c61ba9c}{%
            family={Heckman},
@@ -75,10 +77,12 @@
       }
       \strng{namehash}{10861d2a81d410c6277928f7f0e99a94}
       \strng{fullhash}{10861d2a81d410c6277928f7f0e99a94}
+      \strng{fullhashraw}{10861d2a81d410c6277928f7f0e99a94}
       \strng{bibnamehash}{10861d2a81d410c6277928f7f0e99a94}
       \strng{authorbibnamehash}{10861d2a81d410c6277928f7f0e99a94}
       \strng{authornamehash}{10861d2a81d410c6277928f7f0e99a94}
       \strng{authorfullhash}{10861d2a81d410c6277928f7f0e99a94}
+      \strng{authorfullhashraw}{10861d2a81d410c6277928f7f0e99a94}
       \field{extraname}{1}
       \field{sortinit}{H}
       \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
@@ -106,7 +110,7 @@
       \endverb
       \keyw{Structural equation models,Causality,Causal inference,Directed acyclic graphs,Simultaneous causality}
     \endentry
-    \entry{Heckman2022}{article}{}
+    \entry{Heckman2022}{article}{}{}
       \name{author}{2}{}{%
         {{hash=b70b920520f54634a1f03f9312707db2}{%
            family={Heckman},
@@ -124,10 +128,12 @@
       }
       \strng{namehash}{f8126b22853b3df532011c15ef351228}
       \strng{fullhash}{f8126b22853b3df532011c15ef351228}
+      \strng{fullhashraw}{f8126b22853b3df532011c15ef351228}
       \strng{bibnamehash}{f8126b22853b3df532011c15ef351228}
       \strng{authorbibnamehash}{f8126b22853b3df532011c15ef351228}
       \strng{authornamehash}{f8126b22853b3df532011c15ef351228}
       \strng{authorfullhash}{f8126b22853b3df532011c15ef351228}
+      \strng{authorfullhashraw}{f8126b22853b3df532011c15ef351228}
       \field{extraname}{2}
       \field{sortinit}{H}
       \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
