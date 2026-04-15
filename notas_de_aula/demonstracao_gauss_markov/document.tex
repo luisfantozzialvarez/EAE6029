@@ -1,0 +1,62 @@
+% !TeX document-id = {1c0b4298-276a-4038-8e08-c4a1f4846da7}
+% !TeX TXS-program:bibliography = txs:///biber
+\documentclass[12pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{thmtools}
+\usepackage{xcolor}
+\usepackage{nameref}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{float}
+\newtheorem{theorem}{Teorema}
+%\usepackage[margin=2.5cm]{geometry}
+\usepackage[brazilian]{babel}
+\usepackage[
+backend=biber,
+style=authoryear,
+natbib=true
+]{biblatex}
+\addbibresource{../bibliography.bib}
+\newtheorem{definition}{Definição}
+\newtheorem{lemma}{Lema}
+\newtheorem{proposition}{Proposição}
+\title{Demonstração do teorema de Gauss-Markov}
+\author{ Professor Luís Antonio Fantozzi Alvarez}
+\date{15 de abril de 2026}
+\begin{document}
+	\maketitle
+	
+	Nestas notas, faremos a demonstração do teorema de Gauss-Markov visto em aula, cujo enunciado reproduzimos a seguir:
+	\begin{theorem}[Gauss-Markov]
+		Sob H1-H3, o estimador de MQO é o estimador {\color{red}linear} não viciado para $\delta(F)$ de variância uniformemente mínima na classe $\mathcal{F}(\boldsymbol{X})$, i.e. para qualquer outro estimador  {\color{red}linear} $\psi$ tal que $\mathbb{E}_{F}[\psi|\boldsymbol{X}] = \delta(F)$ para todo $F \in \mathcal{F}(\boldsymbol{X})$, temos que, para todo $F \in \mathcal{F}(\boldsymbol{X})$:
+		
+		$$\mathbb{V}_{F}(\psi|\boldsymbol{X}) - \mathbb{V}_{F}(\hat{b}|\boldsymbol{X})\, \quad \text{é positiva semidefinida} $$
+	\end{theorem}
+	
+\begin{proof}
+Dividimos a demonstração em quatro etapas.
+\paragraph{Etapa 1} Observe que $\{\delta(F) : F \in \mathcal{F}(\boldsymbol(X))\} = \mathbb{R}^k$, pois, para todo $\delta \in \mathbb{R}^k$, conseguimos definir um modelo dado por $\boldsymbol{y}=\boldsymbol{X}\delta + \boldsymbol{\epsilon}$, onde $\boldsymbol{\epsilon} \sim \mathcal{N}(\boldsymbol{0}_{n\times 1},\mathbb{I}_{n\times n})$, com $\boldsymbol{\epsilon}$ independente de $\boldsymbol{X}$, e a distribuição $P_{\boldsymbol{y}|\boldsymbol{X}}$ resultante pertencerá a $\mathcal{F}(\boldsymbol{X})$, com $\delta(P_{\boldsymbol{y}|\boldsymbol{X}})=\delta$.
+\paragraph{Etapa 2} Considere um estimador linear $A(\boldsymbol{X})\boldsymbol{y}$ não vixiado para $\delta(F)$ em $\mathcal{F}(\boldsymbol{X})$. Se esse estimador é não viciado, então $\mathbb{E}_F[A(\boldsymbol{X})\boldsymbol{y}|\boldsymbol{X}]=A(\boldsymbol{X})\boldsymbol{X}\delta(F) = \delta(F)$ para toda $F \in \mathcal{F}(\boldsymbol{X})$. Fixe $j \in \{1,\ldots, k\}$. Tomando $F$ tal que $\delta(F) = e_j$, onde $e_j$ é o vetor $k\times 1$ com $1$ na $j$-ésima entrada e $0$ nas demais, concluímos então que a $j$-ésima coluna de $A(\boldsymbol{X})\boldsymbol{X}$ é igual a $e_j$. Como $j$ foi escolhido arbitrariamente, concluímos que $A(\boldsymbol{X})\boldsymbol{X} = \begin{bmatrix}e_1 & e_2& \ldots & e_k\end{bmatrix} = \mathbb{I}_{k \times k}$ .
+\paragraph{Etapa 3} Ainda considerando o estimador da etapa anterior, fixe $F \in \mathcal{F}(\boldsymbol{X})$. Observamos que: 
+
+\begin{equation*}
+\begin{aligned}
+\operatorname{cov}_F(A(\boldsymbol{X})\boldsymbol{y}-\hat{b},\hat{b}|\boldsymbol{X}) =\\ \mathbb{E}_F[(A(\boldsymbol{X})(\boldsymbol{y}-\mathbb{E}_F[\boldsymbol{y}|\boldsymbol{X}])-(\hat{b}-\mathbb{E}_F[\hat{b}|\boldsymbol{X}]))(\hat{b}-\mathbb{E}_F[\hat{b}|\boldsymbol{X}])'|\boldsymbol{X}] = \\
+\mathbb{E}_F[(A(\boldsymbol{X}) - (\boldsymbol{X}'\boldsymbol{X})^{-1}\boldsymbol{X}')\boldsymbol{\epsilon}\boldsymbol{\epsilon}'\boldsymbol{X} (\boldsymbol{X}'\boldsymbol{X})^{-1}|\boldsymbol{X}] = \\
+\sigma^2(\underbrace{A(\boldsymbol{X})\boldsymbol{X}}_{=\mathbb{I}_{k\times k}} (\boldsymbol{X}'\boldsymbol{X})^{-1} -       \underbrace{(\boldsymbol{X}'\boldsymbol{X})^{-1}\boldsymbol{X}' \boldsymbol{X}}_{=\mathbb{I}_{k\times k}} (\boldsymbol{X}'\boldsymbol{X})^{-1}) = 0_{k\times k}
+\end{aligned}
+\end{equation*}
+
+Como a covariância acima é zero, concluímos que: $\operatorname{cov}_F(A(\boldsymbol{X})\boldsymbol{y},\hat{b}|\boldsymbol{X})=\mathbb{V}_F[\hat{b}|\boldsymbol{X}]$.
+\paragraph{Etapa 4:} Finalmente notamos que, usando a Etapa 3:
+
+\begin{equation*}
+\begin{aligned}\mathbb{V}_F(A(\boldsymbol{X})\boldsymbol{y} -\hat{b}|\boldsymbol{X} ) =\\ \mathbb{V}_F(A(\boldsymbol{X})\boldsymbol{y}|\boldsymbol{X} ) +\mathbb{V}_F(\hat{b}|\boldsymbol{X} ) -\operatorname{cov}_F(A(\boldsymbol{X})\boldsymbol{y},\hat{b}|\boldsymbol{X}) - \operatorname{cov}_F(\hat{b},A(\boldsymbol{X})\boldsymbol{y}|\boldsymbol{X}) =\\  \mathbb{V}_F(A(\boldsymbol{X})\boldsymbol{y}|\boldsymbol{X} )-\mathbb{V}_F(\hat{b}|\boldsymbol{X} )\, ,\end{aligned}
+\end{equation*}
+e, como $\mathbb{V}_F(A(\boldsymbol{X})\boldsymbol{y} -\hat{b}|\boldsymbol{X} ) $ é uma matriz positiva semidefinida, obtemos a conclusão desejada.
+\end{proof}
+\end{document}

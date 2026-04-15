@@ -367,7 +367,7 @@ Sob a condição
 		\end{itemize}
 					\item Quando as observações $(X_i,Y_i)$  apresentam dependência entre si, esta condição impõe restrições adicionais.
 					\begin{itemize}
-						\item Por exemplo, se as observações estão ordenadas no tempo e o modelo postulado é causal, $\mathbb{E}[\epsilon_i|\boldsymbol{X}]=0$ implica que causas não observadas  do fenômeno no período $i$ não exibem associação sistemática com as causas em $i$ {\color{red}e em nenhum outro período}.
+						\item Por exemplo, se as observações estão ordenadas no tempo e o modelo postulado é causal, $\mathbb{E}[\epsilon_i|\boldsymbol{X}]=0$ implica que causas não observadas  do fenômeno no período $i$ não exibem associação sistemática com as causas observadas $X$ em $i$ {\color{red}e em nenhum outro período}.
 						\begin{itemize}
 							\item Nesse caso, condição limita retroalimentação entre causas observadas e não observadas no tempo.
 						\end{itemize}
@@ -451,6 +451,7 @@ Sob a condição
 			\item Sob  amostragem aleatória de uma população $(X,Y)$ em que vale para o modelo postulado que $\mathbb{E}[\epsilon|X]=0$ (H2), temos que, para $i\neq j$, $\operatorname{cov}(\epsilon_i,\epsilon_j|\boldsymbol{X}) = \mathbb{E}[\epsilon_i\epsilon_j|\boldsymbol{X}]  =\mathbb{E}[\epsilon_i\epsilon_j|X_i, X_j] = \mathbb{E}[\mathbb{E}[\epsilon_i|\epsilon_j, X_i, X_j]\epsilon_j|X_i, X_j] =    \mathbb{E}[\mathbb{E}[\epsilon_i|X_i]\epsilon_j|X_i, X_j] = 0$. Portanto, o requerimento de não covariância condicional não impõe restrições adicionais a H2.
 			\item Por outro lado, nesse caso, a hipótese impõe que $\mathbb{V}[Y|X] =\mathbb{V}[\epsilon|X] = \sigma^2$, i.e. que a dispersão de $Y$ nas subpopulações definidas pelos diferentes valores de $X$ sejam as mesmas.
 		\end{itemize}
+\item Sob H1-H3, variância do estimador de MQO é dada por: $\mathbb{V}[\hat{b}|\boldsymbol{X}]= \sigma^2 (\boldsymbol{X}'\boldsymbol{X})^{-1}$.
 	\end{itemize}
 \end{frame}
 
@@ -464,7 +465,7 @@ Sob a condição
 		\end{itemize}
 		\item Com base nas definições acima, temos o seguinte resultado.
 		\begin{theorem}[Gauss-Markov]
-		 Sob $H1$, o estimador de MQO é o estimador {\color{red}linear} não viciado para $\delta(F)$ de variância uniformemente mínima na classe $\mathcal{F}(\boldsymbol{X})$, i.e. para qualquer outro estimador  {\color{red}linear} $\psi$ tal que $\mathbb{E}_{F}[\psi|\boldsymbol{X}] = \delta(F)$ para todo $F \in \mathcal{F}(\boldsymbol{X})$, temos que, para todo $F \in \mathcal{F}(\boldsymbol{X})$:
+		 Sob H1-H3, o estimador de MQO é o estimador {\color{red}linear} não viciado para $\delta(F)$ de variância uniformemente mínima na classe $\mathcal{F}(\boldsymbol{X})$, i.e. para qualquer outro estimador  {\color{red}linear} $\psi$ tal que $\mathbb{E}_{F}[\psi|\boldsymbol{X}] = \delta(F)$ para todo $F \in \mathcal{F}(\boldsymbol{X})$, temos que, para todo $F \in \mathcal{F}(\boldsymbol{X})$:
 			
 			$$\mathbb{V}_{F}(\psi|\boldsymbol{X}) - \mathbb{V}_{F}(\hat{b}|\boldsymbol{X})\, \quad \text{é positiva semidefinida} $$
 		\end{theorem}
@@ -631,7 +632,7 @@ $$\mathcal{F}^N(\boldsymbol{X}) = \{\boldsymbol{P}_{\boldsymbol{y}|\boldsymbol{X
 		\begin{itemize}
 			\item Ideia de se trabalhar com um regime assintótico é de que isso nos seja informativo das propriedades do estimador quando o tamanho amostral é ``grande''.
 		\end{itemize}
-		\item Para isso, focaremos no caso em que observamps uma amostra aleatória de uma população cuja distribuição é representada pelo para de variáveis aleatórias $(X,Y)$.
+		\item Para isso, focaremos no caso em que observamo++s uma amostra aleatória de uma população cuja distribuição é representada pelo para de variáveis aleatórias $(X,Y)$.
 		\begin{itemize}
 			\item Resultados para o caso não independente e/ou não identicamente distribuído podem ser encontrados, por exemplo, no livro de Halbert White, ``Asymptotic Theory for Econometricians''.
 		\end{itemize}
