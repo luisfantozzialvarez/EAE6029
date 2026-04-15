@@ -333,7 +333,7 @@ Sob a condição
 		\begin{itemize}
 			\item Em outras palavras, estamos pensando nas propriedades do estimador sob amostras repetidas (realizações alternativas da incerteza) em que o valor dos regressores é o mesmo da amostra observada.
 			\item Ou seja, estamos efetivamente tratando os regressores como fixos sob amostras repetidas.
-			\item \textbf{Exemplo:} se $Y_i$ é a taxa de inflação no período $i$, e $X_i$ a taxa de desemprego no período $i-1$, analisaremos as propriedades dos estimadores sob realizações alternativas do cenário econômico em que a taxa de desemprego é igual à observada nos períodos $i=1,\ldots,n$.  
+			\item \textbf{Exemplo:} se $Y_i$ é a taxa de inflação no período $i$, e $X_i$ a taxa de desemprego no período $i-1$, analisaremos as propriedades dos estimadores sob realizações alternativas do cenário econômico em que a taxa de desemprego é igual à observada nos períodos $i=0,\ldots,n-1$.  
 		\end{itemize}
 		
 	\end{itemize}
@@ -361,7 +361,7 @@ Sob a condição
 
 		\item Sob amostragem aleatória de uma população, i.e. $(X_i,Y_i)\overset{iid}{\sim}(X,Y)$, condição implica $\mathbb{E}[Y_i|\boldsymbol{X}] = \mathbb{E}[Y_i|X_i] = X_i'\beta \implies \mathbb{E}[Y|X]=X'\beta$.
 		\begin{itemize}
-			\item A esperança condicional das variáveis $(Y,X)$ que representam a distribuição das características na população de interesse é linear em $X$, {\color{green}e coincide com o modelo linear de interesse}.
+			\item A esperança condicional $\mathbb{E}[Y|X]$ das variáveis $(Y,X)$ que representam a distribuição das características na população de interesse é linear em $X$, {\color{green}e coincide com o modelo linear de interesse}.
 				\item Se o modelo postulado é {\color{blue}preditivo}, isso signifca que o parâmetro-alvo do melhor preditor linear consiste também no melhor preditor dentro das funções não lineares de $X$ (ou, de modo equivalente, a melhor aproximação linear a $\mathbb{E}[Y|X]$ é exata).
 				\item Se modelo postulado é {\color{blue}causal}, isso significa que as causas não observadas $\epsilon$ apresentam o mesmo valor médio nas diferentes subpopulações definidas pelos valores de $X$. Trata-se de condição mais forte que (i.e. que implica) a condição de identificação $\operatorname{cov}(X,\epsilon) = 0$.
 		\end{itemize}
