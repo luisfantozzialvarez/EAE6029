@@ -41,7 +41,7 @@ natbib=true
 	
 	$$W_{R,c}|\boldsymbol{X}\sim F(r,n-k)$$
 	
-	Dividimos a demonstraçãqo em quatro etapas:
+	Dividimos a demonstração em quatro etapas:
 	
 \paragraph{Etapa 0} Para uma matriz $A$ simétrica, a decomposição espectral permite-nos escrever $A = P \Lambda P'$, onde $\Lambda$ é uma matriz diagonal com os autovalores de $A$, e $P$ é uma matriz ortogonal ($P'P=PP'=\mathbb{I}$). Se $A$ é \textbf{positiva definida}, sabemos que os autovalores de $A$ são estritiamente positivos e, nesse caso, definimos a potência $-1/2$ de $A$ como:
 
@@ -53,7 +53,27 @@ Observe que, com base nessa definição, $$A^{-1/2}A^{-1/2} =  P\Lambda^{-1/2}\u
 $$(\sigma^2 R(\mathbf{X}'\mathbf{X})^{-1}R')^{-1/2}(R\hat{b}-c) |\boldsymbol{X}\sim \mathcal{N}(0_{r\times1},\mathbb{I}_{r\times r})\, .$$
 Consequentemente, condicionalmente a $\mathbf{X}$, $N = \lVert (\sigma^2 R(\mathbf{X}'\mathbf{X})^{-1}R')^{-1/2}(R\hat{b}-c) \rVert_2^2$ é a soma dos quadrados de $r$ normais padrão independentes, de modo que $N|\mathbf{X}\sim \chi^2(r)$.
 
-\paragraph{Etapa 2} Defina $D:=(n-k)\hat{\sigma}^2/\sigma^2$. Observe que, $\sigma^2D = \lVert M\boldsymbol{y} \rVert_2^2 \overset{M\boldsymbol{X}=0_{n\times k}}{=} \lVert M\boldsymbol{\epsilon} \rVert_2^2= (M\boldsymbol{\epsilon})'(M\boldsymbol{\epsilon}) = \boldsymbol{\epsilon}'M\boldsymbol{\epsilon}$
+\paragraph{Etapa 2} Defina $D:=(n-k)\hat{\sigma}^2/\sigma^2$. Observe que, $\sigma^2D = \lVert M\boldsymbol{y} \rVert_2^2 \overset{M\boldsymbol{X}=0_{n\times k}}{=} \lVert M\boldsymbol{\epsilon} \rVert_2^2= (M\boldsymbol{\epsilon})'(M\boldsymbol{\epsilon}) = \boldsymbol{\epsilon}'M\boldsymbol{\epsilon}$. Pela decomposição espectral, podemos escrever $M = P \Lambda P'$, onde $PP'=P'P=\mathbb{I}_{n\times n}$. Dessa forma, obtemos que:
+
+$$D = \left(\sigma^{-1}P\boldsymbol{\epsilon}\right)'\Lambda \left(\sigma^{-1}P\boldsymbol{\epsilon}\right)\, ,$$
+onde $\sigma^{-1}P\boldsymbol{\epsilon}|\boldsymbol{X}\sim \mathcal{N}(0_{n\times n}, \mathbb{I}_{n\times n})$. Consequentemente, como $\Lambda$ é uma matriz cuja diagonal principal consiste de zeros ou uns, com $1$ aparecendo $n-k$ vezes, temos que $D$, condicionalmente a $\boldsymbol{X}$, se escreve como a soma dos quadrados de $n-k$ normais padrão independentes. Consequentemente, $D|\boldsymbol{X}\sim \chi^2(n-k)$.
+
+\paragraph{Etapa 3} Vamos mostrar, agora, que $N$ e $D$ são independentes, condicionalmente a $\boldsymbol{X}$. Observe que, sob a nula e condicionalmente a $\boldsymbol{X}$, $D$ e $N$ são transformações, respectivamente, das variáveis aleatórias $R\hat{b}-c=R(\boldsymbol{X}'\boldsymbol{X})^{-1}\boldsymbol{X}'\boldsymbol{\epsilon}$ e $M\boldsymbol{\epsilon}$. Consequentemente, é suficiente mostrar que $R(\boldsymbol{X}'\boldsymbol{X})^{-1}\boldsymbol{X}'\boldsymbol{\epsilon}$ e $M\boldsymbol{\epsilon}$ são independentes, condicionalmente a $\boldsymbol{X}$. Como $\begin{bmatrix}
+R(\boldsymbol{X}'\boldsymbol{X})^{-1}\boldsymbol{X}' \\
+M
+\end{bmatrix}\boldsymbol{\epsilon}$ tem distribuição normal multivariada (condicional a $\boldsymbol{X}$), é suficiente verificar que $\operatorname{cov}(R(\boldsymbol{X}'\boldsymbol{X})^{-1}\boldsymbol{X}'\boldsymbol{\epsilon},M\boldsymbol{\epsilon}|\boldsymbol{X}) =0_{r \times n}$. De fato:
+
+\begin{eqnarray*}
+	\begin{aligned}
+		\operatorname{cov}(R(\boldsymbol{X}'\boldsymbol{X})^{-1}\boldsymbol{X}'\boldsymbol{\epsilon},M\boldsymbol{\epsilon}|\boldsymbol{X}) =\\ \mathbb{E}[R(\boldsymbol{X}'\boldsymbol{X})^{-1}\boldsymbol{X}'\boldsymbol{\epsilon}\boldsymbol{\epsilon}'M|\boldsymbol{X}]=\sigma^2 R\boldsymbol{X}'(\boldsymbol{X}'\boldsymbol{X})^{-1}\underbrace{\boldsymbol{X}'M}={0_{k \times n}} = 0_{r \times n}
+	\end{aligned}
+\end{eqnarray*}
+de onde concluímos o resultado desejado.
+
+\paragraph{Etapa 4} Para concluir, observamos que:
+$$\footnotesize W_{R,c} =\frac{N}{D}\frac{n-k}{r}\, ,$$
+onde, sob a hipótese nula e condicionalmente a $\boldsymbol{X}$, $\frac{N}{D}$ tem a distribuição de uma razão de qui-quadrados independentes, com $r$ e $n-k$ graus de liberdade respectivamente. Portanto, pela definição da distribuição $F$, sob a nula e condicionalmente a $\boldsymbol{X}$, $W_{R,c}$ tem distribuição $F$ com $(r,n-k)$ graus de liberdade.
+
 
 	
 
