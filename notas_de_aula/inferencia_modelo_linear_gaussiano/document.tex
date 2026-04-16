@@ -1,0 +1,62 @@
+% !TeX document-id = {1c0b4298-276a-4038-8e08-c4a1f4846da7}
+% !TeX TXS-program:bibliography = txs:///biber
+\documentclass[12pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{thmtools}
+\usepackage{xcolor}
+\usepackage{nameref}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{float}
+\newtheorem{theorem}{Teorema}
+%\usepackage[margin=2.5cm]{geometry}
+\usepackage[brazilian]{babel}
+\usepackage[
+backend=biber,
+style=authoryear,
+natbib=true
+]{biblatex}
+\addbibresource{../bibliography.bib}
+\newtheorem{definition}{Definição}
+\newtheorem{lemma}{Lema}
+\newtheorem{proposition}{Proposição}
+\title{Inferência no modelo linear Gaussiano}
+\author{ Professor Luís Antonio Fantozzi Alvarez}
+\date{15 de abril de 2026}
+\begin{document}
+	\maketitle
+	O objetivo destas notas é verificar que, no modelo linear Gaussiano:
+	
+	$$\boldsymbol{y} = \boldsymbol{X}\beta + \boldsymbol{\epsilon}\, ,  \beta \in \mathbb{R}\, ,$$
+	$$\operatorname{posto}(\boldsymbol{X}) = k\, ,$$
+	$$\boldsymbol{\epsilon}|\boldsymbol{X} \sim \mathcal{N}(0_{n\times 1},\sigma^2 \mathbb{I}_{n\times n})\, ,$$
+	dada uma matriz $r \times k$ $R$ de posto $r$ e um vetor $r\times 1$ $c$ , a estatística de teste:
+	
+	$$\footnotesize W_{R,c} = \frac{(R\hat{b}-c)'\left(R\hat{\sigma}^2(\boldsymbol{X}'\boldsymbol{X})^{-1}R'\right)^{-1}(R\hat{b}-c)}{r}  = \frac{(R\hat{b}-c)'\left(R(\boldsymbol{X}'\boldsymbol{X})^{-1}R'\right)^{-1}(R\hat{b}-c)}{r \hat{\sigma}^2}\, ,$$
+	onde $\hat{\sigma}^2 = \frac{1}{n-k}\sum_{i=1}^n (Y_i -X_i'\hat{b})^2$, terá distribuição, sob a hipótese nula $R\beta = c$,
+	
+	$$W_{R,c}|\boldsymbol{X}\sim F(r,n-k)$$
+	
+	Dividimos a demonstraçãqo em quatro etapas:
+	
+\paragraph{Etapa 0} Para uma matriz $A$ simétrica, a decomposição espectral permite-nos escrever $A = P \Lambda P'$, onde $\Lambda$ é uma matriz diagonal com os autovalores de $A$, e $P$ é uma matriz ortogonal ($P'P=PP'=\mathbb{I}$). Se $A$ é \textbf{positiva definida}, sabemos que os autovalores de $A$ são estritiamente positivos e, nesse caso, definimos a potência $-1/2$ de $A$ como:
+
+$$A^{-1/2}:= P\Lambda^{-1/2}P'\, .$$
+
+Observe que, com base nessa definição, $$A^{-1/2}A^{-1/2} =  P\Lambda^{-1/2}\underbrace{P' P}_{=\mathbb{I}}\Lambda^{-1/2}P' = P\Lambda^{-1}P'=A^{-1}\, .$$
+
+\paragraph{Etapa 1} Defina $N := (R\hat{b}-c)'\left(R\sigma^2(\boldsymbol{X}'\boldsymbol{X})^{-1}R'\right)^{-1}(R\hat{b}-c) $. Observe que, sob a hipótese nula, $R\hat{b}-c|\boldsymbol{X}\sim \mathcal{N}(0_{r \times 1}, \sigma^2 R(\mathbf{X}'\mathbf{X})^{-1}R')$. Como $R(\mathbf{X}'\mathbf{X})^{-1}R'$ é positiva definida pela condição de posto sobre $R$,\footnote{Como $R$ tem posto $r$, para todo $s \in \mathbb{R}^r$, $R's\neq 0$. Consequentemente, como $(\mathbf{X}'\mathbf{X})^{-1}$ é positiva definida (use a decomposição espectral e o fato de que $\mathbf{X}'\mathbf{X}$ é positiva definida para verificar isso), temos que: $s' R(\mathbf{X}'\mathbf{X})^{-1}R's=(R's)'(\mathbf{X}'\mathbf{X})^{-1}(R's) > 0$.}, sua inversa de fato existe, e temos que, sob a nula:
+$$(\sigma^2 R(\mathbf{X}'\mathbf{X})^{-1}R')^{-1/2}(R\hat{b}-c) |\boldsymbol{X}\sim \mathcal{N}(0_{r\times1},\mathbb{I}_{r\times r})\, .$$
+Consequentemente, condicionalmente a $\mathbf{X}$, $N = \lVert (\sigma^2 R(\mathbf{X}'\mathbf{X})^{-1}R')^{-1/2}(R\hat{b}-c) \rVert_2^2$ é a soma dos quadrados de $r$ normais padrão independentes, de modo que $N|\mathbf{X}\sim \chi^2(r)$.
+
+\paragraph{Etapa 2} Defina $D:=(n-k)\hat{\sigma}^2/\sigma^2$. Observe que, $\sigma^2D = \lVert M\boldsymbol{y} \rVert_2^2 \overset{M\boldsymbol{X}=0_{n\times k}}{=} \lVert M\boldsymbol{\epsilon} \rVert_2^2= (M\boldsymbol{\epsilon})'(M\boldsymbol{\epsilon}) = \boldsymbol{\epsilon}'M\boldsymbol{\epsilon}$
+
+	
+
+
+	
+\end{document}
